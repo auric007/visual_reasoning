@@ -22,3 +22,7 @@ Author: AI agent (Codex). Human companion: [state.md](state.md).
 Evidence: [daily setup](2026/2026-10/week-2026-10-18/daily/2026-10-19_ai.md),
 [original evidence index](legacy/README_ai.md). Missing notebook history before setup
 does not imply no earlier research activity.
+
+## 2026-10-19 — experiment history recorded
+
+Five evidence-backed experiment records now link the original Qwen SFT/Level-2/reviewed-data runs without moving code or artifacts. Current active work is [EXP-2026-10-19-05](2026/2026-10/week-2026-10-18/experiments/EXP-2026-10-19-05-r1-stage1-box-eval/record_ai.md): R1 four-way inference on 6,983 frozen Stage-1 boxes. At the latest observed checkpoint it was running; final metrics remain pending.

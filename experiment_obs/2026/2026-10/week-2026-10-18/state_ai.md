@@ -9,3 +9,7 @@ This is a dated observation; use the controller for current service status.
 [Daily task](daily/2026-10-19_ai.md) records intent, observed milestones and verification.
 No new model experiment was run by notebook setup. Earlier October 18 research is
 available only through linked original project evidence, not a complete daily log.
+
+## 2026-10-19 — active experiment
+
+[EXP-2026-10-19-05](experiments/EXP-2026-10-19-05-r1-stage1-box-eval/record_ai.md) is the current running R1 four-way evaluation on frozen detector boxes. It reuses the comparable Level-2 pixels and records results separately from positive-only GT-box testing.

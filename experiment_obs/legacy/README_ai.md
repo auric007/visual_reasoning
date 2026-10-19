@@ -17,4 +17,4 @@ Server links below may not resolve on a laptop. Consult the original files on th
 Some historical claims are superseded; read corrections and original provenance.
 The setup inspected the required Sweep 01 report and current reviewed/rejection
 card/status/leaderboard; the other paths are navigation, not fresh metric verification.
-No backfilled daily notes or fictitious EXP records were created.
+On 2026-10-19, evidence-backed historical EXP records were added under the calendar hierarchy at the user's explicit request; original artifacts remain at their server paths.
