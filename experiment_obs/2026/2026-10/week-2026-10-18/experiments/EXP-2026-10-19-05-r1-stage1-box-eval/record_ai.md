@@ -17,7 +17,7 @@ User authorized evaluation of completed R1 on Stage-1 boxes to determine whether
 
 ## Results and failures
 
-No final metrics yet. At the latest observed checkpoint, 140/6,983 boxes were generated at about 9.94 s/box. This rate is an observation, not a completion estimate; inference is resumable if GPU availability changes.
+No final metrics yet. At the latest observed checkpoint, 147/6,983 boxes were generated at about 9.94 s/box. This rate is an observation, not a completion estimate; inference is resumable if GPU availability changes.
 
 Planned report views: end-to-end radar/missile P/R/F1 against all GT objects; four-way proposal classification; and rejection specificity on the 6,615 non-target proposals.
 
