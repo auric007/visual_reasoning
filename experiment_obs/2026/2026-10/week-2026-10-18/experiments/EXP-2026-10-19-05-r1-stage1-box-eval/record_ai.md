@@ -8,7 +8,7 @@ User authorized evaluation of completed R1 on Stage-1 boxes to determine whether
 
 ## Setup and execution
 
-- Status: **running**; started 2026-10-19 17:52 IST on one L40S after the GPU was attached.
+- Status: **stopped by user on 2026-10-20;** started 2026-10-19 17:52 IST on one L40S after the GPU was attached.
 - Model: `runs/R1_reviewed_reject` adapter from EXP-2026-10-11-04.
 - Input set: 6,983 frozen Stage-1 proposals at confidence ≥.50, IoU match threshold .50, 79 test scenes. These scenes have zero overlap with the 148 R1 train scenes.
 - Post-hoc gold distribution: radar 119, missile 249, other 3,580, background 3,035. Ground truth is not in VLM pixels or prompt; it is used only after generation for scoring.
@@ -28,3 +28,8 @@ Do not compare the new result to the R1 positive-only four-way macro-F1 because 
 ## Provisional result — 2026-10-20
 
 A live snapshot of 2,429 completed proposals found accuracy **.0523** and four-way macro-F1 **.0447**. Radar P/R/F1 was .039/.451/.072; missile .056/.954/.107. `other` and `background` were never predicted, giving **0.000 rejection specificity** on 2,269 non-target boxes. Raw output inspection confirmed complete `<answer>` tags in all observed generations, so this is not a parsing or completion-length artifact: the model generated confident target-class CoT narratives on non-target boxes. The evaluation remains running; because rows are not a random sample, these are not final benchmark metrics.
+
+
+## Status update — stopped by user
+
+The user stopped the inference after observing a provisional zero rejection rate. The tmux session was terminated; partial output is preserved unchanged at . No final benchmark score was produced, so the partial result must not be reported as the final Stage-1 evaluation.
