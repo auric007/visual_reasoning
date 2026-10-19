@@ -24,3 +24,7 @@ Planned report views: end-to-end radar/missile P/R/F1 against all GT objects; fo
 ## Decision and next proposal
 
 Do not compare the new result to the R1 positive-only four-way macro-F1 because that test has zero rejection support. Compare it to EXP-2026-09-21-03 on the same frozen Stage-1 benchmark. Evidence: [manifest](/sfs/vlm_qwen/experiments/2026-10-11/04_reviewed_reject_sft/eval/stage1_r1/MANIFEST.md), [runner log](/sfs/vlm_qwen/experiments/2026-10-11/04_reviewed_reject_sft/logs/stage1_r1_single.log), [original baseline](/sfs/vlm_qwen/experiments/2026-09-21/03_level2_spotter_boxes/reports/FINAL.md).
+
+## Provisional result — 2026-10-20
+
+A live snapshot of 2,429 completed proposals found accuracy **.0523** and four-way macro-F1 **.0447**. Radar P/R/F1 was .039/.451/.072; missile .056/.954/.107. `other` and `background` were never predicted, giving **0.000 rejection specificity** on 2,269 non-target boxes. Raw output inspection confirmed complete `<answer>` tags in all observed generations, so this is not a parsing or completion-length artifact: the model generated confident target-class CoT narratives on non-target boxes. The evaluation remains running; because rows are not a random sample, these are not final benchmark metrics.
