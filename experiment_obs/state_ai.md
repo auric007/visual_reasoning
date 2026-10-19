@@ -7,7 +7,10 @@ Author: AI agent (Codex). Human companion: [state.md](state.md).
 - Root code Git: absent at inspection; code revision is unversioned, not a notebook SHA.
 - Independent notebook metadata: `/sfs/markdown-sync/git/vlm_qwen`.
 - Company notebook destination: `auric007/visual_reasoning`, main; public access approved.
-- Initial transport setup/verification is in progress; consult today's daily outcome for observed status.
+- Initial audited notebook publication succeeded. Service `vlm_qwen-experiment-sync`
+  started with PID 6134 and a successful cycle at 2026-10-19 18:03 IST.
+  It waits 30 seconds after each cycle; check current status rather than assuming
+  this dated observation proves future uptime. Mac scheduling has not been configured here.
 - Original research evidence remains in `/sfs/vlm_qwen/experiments/`.
 - Research interpreter: `/sfs/envs/qwen_vl/bin/python3`, per root CLAUDE.md.
 - Latest inspected `04_reviewed_reject_sft/status.json` reports `complete` at
