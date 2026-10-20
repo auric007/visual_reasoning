@@ -32,3 +32,7 @@ The three component that they build:
 ## This paper:
 The intended benefit is straightforward: **spend less training effort reproducing routine wording and more on domain-relevant answers.** Whether that preserves reasoning or improves visual grounding must be established experimentally.
 
+The proposed benefit is **reducing unwanted learning from repetitive answer formats**.(TODO: does this issue exactly in my training method)
+
+Their hypothesis is: **supervise the important concept while putting less pressure on the surrounding language, preserving more of the pretrained model’s behavior.**
+
