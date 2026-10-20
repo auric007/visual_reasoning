@@ -26,3 +26,9 @@ The three component that they build:
 - **“key concept” does not necessarily mean a diagnostic finding.** Because they collect closed-ended answers, the dictionary can also contain modality names, laterality, and generic answers such as “yes” or “no.” It captures the dataset’s answer vocabulary, not exclusively expert-selected clinical concepts.
 
 
+
+
+
+## This paper:
+The intended benefit is straightforward: **spend less training effort reproducing routine wording and more on domain-relevant answers.** Whether that preserves reasoning or improves visual grounding must be established experimentally.
+
