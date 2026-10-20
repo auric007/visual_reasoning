@@ -14,3 +14,6 @@ Things to take care of:
 
 
 TODO: Our method supervises output tokens. Whether that produces better use of visual evidence is an empirical question we should keep open. I need to check this on my all trained VLM, is visual evidence is influencing the produced token or just it is there. 
+
+
+
