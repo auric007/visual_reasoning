@@ -22,4 +22,7 @@ The three component that they build:
 1. Dataset: domain QA dataset
 2. key concept dictionary: This dictionary collects domain terms from the training answers.
 3. Selective loss computation: ConceptVLM selectively includes positions associated with dictionary concepts.
-4. 
+
+- **“key concept” does not necessarily mean a diagnostic finding.** Because they collect closed-ended answers, the dictionary can also contain modality names, laterality, and generic answers such as “yes” or “no.” It captures the dataset’s answer vocabulary, not exclusively expert-selected clinical concepts.
+
+
