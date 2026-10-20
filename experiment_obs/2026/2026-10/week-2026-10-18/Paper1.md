@@ -18,3 +18,6 @@ TODO: Our method supervises output tokens. Whether that produces better use of v
 
 gap: Emphasizing military words during training does not automatically teach the model where to look in an image.
 
+The three component that they build:
+1. Dataset: domain QA dataset
+2. 
