@@ -36,3 +36,6 @@ The proposed benefit is **reducing unwanted learning from repetitive answer form
 
 Their hypothesis is: **supervise the important concept while putting less pressure on the surrounding language, preserving more of the pretrained model’s behavior.**
 
+
+	There is a fundamental ambiguity here: **a model can predict the correct medical term using visual evidence, question wording, or learned answer priors.** This loss rewards the correct term without distinguishing how the model obtained it. It could therefore improve answer accuracy without improving grounding.
+
