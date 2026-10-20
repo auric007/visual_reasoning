@@ -11,3 +11,6 @@ Things to take care of:
 	**Reasoning is a claim to examine.** Better answers and detailed explanations do not, by themselves, establish that the model reasons faithfully from visual evidence. 
 	I want to know how, better explanation is conditioned on visual signature. if model is giving better signature thats mean it is looking at the images
 
+
+
+TODO: Our method supervises output tokens. Whether that produces better use of visual evidence is an empirical question we should keep open. I need to check this on my all trained VLM, is visual evidence is influencing the produced token or just it is there. 
