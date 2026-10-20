@@ -6,3 +6,8 @@ TODO: The VLM i trained, how exactly the all the section VLM generating, it is t
 
 Things to take care of:
 - Just ordinary training, trains the model to reproduce the whole sentences.
+
+
+	**Reasoning is a claim to examine.** Better answers and detailed explanations do not, by themselves, establish that the model reasons faithfully from visual evidence. 
+	I want to know how, better explanation is conditioned on visual signature. if model is giving better signature thats mean it is looking at the images
+
