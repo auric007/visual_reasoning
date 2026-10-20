@@ -20,4 +20,6 @@ gap: Emphasizing military words during training does not automatically teach the
 
 The three component that they build:
 1. Dataset: domain QA dataset
-2. 
+2. key concept dictionary: This dictionary collects domain terms from the training answers.
+3. Selective loss computation: ConceptVLM selectively includes positions associated with dictionary concepts.
+4. 
