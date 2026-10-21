@@ -36,3 +36,7 @@ Report answer stability, rationale similarity, per-class intervention effects, a
 - At 2026-10-21T14:42:54+05:30 the process was alive after loading but before its first durable row, with Torch Inductor compile workers active. No outcome is yet available.
 - Initial full launch then failed before the first record because manual concatenation invalidated Qwen's multimodal RoPE position tensors. The probe now rebuilds the assistant-prefix input with the processor. Syntax validation passed; a minimal GPU smoke test is running before the full audit is restarted.
 - Repaired 4-row/16-token smoke completed in 6m19s. A one-row full-length timing calibration is now running; its result will determine whether the planned 240-condition audit needs a throughput optimization before restart.
+
+## 2026-10-21T18:25:12+05:30 — full audit restarted
+
+The initial full job had not been restarted after calibration. Fixed the probe to end at the OPEN answer prefix instead of the chat end marker; old calibration probabilities are invalid for this probe. All five processor input checks and syntax checks passed. The 240-intervention run was relaunched in `vlm_r1_visual_audit`; results remain pending. See today's daily note for exact changes and original evidence paths.
