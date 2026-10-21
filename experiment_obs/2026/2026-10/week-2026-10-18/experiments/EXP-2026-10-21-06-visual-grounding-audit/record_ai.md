@@ -24,3 +24,12 @@ Pending.
 ## Decision and next proposal
 
 Report answer stability, rationale similarity, per-class intervention effects, and fixed-prefix class-token shifts before interpreting any generated visual cue as grounded.
+
+## 2026-10-21 — implementation and execution
+
+- Script: `/sfs/vlm_qwen/experiments/2026-10-21/06_visual_grounding_audit/scripts/visual_grounding_audit.py`.
+- Run wrapper: `run.sh`, tmux session `vlm_r1_visual_audit`.
+- Environment: `/sfs/envs/qwen_vl/bin/python3`; source model `/sfs/vlm_qwen/global_qwen/models/Qwen3-VL-8B-Instruct`; adapter `R1_reviewed_reject`.
+- Inputs are frozen partial Stage-1 predictions (`preds_single.jsonl`) and their immutable input manifest. The full Stage-1 inference was not resumed.
+- Passed `python -m py_compile`, `bash -n`, and `--prepare-only` (48 balanced rows) before launch. The run stores every completed image-condition output immediately and skips it on restart.
+- Pending observed outcome: `eval/r1_stage1_visual_audit/SUMMARY.md` once all 240 interventions finish.
