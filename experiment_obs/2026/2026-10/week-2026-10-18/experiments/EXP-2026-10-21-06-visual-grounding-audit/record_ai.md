@@ -56,3 +56,10 @@ Five gold-radar originals all predicted missile. Real-image swap decisions staye
 ## 2026-10-21T19:38:23+05:30 — related training-data investigation
 
 User requested other/background sampling and diversity analysis while image interventions continue. Confirmed class-bearing rendered IDs in rejection crops, one fixed answer per rejection class, class-biased other sampling and sorted-scene-biased background sampling. These are observed dataset construction issues; causal effects remain untested. See `/sfs/vlm_qwen/experiments/2026-10-11/04_reviewed_reject_sft/reports/REJECTION_SAMPLING_AUDIT.md` and today's daily note. No model/data modifications or additional training.
+
+### 2026-10-21T20:26:11+05:30 — RN-20261021-visual-grounding: first six corrected recipients
+
+- User requested conclusions from the six complete examples. Paired results across 30 interventions: all original answers missile; both-image replacements switch 6/6 to their verified radar donor; detail-only changes3/6, context-only changes3/6, gray-both changes6/6 to other. Only TWO unique radar donors are reused, so full-pair results are not six independent donor tests. Original gold is radar2/missile2/other1/background1; only missile→radar replacement direction is represented so far.
+- Visual evidence and Grounding text changed for every altered condition (0/6 identical per section per condition). Example21DEC27025_0012 changes its claim about a raised element despite the same close view when only context changes. This shows contextual influence on candidate descriptions, not proof that either claim is correct.
+- Under fixed original rationale, late first-token top class stays missile for every condition in all six examples. Supported interpretation: visual input affects free generation, while supplied conclusion-bearing prior text strongly constrains the late answer preference. Not proof that earlier reasoning ignored pixels or that rationale claims are faithful.
+- Snapshot `/sfs/vlm_qwen/experiments/2026-10-21/06_visual_grounding_audit/reports/CONTRASTIVE_FIRST6.md`. Existing run unchanged; findings remain preliminary.
