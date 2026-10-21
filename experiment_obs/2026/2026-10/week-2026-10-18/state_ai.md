@@ -21,3 +21,7 @@ The full R1 Stage-1 benchmark remains stopped at user request. EXP-2026-10-21-06
 ## 2026-10-21T19:22:30+05:30 — donor protocol corrected
 
 User rejected confounded gold-class-cycle swaps. The 28-output exploratory run is stopped and preserved. Corrected prediction-contrasting audit is launched in `vlm_r1_contrastive_audit`, first verifying correct radar/missile donors on the current GPU. Same 48 recipients; explicit donor ledger; results pending. See [daily evidence](daily/2026-10-21_ai.md).
+
+## 2026-10-22T01:39:00+05:30 — audit stopped at accepted sample size
+
+User stopped corrected visual audit to detach GPU. 40 complete examples / 200 interventions retained (10 per gold class). Frozen snapshot and report at `06_visual_grounding_audit/eval/contrastive_verified/`. Offline analysis is next; no resume authorized. [Daily note](daily/2026-10-22_ai.md).
