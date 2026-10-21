@@ -40,3 +40,7 @@ Report answer stability, rationale similarity, per-class intervention effects, a
 ## 2026-10-21T18:25:12+05:30 — full audit restarted
 
 The initial full job had not been restarted after calibration. Fixed the probe to end at the OPEN answer prefix instead of the chat end marker; old calibration probabilities are invalid for this probe. All five processor input checks and syntax checks passed. The 240-intervention run was relaunched in `vlm_r1_visual_audit`; results remain pending. See today's daily note for exact changes and original evidence paths.
+
+## 2026-10-21T19:10:06+05:30 — preliminary first-23 results
+
+Five gold-radar originals all predicted missile. Real-image swap decisions stayed missile; gray-both changed 4/4 to other. The late-prefix top preference did not change. This is class-ordered, small, and confounded by radar-to-missile donor direction; no general grounding verdict. Snapshot: `/sfs/vlm_qwen/experiments/2026-10-21/06_visual_grounding_audit/reports/PRELIMINARY_FIRST23.md`. Full results pending.
