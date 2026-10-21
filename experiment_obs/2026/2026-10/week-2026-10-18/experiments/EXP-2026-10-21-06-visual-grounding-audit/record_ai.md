@@ -35,3 +35,4 @@ Report answer stability, rationale similarity, per-class intervention effects, a
 - Pending observed outcome: `eval/r1_stage1_visual_audit/SUMMARY.md` once all 240 interventions finish.
 - At 2026-10-21T14:42:54+05:30 the process was alive after loading but before its first durable row, with Torch Inductor compile workers active. No outcome is yet available.
 - Initial full launch then failed before the first record because manual concatenation invalidated Qwen's multimodal RoPE position tensors. The probe now rebuilds the assistant-prefix input with the processor. Syntax validation passed; a minimal GPU smoke test is running before the full audit is restarted.
+- Repaired 4-row/16-token smoke completed in 6m19s. A one-row full-length timing calibration is now running; its result will determine whether the planned 240-condition audit needs a throughput optimization before restart.
