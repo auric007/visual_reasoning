@@ -29,3 +29,7 @@ User stopped corrected visual audit to detach GPU. 40 complete examples / 200 in
 ## 2026-10-22T15:16:42+05:30 — accepted 40-example audit analyzed
 
 Offline all-40 analysis is complete at `/sfs/vlm_qwen/experiments/2026-10-21/06_visual_grounding_audit/analysis_40/DEEP_ANALYSIS.md`. Close-only/second-view-only answer changes22/40 and25/40; full replacement follows four reused donor pairs40/40; fixed-final-rationale top class unchanged; gray outputs exactly recombine rejection templates. These demonstrate sensitivity/continuation behavior, not expert visual faithfulness. All40 image pairs reviewed and per-case notes saved. Original20 rejection-class cases all remain target predictions. Mid-generation cut-point experiment is pending user approval; no model execution resumed. [Daily evidence](daily/2026-10-22_ai.md).
+
+## 2026-10-22T16:42:12+05:30 — weekly experiment priorities documented
+
+[Ranked plan](plan_ai.md) covers all human ideas recorded this week. P0 integrity prerequisite; P1 early-prefix continuation is first proposed GPU study; P2 claim/correction review can proceed offline in parallel. Rejection and paired-box diagnostics come before new training comparisons. This task only writes planning notes; no jobs restarted, data rebuilt, or Test2 rescored. [Daily record](daily/2026-10-22_ai.md).
