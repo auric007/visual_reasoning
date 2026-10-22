@@ -17,3 +17,7 @@ RN-20261022-experiment-priorities: [weekly priority plan](../2026/2026-10/week-2
 ## 2026-10-22T17:22:53+05:30 — early-prefix proposal authorized and started
 
 The user approved the pending cut-point study. Test1-only P1 is now running with fresh L4 baselines and donor verification; no new result is established yet. [Experiment record](../2026/2026-10/week-2026-10-18/experiments/EXP-2026-10-22-07-early-prefix-grounding/record_ai.md).
+
+## 2026-10-22T18:45:06+05:30 — interpret evidence-to-decision baseline before redesign
+
+P1 uses12 recipient proposals from10 scenes, not72 independent examples. Frozen-prefix contradictions test sensitivity, not ordinary-input accuracy or proof that an early description was true. Keep the joint-image model as a comparison baseline; a future direct-answer versus concise checked-evidence+answer comparison on matched valid inputs could separate output-format value from explanation verbosity. Rationale truth and rejection/classification quality need separate evaluation. This is a proposal only, conditional on future approved data and training; no separate-LLM pipeline is presumed better. [Daily discussion](../2026/2026-10/week-2026-10-18/daily/2026-10-22_ai.md).
