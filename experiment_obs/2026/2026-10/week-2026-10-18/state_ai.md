@@ -50,3 +50,7 @@ P1 completed at17:41IST with72/72 continuations,exit0. Strict grouping/prefix/sp
 ## 2026-10-22T20:54:26+05:30 — class-only SFT running
 
 User authorized recommended training on class_only_fourway_v2. [EXP-2026-10-22-08](/sfs/vlm_qwen/experiment_obs/2026/2026-10/week-2026-10-18/experiments/EXP-2026-10-22-08-class-only-fourway-sft/record_ai.md) is running in tmux vlm_c1_class_only on L4,2epochs/492updates,1968 balanced rows per epoch from1764 unique examples. Roughly2.25–2.5h total training at observed speed; comparison additional. All12 training-background source scenes embargoed; queued evaluation is only the filtered256-proposal Test1 diagnostic. No unfiltered Test1/Test2 score is valid for this trained corpus.
+
+## 2026-10-23T00:48:10+05:30 — class-only comparison complete
+
+EXP-2026-10-22-08 finished training/comparison successfully. Fixed256-proposal clean-Test1 diagnostic:macro-F1.202→.553,accuracy.312→.559,non-target acceptance100%→25.8%. Missile recall falls.969→.797 while precision improves;radar recall improves.281→.531. Both models output~9tokens here,no clear speed improvement. Data/format changes are confounded;not full-set or deployment scores. [October23 evidence](/sfs/vlm_qwen/experiment_obs/2026/2026-10/week-2026-10-18/daily/2026-10-23_ai.md).

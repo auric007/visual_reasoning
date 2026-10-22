@@ -22,3 +22,7 @@ These are selected-subset, repeated-donor observations. They do not quantify ima
 ## 2026-10-22T17:22:53+05:30 — P0/P2 source reconciliation
 
 Among772 INCLUDED reviewed-teacher records,128 have188 substantively changed selected fields (85 Visual evidence,41 Synthesis,31 Discrimination,18 Planning,13 Grounding). This is the final selected-text denominator, distinct from all reviewer assignments. Absence-term reductions40 versus increases7 are a lexical pattern, not a verified teacher error rate.19 fragments in12 image pairs received explicitly unblinded AI review (8 coarse supported fragments,11 unresolved); no expert hallucination percentage claimed. [Reports](/sfs/vlm_qwen/experiments/2026-10-19/07_early_prefix_grounding/offline/P2_CORRECTIONS.md).
+
+## 2026-10-23T00:48:10+05:30 — class-only corpus/recipe comparison
+
+On identical256 clean-Test1 proposals,C1 macro-F1.553 versus R1.202;non-target false acceptance33/128 versus128/128. This supports improved classification/rejection in this diagnostic,not a causal effect of rationale removal (data also changed). Missile precision improves with reduced recall;both models produce short outputs when asked,so no meaningful inference-speed gain measured. [Report](/sfs/vlm_qwen/experiments/2026-10-19/08_class_only_fourway_sft/reports/COMPARISON.md).

@@ -30,3 +30,12 @@ Training completed and adapter saved. Measured train runtime8125.1753 seconds. A
 ### 2026-10-22T23:12:04+05:30 — RN-20261022-class-only-sft-train
 
 Clean Test1 comparison completed: `/sfs/vlm_qwen/experiments/2026-10-19/08_class_only_fourway_sft/reports/COMPARISON.md`. Results: {"C1_class_only": {"n": 256, "macro_f1": 0.5534299942357156, "accuracy": 0.55859375, "non_target_accept_rate": 0.2578125}, "R1_reference": {"n": 256, "macro_f1": 0.20200327809142232, "accuracy": 0.3125, "non_target_accept_rate": 1.0}}. Class-stratified proposal diagnostic,not population detection precision. Data/target changes are confounded; no isolated rationale-removal benefit claimed. No Test2 used.
+
+### 2026-10-23T00:48:10+05:30 — RN-20261022-class-only-sft-train: final comparison verified
+
+- Follow-up to [October22 launch](../../daily/2026-10-22_ai.md). User asks for an update. Training and evaluation exit0; comparison completed October22 at23:12IST. No new GPU job launched.
+- Validated both models have the identical256 unique proposal IDs/gold labels; no overlap with242 training scenes or12 embargo scenes. Source train JSONL hash unchanged. Fixed diagnostic has64/class,34 clean Test1 scenes; no new Test2 evaluation. Geometric annotations/class-stratified sampling limit population interpretation.
+- C1 macro-F10.553 versus R10.202; accuracy143/256=0.559 versus80/256=0.312. New model rejects95/128 non-targets;old rejects0/128. Non-target acceptance25.8% versus100%. Exact other/background classification each29/64; binary rejection is not exact rejection-subtype accuracy.
+- C1 P/R/F1: radar.694/.531/.602;missile.567/.797/.662;other.446/.453/.450;background.558/.453/.500. Tradeoff: missile recall declines.969→.797 while precision improves.276→.567;radar recall.281→.531. No confidence intervals/population superiority claim.
+- Both models emit about9 tokens with the identical class-only question (C1 mean8.54,R1 mean9.00) and similar generation time1.34s/1.38s. Thus no meaningful inference-speed advantage established under this prompt;data and supervised target format changed together,so gains cannot be attributed solely to removing CoT. This classification comparison does not establish explanation faithfulness.
+- [Full report](/sfs/vlm_qwen/experiments/2026-10-19/08_class_only_fourway_sft/reports/COMPARISON.md),[raw metrics](/sfs/vlm_qwen/experiments/2026-10-19/08_class_only_fourway_sft/eval/COMPARISON.json). No new tests/model execution;cohort/count/embargo/hash consistency checks passed.
