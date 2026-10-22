@@ -26,3 +26,14 @@ Command: `bash /sfs/vlm_qwen/experiments/2026-10-19/07_early_prefix_grounding/ru
 ### 2026-10-22T17:22:53+05:30 — detached P1 execution observed
 
 Started tmux `vlm_p1_early_prefix` at17:20:31IST. Log: `/sfs/vlm_qwen/experiments/2026-10-19/07_early_prefix_grounding/logs/pilot_l4.log`. Live inspection confirmed session active, model loaded, free-generation smoke passed and early-prefix multimodal smoke passed. Donor verification/continuations are pending; no final result claimed. New run has its own outputs and does not resume the stopped40-case audit. Seven CPU tests passed again. Exit marker `EXIT.json` and completion marker `eval/pilot_l4/COMPLETE.json` distinguish failed versus fully complete execution.
+
+### 2026-10-22T17:41:03+05:30 — RN-20261022-p0p2-p1: automatic exit record
+
+- P1 completed; process exit0; saved72/72 continuations. No training or new Test2 model evaluation. Frozen source hashes unchanged: True.
+- Evidence: [/sfs/vlm_qwen/experiments/2026-10-19/07_early_prefix_grounding/eval/pilot_l4/RESULTS.md](/sfs/vlm_qwen/experiments/2026-10-19/07_early_prefix_grounding/eval/pilot_l4/RESULTS.md), append-only outputs and EXIT.json. These are paired sensitivity counts, not benchmark accuracy or visual-faithfulness rates. Independent semantic review remains necessary.
+- after_visual / original: 0/12 answer changes against matched original-prefix continuation; invalid0.
+- after_visual / same_class_pair: 0/12 answer changes against matched original-prefix continuation; invalid0.
+- after_visual / opposite_class_pair: 4/12 answer changes against matched original-prefix continuation; invalid0.
+- after_grounding / original: 0/12 answer changes against matched original-prefix continuation; invalid0.
+- after_grounding / same_class_pair: 0/12 answer changes against matched original-prefix continuation; invalid0.
+- after_grounding / opposite_class_pair: 1/12 answer changes against matched original-prefix continuation; invalid0.
