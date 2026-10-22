@@ -21,3 +21,18 @@ The user approved the pending cut-point study. Test1-only P1 is now running with
 ## 2026-10-22T18:45:06+05:30 — interpret evidence-to-decision baseline before redesign
 
 P1 uses12 recipient proposals from10 scenes, not72 independent examples. Frozen-prefix contradictions test sensitivity, not ordinary-input accuracy or proof that an early description was true. Keep the joint-image model as a comparison baseline; a future direct-answer versus concise checked-evidence+answer comparison on matched valid inputs could separate output-format value from explanation verbosity. Rationale truth and rejection/classification quality need separate evaluation. This is a proposal only, conditional on future approved data and training; no separate-LLM pipeline is presumed better. [Daily discussion](../2026/2026-10/week-2026-10-18/daily/2026-10-22_ai.md).
+
+## 2026-10-22T18:52:45+05:30 — practical next SFT with limited manual review
+
+### Minimal-supervision next-training proposal (not execution)
+
+User lacks capacity to verify five sections per example and asks which text can be shortened. P1 did NOT separately ablate the five sections or measure their classification value; the4/12 versus1/12 result cannot rank section utility.
+
+First proposed next run, once the user supplies the new other/background examples and training is authorized: standard LoRA SFT with class-only targets on reliable four-class labels, preserving the two-view input and a fixed starting checkpoint/adapter recipe. Both question and assistant target should request/contain only the class output; do not retain unverified ground-truth reasoning as an input prefix while calling the task answer-only. This removes any need to author five explanations per example. Keep image preprocessing and vision-encoder policy fixed initially to isolate the output/data question. Do not jump to GRPO or split-model generation based on P1.
+
+Optional compact-evidence arm only where trusted existing text is available: remove Planning and duplicate Synthesis, avoid long forced class-elimination paragraphs, retain a few checked visual observations and at most one context observation when justified; permit unresolved attributes. Target roughly30–60 explanation tokens is a design budget, not a measured optimum. A class-only arm does not teach faithful explanations; compact rationale targets remain a separate capability with their own verification burden.
+
+Compare arms on the same scene-disjoint development examples, including genuine non-target support; report per-class precision/recall, false acceptance, termination, output tokens and latency. Use the same training examples/start/seed/optimization and state whether exposure or compute is matched. Existing R1 is a reference; if the new data changes, an R1-versus-new score cannot isolate shortening as the cause. A same-data comparison requires trusted alternative targets; do not invent five-section negatives to construct a control. Test2 stays report-only and out of iterative tuning.
+
+Output shortening should reduce generation work; training/prefill savings will be smaller because image tokens remain. No performance boost is established until measured. Supporting background: [Lanham et al., Measuring Faithfulness in Chain-of-Thought Reasoning](https://arxiv.org/abs/2307.13702) studies task-dependent CoT influence in language models; it does not validate this VLM or promise shorter targets will perform better.
+
