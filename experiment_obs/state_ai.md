@@ -26,3 +26,7 @@ does not imply no earlier research activity.
 ## 2026-10-19 — experiment history recorded
 
 Five evidence-backed experiment records now link the original Qwen SFT/Level-2/reviewed-data runs without moving code or artifacts. Current active work is [EXP-2026-10-19-05](2026/2026-10/week-2026-10-18/experiments/EXP-2026-10-19-05-r1-stage1-box-eval/record_ai.md): R1 four-way inference on 6,983 frozen Stage-1 boxes. At the latest observed checkpoint it was running; final metrics remain pending.
+
+## 2026-10-22T15:16:42+05:30 — visual-grounding offline analysis
+
+The accepted40-example/200-output audit is analyzed; main report `/sfs/vlm_qwen/experiments/2026-10-21/06_visual_grounding_audit/analysis_40/DEEP_ANALYSIS.md`. No GPU work resumed. Findings and limits are in the [October22 daily note](/sfs/vlm_qwen/experiment_obs/2026/2026-10/week-2026-10-18/daily/2026-10-22_ai.md). Earlier running-status statements are historical.

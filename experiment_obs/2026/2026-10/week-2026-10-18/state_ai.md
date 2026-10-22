@@ -25,3 +25,7 @@ User rejected confounded gold-class-cycle swaps. The 28-output exploratory run i
 ## 2026-10-22T01:39:00+05:30 — audit stopped at accepted sample size
 
 User stopped corrected visual audit to detach GPU. 40 complete examples / 200 interventions retained (10 per gold class). Frozen snapshot and report at `06_visual_grounding_audit/eval/contrastive_verified/`. Offline analysis is next; no resume authorized. [Daily note](daily/2026-10-22_ai.md).
+
+## 2026-10-22T15:16:42+05:30 — accepted 40-example audit analyzed
+
+Offline all-40 analysis is complete at `/sfs/vlm_qwen/experiments/2026-10-21/06_visual_grounding_audit/analysis_40/DEEP_ANALYSIS.md`. Close-only/second-view-only answer changes22/40 and25/40; full replacement follows four reused donor pairs40/40; fixed-final-rationale top class unchanged; gray outputs exactly recombine rejection templates. These demonstrate sensitivity/continuation behavior, not expert visual faithfulness. All40 image pairs reviewed and per-case notes saved. Original20 rejection-class cases all remain target predictions. Mid-generation cut-point experiment is pending user approval; no model execution resumed. [Daily evidence](daily/2026-10-22_ai.md).
