@@ -34,3 +34,7 @@ The accepted40-example/200-output audit is analyzed; main report `/sfs/vlm_qwen/
 ## 2026-10-22T17:22:53+05:30 — P0/P2 offline audit and P1 pilot started
 
 User approved P0/P2 offline then P1 GPU. Offline integrity/correction audit saved, with expert fine-feature/taxonomy questions still unresolved. New12-case/72-continuation Test1-only early-prefix pilot is running in tmux `vlm_p1_early_prefix` on NVIDIA L4; prior40-case run remains stopped. No training or sealed Test2 model evaluation. [Experiment record](/sfs/vlm_qwen/experiment_obs/2026/2026-10/week-2026-10-18/experiments/EXP-2026-10-22-07-early-prefix-grounding/record_ai.md).
+
+## 2026-10-22T20:54:26+05:30 — class-only SFT running
+
+User authorized recommended training on class_only_fourway_v2. [EXP-2026-10-22-08](/sfs/vlm_qwen/experiment_obs/2026/2026-10/week-2026-10-18/experiments/EXP-2026-10-22-08-class-only-fourway-sft/record_ai.md) is running in tmux vlm_c1_class_only on L4,2epochs/492updates,1968 balanced rows per epoch from1764 unique examples. Roughly2.25–2.5h total training at observed speed; comparison additional. All12 training-background source scenes embargoed; queued evaluation is only the filtered256-proposal Test1 diagnostic. No unfiltered Test1/Test2 score is valid for this trained corpus.

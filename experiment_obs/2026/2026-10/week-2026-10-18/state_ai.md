@@ -46,3 +46,7 @@ P1 completed at17:41IST with72/72 continuations,exit0. Strict grouping/prefix/sp
 
 `/sfs/vlm_qwen/data/class_only_fourway_v2/` is READY with 1,764 two-image, class-only rows: radar 290, missile 490, other 492 and background 492. Other support is uniform across six requested Train classes and balanced hard/easy by a documented proxy. Background contains only strict saved Stage-2 target false positives from 12 now-embargoed Test1/Test2 scenes; all selected boxes have zero overlap with saved GT. Automated validation and AI visual-integrity review passed; annotation completeness remains an expert-review limitation. No training was started. [Daily evidence](daily/2026-10-22_ai.md).
 
+
+## 2026-10-22T20:54:26+05:30 — class-only SFT running
+
+User authorized recommended training on class_only_fourway_v2. [EXP-2026-10-22-08](/sfs/vlm_qwen/experiment_obs/2026/2026-10/week-2026-10-18/experiments/EXP-2026-10-22-08-class-only-fourway-sft/record_ai.md) is running in tmux vlm_c1_class_only on L4,2epochs/492updates,1968 balanced rows per epoch from1764 unique examples. Roughly2.25–2.5h total training at observed speed; comparison additional. All12 training-background source scenes embargoed; queued evaluation is only the filtered256-proposal Test1 diagnostic. No unfiltered Test1/Test2 score is valid for this trained corpus.
