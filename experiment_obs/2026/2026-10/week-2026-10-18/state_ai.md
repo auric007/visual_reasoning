@@ -37,3 +37,7 @@ Offline all-40 analysis is complete at `/sfs/vlm_qwen/experiments/2026-10-21/06_
 ## 2026-10-22T17:22:53+05:30 — P0/P2 offline audit and P1 pilot started
 
 User approved P0/P2 offline then P1 GPU. Offline integrity/correction audit saved, with expert fine-feature/taxonomy questions still unresolved. New12-case/72-continuation Test1-only early-prefix pilot is running in tmux `vlm_p1_early_prefix` on NVIDIA L4; prior40-case run remains stopped. No training or sealed Test2 model evaluation. [Experiment record](/sfs/vlm_qwen/experiment_obs/2026/2026-10/week-2026-10-18/experiments/EXP-2026-10-22-07-early-prefix-grounding/record_ai.md).
+
+## 2026-10-22T17:47:34+05:30 — P1 pilot completed and checked
+
+P1 completed at17:41IST with72/72 continuations,exit0. Strict grouping/prefix/split checks passed. Opposite-pair answer changes4/12 after Visual evidence and1/12 after Grounding;same-class controls0/12. No training,ID removal,or new Test2 inference. [Results](/sfs/vlm_qwen/experiments/2026-10-19/07_early_prefix_grounding/eval/pilot_l4/RESULTS.md). Interpretation remains diagnostic; fine-feature/semantic review is not complete.
