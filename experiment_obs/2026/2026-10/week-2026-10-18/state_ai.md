@@ -41,3 +41,8 @@ User approved P0/P2 offline then P1 GPU. Offline integrity/correction audit save
 ## 2026-10-22T17:47:34+05:30 — P1 pilot completed and checked
 
 P1 completed at17:41IST with72/72 continuations,exit0. Strict grouping/prefix/split checks passed. Opposite-pair answer changes4/12 after Visual evidence and1/12 after Grounding;same-class controls0/12. No training,ID removal,or new Test2 inference. [Results](/sfs/vlm_qwen/experiments/2026-10-19/07_early_prefix_grounding/eval/pilot_l4/RESULTS.md). Interpretation remains diagnostic; fine-feature/semantic review is not complete.
+
+## 2026-10-22 — class-only four-way v2 dataset prepared
+
+`/sfs/vlm_qwen/data/class_only_fourway_v2/` is READY with 1,764 two-image, class-only rows: radar 290, missile 490, other 492 and background 492. Other support is uniform across six requested Train classes and balanced hard/easy by a documented proxy. Background contains only strict saved Stage-2 target false positives from 12 now-embargoed Test1/Test2 scenes; all selected boxes have zero overlap with saved GT. Automated validation and AI visual-integrity review passed; annotation completeness remains an expert-review limitation. No training was started. [Daily evidence](daily/2026-10-22_ai.md).
+
