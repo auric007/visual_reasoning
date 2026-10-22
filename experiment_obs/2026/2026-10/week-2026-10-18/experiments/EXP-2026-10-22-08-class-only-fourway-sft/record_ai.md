@@ -26,3 +26,7 @@ Preflight complete; launching on idle NVIDIA L4 (23034MiB). No completed optimiz
 ### 2026-10-22T22:58:35+05:30 — RN-20261022-class-only-sft-train
 
 Training completed and adapter saved. Measured train runtime8125.1753 seconds. Adapter `/sfs/vlm_qwen/experiments/2026-10-19/08_class_only_fourway_sft/runs/C1_class_only`. Starting only the frozen256-proposal Test1-clean diagnostic against R1; all training/embargo scenes excluded. No Test2 evaluation.
+
+### 2026-10-22T23:12:04+05:30 — RN-20261022-class-only-sft-train
+
+Clean Test1 comparison completed: `/sfs/vlm_qwen/experiments/2026-10-19/08_class_only_fourway_sft/reports/COMPARISON.md`. Results: {"C1_class_only": {"n": 256, "macro_f1": 0.5534299942357156, "accuracy": 0.55859375, "non_target_accept_rate": 0.2578125}, "R1_reference": {"n": 256, "macro_f1": 0.20200327809142232, "accuracy": 0.3125, "non_target_accept_rate": 1.0}}. Class-stratified proposal diagnostic,not population detection precision. Data/target changes are confounded; no isolated rationale-removal benefit claimed. No Test2 used.
