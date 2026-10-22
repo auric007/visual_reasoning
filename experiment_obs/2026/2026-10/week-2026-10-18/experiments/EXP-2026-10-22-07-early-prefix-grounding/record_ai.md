@@ -22,3 +22,7 @@ Seven CPU tests passed, including real-data cut boundaries and Test1-only select
 
 ## Execution
 Command: `bash /sfs/vlm_qwen/experiments/2026-10-19/07_early_prefix_grounding/run.sh`; detached session/log will be appended once launch is observed. No inference completion claimed yet.
+
+### 2026-10-22T17:22:53+05:30 — detached P1 execution observed
+
+Started tmux `vlm_p1_early_prefix` at17:20:31IST. Log: `/sfs/vlm_qwen/experiments/2026-10-19/07_early_prefix_grounding/logs/pilot_l4.log`. Live inspection confirmed session active, model loaded, free-generation smoke passed and early-prefix multimodal smoke passed. Donor verification/continuations are pending; no final result claimed. New run has its own outputs and does not resume the stopped40-case audit. Seven CPU tests passed again. Exit marker `EXIT.json` and completion marker `eval/pilot_l4/COMPLETE.json` distinguish failed versus fully complete execution.

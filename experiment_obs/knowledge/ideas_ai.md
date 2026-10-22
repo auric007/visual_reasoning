@@ -13,3 +13,7 @@ The human October22 daily note asks to freeze only early sections, substitute im
 ## 2026-10-22T16:42:12+05:30 — ranked weekly proposals
 
 RN-20261022-experiment-priorities: [weekly priority plan](../2026/2026-10/week-2026-10-18/plan_ai.md) maps all ideas in the weekly plan, Paper1 and October21–22 notes. First CPU priorities are label/overlay integrity and visual-claim/analyst-correction review; first proposed GPU experiment is early-prefix continuation. Rejection diagnostics precede new training; concise targets and controlled wording precede token-budget, split-view pipeline, concept-loss and broad checkpoint comparisons. All are proposals; no new execution authorization.
+
+## 2026-10-22T17:22:53+05:30 — early-prefix proposal authorized and started
+
+The user approved the pending cut-point study. Test1-only P1 is now running with fresh L4 baselines and donor verification; no new result is established yet. [Experiment record](../2026/2026-10/week-2026-10-18/experiments/EXP-2026-10-22-07-early-prefix-grounding/record_ai.md).

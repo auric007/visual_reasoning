@@ -33,3 +33,7 @@ Offline all-40 analysis is complete at `/sfs/vlm_qwen/experiments/2026-10-21/06_
 ## 2026-10-22T16:42:12+05:30 — weekly experiment priorities documented
 
 [Ranked plan](plan_ai.md) covers all human ideas recorded this week. P0 integrity prerequisite; P1 early-prefix continuation is first proposed GPU study; P2 claim/correction review can proceed offline in parallel. Rejection and paired-box diagnostics come before new training comparisons. This task only writes planning notes; no jobs restarted, data rebuilt, or Test2 rescored. [Daily record](daily/2026-10-22_ai.md).
+
+## 2026-10-22T17:22:53+05:30 — P0/P2 offline audit and P1 pilot started
+
+User approved P0/P2 offline then P1 GPU. Offline integrity/correction audit saved, with expert fine-feature/taxonomy questions still unresolved. New12-case/72-continuation Test1-only early-prefix pilot is running in tmux `vlm_p1_early_prefix` on NVIDIA L4; prior40-case run remains stopped. No training or sealed Test2 model evaluation. [Experiment record](/sfs/vlm_qwen/experiment_obs/2026/2026-10/week-2026-10-18/experiments/EXP-2026-10-22-07-early-prefix-grounding/record_ai.md).

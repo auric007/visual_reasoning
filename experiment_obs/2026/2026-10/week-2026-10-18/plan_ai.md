@@ -90,3 +90,7 @@ Once the protocol works on R1, apply it to selected older checkpoints and the ba
 - **Complete:** R1 rejection sampling audit; accepted40-example image audit and offline review. The stopped full Stage1 run remains partial, and older28-output exploratory interventions are not pooled with the corrected200 outputs.
 - **Still open:** expert truth labels for most fine-feature claims; early-prefix continuation; causes of poor rejection; new data/target/loss/pipeline training comparisons.
 - **First execution proposal:** P0/P2 offline preparation, then P1 pilot after a separate user go-ahead. This document does not launch jobs, edit datasets, or alter existing test seals.
+
+### Execution update 2026-10-22T17:22:53+05:30
+
+The user approved P0/P2 offline then P1. Offline checks are completed as documented, with unresolved analyst adjudications retained. P1 is now running as [EXP-2026-10-22-07](experiments/EXP-2026-10-22-07-early-prefix-grounding/record_ai.md); P3–P9 remain proposals. This supersedes the earlier proposal-only wording for P0/P2/P1.
