@@ -36,3 +36,15 @@ Compare arms on the same scene-disjoint development examples, including genuine 
 
 Output shortening should reduce generation work; training/prefill savings will be smaller because image tokens remain. No performance boost is established until measured. Supporting background: [Lanham et al., Measuring Faithfulness in Chain-of-Thought Reasoning](https://arxiv.org/abs/2307.13702) studies task-dependent CoT influence in language models; it does not validate this VLM or promise shorter targets will perform better.
 
+
+## Next experiment brief — class-only four-way SFT
+
+Status: dataset-preparation proposal, not authorization to start training. Model remains Qwen3-VL-8B-Instruct with the existing text+merger LoRA recipe and frozen vision blocks; two-view input stays fixed. Train the model to emit only `<answer>CLASS</answer>`; no Planning, Visual evidence, Grounding, Discrimination or Synthesis target is required. This is a classification baseline, not evidence of faithful reasoning.
+
+For each example supply: unique neutral ID; source scene/site ID; close and context images showing the SAME clearly marked candidate; one accepted answer among radar/missile/other/background. Minimal metadata example: `{"id":"sample_001","site":"scene_A","images":["images/sample_001_det.jpg","images/sample_001_ctx.jpg"],"answer":"other"}`. The builder can create the prompt/messages; no manual question or rationale authoring needed. Both views use neutral markings without target-class text. Preserve existing explanations only as optional provenance.
+
+For preparation, distinguish identifiable non-target objects (other) from empty ground/texture/clutter with no identifiable foreground object (background); flag uncertain cases separately instead of forcing a rejection label. Provide reliable unique examples from varied scenes rather than repeated overlapping crops to inflate counts. No mandatory quota was set. Keep source scene IDs so training/development remain disjoint; existing held-out Test1/Test2 sources must not enter training. Next generalization reports require non-target support; positive-only scores cannot assess rejection.
+
+Once data is supplied and training approved, inspect final pixels/prompts as the standing preflight, construct class-only targets and compare the new model against frozen R1 on identical suitable held-out inputs: per-class precision/recall, non-target acceptance rate, output length and latency. Keep Test2 out of iterative selection. Because the data also changes, this comparison does not isolate output shortening as the cause of any gain. No data or model changes were executed for this brief.
+
+Recorded 2026-10-22T19:07:17+05:30; task RN-20261022-next-sft-design.
