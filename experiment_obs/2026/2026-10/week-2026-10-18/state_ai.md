@@ -72,3 +72,9 @@ Experiment09 full-scene C1 metrics now appear as formatted tables in the [daily 
 ## 2026-10-23T19:11:50.869643+05:30 — permanent ID baseline saved
 
 Experiment09 exports now link4108frozenGTobjects to existingofficialIDs. [387radar/missileGTbaseline](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/error_review/comparison_ids/ALL_TARGET_GT_BASELINE.csv),219misses,and4231proposalbaseline ready forlatermatching. Counts/maps/statuschecks passed;no othermodel evaluated. [Daily](daily/2026-10-23_ai.md).
+
+### 2026-10-23T19:31:40.027831+05:30 — RN-20261023-c1-all80-audit: background run verified
+
+Detachedtmux vlm_c1_all80_audit is activelysavingnewanswers. Observed4365/6983saved,including4231verifiedreusedanswers;latestprogresssnapshot4361 at0.473s/newrow,~20.7minremaining (allow20–30minwithimagevariation). No finalnewmetricyet. GPU/model/imagehashchecks passed onL40S;no otherjob interrupted.
+
+All80-as-provided,79geometry-valid,clean67,andtraining-exposed12 results willbe separated inreports/FULL_METRICS.md andeval/METRICS.json,includingTest1/Test2. PermanentGTmiss/errorIDs atreports/comparison_ids/ willflagtraining_exposed andsource_geometry_valid. Mechanicalall80 includes7knownsource-invalidannotationsasmisses;the1invalidradarisnotaverifiedvisualmiss. Completionhook appendsobservedmetrics/table/IDpaths to thisdaily andexperimentrecord andcopiesreportstothealreadyforwardedgalleryunder/all80_audit/. Host/processshutdown couldinterrupt;rawanswersareappend-onlyresumable. [Experimentrecipe](/sfs/vlm_qwen/experiments/2026-10-19/10_all80_inclusive_eval/README.md).
