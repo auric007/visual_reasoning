@@ -56,3 +56,7 @@ User authorized recommended training on class_only_fourway_v2. [EXP-2026-10-22-0
 EXP-2026-10-22-08 finished training/comparison successfully. Fixed256-proposal clean-Test1 diagnostic:macro-F1.202→.553,accuracy.312→.559,non-target acceptance100%→25.8%. Missile recall falls.969→.797 while precision improves;radar recall improves.281→.531. Both models output~9tokens here,no clear speed improvement. Data/format changes are confounded;not full-set or deployment scores. [October23 evidence](/sfs/vlm_qwen/experiment_obs/2026/2026-10/week-2026-10-18/daily/2026-10-23_ai.md).
 
 ## 2026-10-23T14:00:45.887688+05:30 — RN-20261023-c1-full-stage1-eval:preparation passed;detachedtmux launch authorized on idleL40S.4231proposals;GT totals152radar/235missile,of whichStage1found95/195. Finalscores pending. Syntheticreporttest verifiesStage1missFN57/40,strictparsing,undefinedprecision,embargo and uniqueGTmatching. [Experiment](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/README.md).
+
+## 2026-10-23T14:34:51.723201+05:30 — full clean Stage1 C1 evaluation outcome
+
+Completed4231/4231 fresh C1 predictions on NVIDIA L40S; reports saved at [09_c1_full_stage1_eval](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/FULL_METRICS.md), [per-scene](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/PER_SCENE.md). No training or model selection;12 embargo scenes excluded. Combined:accuracy0.5479,macroF10.4097. Test1:accuracy0.4997,macroF10.4395. Test2:accuracy0.5754,macroF10.3511. 

@@ -23,3 +23,7 @@ Outputs:raw eval/predictions.jsonl;progress.json;eval/METRICS.json;reports/FULL_
 - Final outputs on normalcompletion: [09_c1_full_stage1_eval](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/FULL_METRICS.md),[per-scene](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/PER_SCENE.md);rawpredictions and progress preserved. Completion/failurehook appendsobservedoutcome to daily,experimentrecord,weeklystate andCLAUDE. Hostshutdown caninterruptanyjob.
 - Notebook saved locally. Sync status check reports **Supervisor not running**;lastsuccess01:00IST is historical,not proof these new notes were pushed. No service restarted.
 
+
+## 2026-10-23T14:34:51.723201+05:30 — observed outcome
+
+Completed4231/4231 fresh C1 predictions on NVIDIA L40S; reports saved at [09_c1_full_stage1_eval](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/FULL_METRICS.md), [per-scene](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/PER_SCENE.md). No training or model selection;12 embargo scenes excluded. Combined:accuracy0.5479,macroF10.4097. Test1:accuracy0.4997,macroF10.4395. Test2:accuracy0.5754,macroF10.3511. 
