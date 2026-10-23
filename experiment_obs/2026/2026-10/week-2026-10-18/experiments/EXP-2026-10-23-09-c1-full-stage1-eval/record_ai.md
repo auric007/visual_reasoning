@@ -165,3 +165,7 @@ User requests browser access over a forwarded port. Preparing loopback-only HTTP
 - HTTPchecks passed:root200,256-caseembeddedmetadata,firstJPEGbytehashmatchesfrozeninput,radarCSV200. /proc/net/tcp confirmsloopback-onlylistening. Browserinteractionsremainnotautomatedtested. No GPU needed.
 - Useraccess:VSCodePorts→ForwardaPort→8765→openhttp://127.0.0.1:8765/. Terminalalternative onlocalcomputer:ssh -N -L8765:127.0.0.1:8765 YOUR_SSH_HOST (samehostaliasasVSCode). Agentstartedserveronly;client-sideportforwardingcannotbeconfirmedfromthissession.
 - Environment:/sfs/envs/qwen_vl/bin/python3 -m http.server;startwrapper:/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/serve_gallery.sh;log:logs/gallery_server.log.
+
+### 2026-10-23T17:32:23.950662+05:30 — RN-20261023-c1-full-stage1-eval: browser localhost connection refused
+
+User screenshot shows client localhost:8765 ERR_CONNECTION_REFUSED. Remote loopback server freshly verified HTTP200 (index266965bytes);tmuxsessionalive. No server restart or configuration change needed. Supported inference:client-side tunnel missing/inactive or browser using the wrong forwarded address;clientlistener cannot be inspected from this session. Advise VSCode RemoteSSH Ports→forward8765→OpeninBrowser/use displayedForwardedAddress,keepingconnectionopen. Remote localhost and laptop localhost are different network endpoints until forwarding is established. No model run.
