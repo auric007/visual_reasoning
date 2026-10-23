@@ -188,3 +188,10 @@ User requests actual GT classes for all120 other→radar errors. Read frozen raw
 | **Total** | **2920** | **120** | **4.1%** | **100%** | **57** | **63** | **39 unique scenes** |
 
 Vehicle count56 is46.7% of theseerrors but56/1492=3.8% of vehicle proposals. Radome9/10=90.0% (smalln),camo28/339=8.3%,smallvehicle11/495=2.2%. Currenttaxonomy mapsradome toother;do not silentlychangegold. Groundtruthsuperclass is not the raw XMLParentClass numericattribute or finehardwarelabel. [FullGTbreakdown and groupedIDs](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/error_review/OTHER_TO_RADAR_GT_BREAKDOWN.md),[120IDCSV](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/error_review/OTHER_TO_RADAR_GT_IDS.csv). GalleryRawGTfilter already supports theseclasses. Arithmetic,uniqueIDs,frozenGTlabelchecks passed;sourcepredictionhashunchanged.
+
+### 2026-10-23T18:38:08.402147+05:30 — RN-20261023-c1-full-stage1-eval: actual-class gallery update completed
+
+- Liveindex andstandalonegallery now showoriginalGTsuperclass in primarycardheading/metadata,instead ofgenericOther,e.g.Vehicle→Radar,Camo→Radar,Radome→Radar. ActualGTclass selector hasclassnames/counts;Errorcategory selector andclickablesummarybuttons split allOther→Radar cases into theirnineclasses.12total actual-class→predictioncategories across256cases. ModelpredictionOther staysOther;benchmarkgoldretainedassecondarymetadata. No relabeling.
+- Updatedscripts/build_error_review.py template,index.html,radar_errors.html,andBUILD_SUMMARY;payloadsunchangedbyte-for-byte. No images,IDs,evaluationoutputsor metrics changed. No newmodelrun.
+- Validation:py_compile;actualgalleryJavaScript compiled/executed in V8 withlightweightDOMstub:headingVehicle→Radar,pagination12,categories12,Vehicle56,Radome9,Camo28,Radar→Other17,Test1Camo14 andIDsearchallpass. This is logic testing,not a realbrowserrenderingtest. FreshHTTP200 confirmsupdatedclassselectorserved.
+- Userrefresh:http://localhost:8765/?v=2 (orCtrl+F5);sameactiveSSHforward. ExistingGTbreakdown/IDreports remainvalid.
