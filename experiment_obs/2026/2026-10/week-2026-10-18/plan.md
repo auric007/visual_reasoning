@@ -10,4 +10,5 @@
 
 For next week I need to read this paper:
 - https://arxiv.org/pdf/2307.13702: Measuring Faithfulness in Chain-of-Thought Reasoning
-- 
+- https://arxiv.org/pdf/2510.01454: DATA SELECTION FOR FINE-TUNING VISION LANGUAGE MODELS VIA CROSS MODAL ALIGNMENT TRAJECTORIES
+
