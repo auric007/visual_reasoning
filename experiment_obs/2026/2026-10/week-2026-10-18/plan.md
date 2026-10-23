@@ -9,3 +9,5 @@
 
 
 For next week I need to read this paper:
+- https://arxiv.org/pdf/2307.13702: Measuring Faithfulness in Chain-of-Thought Reasoning
+- 
