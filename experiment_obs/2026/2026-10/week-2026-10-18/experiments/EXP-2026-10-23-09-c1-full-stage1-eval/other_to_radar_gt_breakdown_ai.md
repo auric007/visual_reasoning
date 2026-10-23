@@ -1,0 +1,191 @@
+Author: Codex. Human companion: [other_to_radar_gt_breakdown.md](other_to_radar_gt_breakdown.md).
+
+# Other → Radar: original ground-truth class breakdown
+
+Generated 2026-10-23T18:33:33.681044+05:30; same experiment09 completed predictions, no new inference or relabeling. The four-way scorer maps every annotated class except exact radar/missile to other. Original GT class below means the frozen GT superclass (`raw_gold`), not a fine hardware name or the XML Parent Class numeric field. All120 chosen cases have matched GT entries, verified against the original frozen GT files.
+
+| Original GT class | All proposals of this GT class | Called radar | Within-class → radar rate | Share of120 errors | Test1 | Test2 | Scenes with this error |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| vehicle | 1492 | 56 | 3.8% | 46.7% | 28 | 28 | 27 |
+| camo | 339 | 28 | 8.3% | 23.3% | 14 | 14 | 10 |
+| smallvehicle | 495 | 11 | 2.2% | 9.2% | 5 | 6 | 5 |
+| radome | 10 | 9 | 90.0% | 7.5% | 2 | 7 | 6 |
+| logistic | 112 | 7 | 6.2% | 5.8% | 4 | 3 | 6 |
+| tank | 388 | 4 | 1.0% | 3.3% | 0 | 4 | 2 |
+| arty | 58 | 2 | 3.4% | 1.7% | 2 | 0 | 2 |
+| spa | 19 | 2 | 10.5% | 1.7% | 2 | 0 | 1 |
+| aerial | 7 | 1 | 14.3% | 0.8% | 0 | 1 | 1 |
+| **Total** | **2920** | **120** | **4.1%** | **100%** | **57** | **63** | **39 unique scenes** |
+
+Vehicle errors dominate by count (56/120), but vehicles are also the largest source class (1492 proposals). Radome has9/10 calledradar, versus28/339 camo and56/1492 vehicle;tiny-class denominators should not be overinterpreted. Radome remains a separate non-target superclass under the benchmark, so these9 remain scored as other→radar. This analysis does not establish why a visual error occurred or change the intended taxonomy.
+
+## Instance IDs by original GT class
+
+### vehicle: 56
+
+| ID | Split | Scene | GT index (0-based) | Predicted |
+|---|---|---|---:|---|
+| `18MAR10025_0016` | Test1 | `18MAR10025634-S3DS-200012866237_01_P001` | 11 | radar |
+| `19MAR13040_0000` | Test1 | `19MAR13040701-S3DS-200013268578_01_P001` | 9 | radar |
+| `19MAR13040_0004` | Test1 | `19MAR13040701-S3DS-200013268578_01_P001` | 7 | radar |
+| `19MAY10032_0004` | Test1 | `19MAY10032935-S3DS-200012352046_01_P001` | 50 | radar |
+| `19SEP16023_0001` | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` | 5 | radar |
+| `19SEP16023_0026` | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` | 81 | radar |
+| `19SEP16023_0050` | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` | 17 | radar |
+| `19SEP16023_0052` | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` | 110 | radar |
+| `21APR22040_0001` | Test1 | `21APR22040621-S3DS-200013119950_01_P001` | 4 | radar |
+| `21APR30054_0032` | Test1 | `21APR30054629-S3DS-200013142967_01_P001` | 11 | radar |
+| `21APR30054_0042` | Test1 | `21APR30054629-S3DS-200013142967_01_P001` | 12 | radar |
+| `21APR30054_0055` | Test1 | `21APR30054629-S3DS-200013142967_01_P001` | 24 | radar |
+| `21APR30054_0064` | Test1 | `21APR30054629-S3DS-200013142967_01_P001` | 49 | radar |
+| `21DEC27025_0005` | Test1 | `21DEC27025021-S3DS-200012895048_01_P001` | 0 | radar |
+| `21DEC27025_0008` | Test1 | `21DEC27025021-S3DS-200012895048_01_P001` | 12 | radar |
+| `21DEC27025_0009` | Test1 | `21DEC27025021-S3DS-200012895048_01_P001` | 14 | radar |
+| `21DEC27025_0026` | Test1 | `21DEC27025021-S3DS-200012895048_01_P001` | 15 | radar |
+| `22OCT24030_0065` | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` | 96 | radar |
+| `22OCT24030_0073` | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` | 12 | radar |
+| `23OCT24030_0019` | Test1 | `23OCT24030928-S3DS-200012400977_01_P001` | 16 | radar |
+| `24APR01051_0036` | Test1 | `24APR01051503-S3DS-200012320748_01_P001` | 41 | radar |
+| `24APR01051_0054` | Test1 | `24APR01051503-S3DS-200012320748_01_P001` | 8 | radar |
+| `24DEC21030_0004` | Test1 | `24DEC21030136-S3DS-200011913026_01_P001` | 14 | radar |
+| `24DEC21030_0011` | Test1 | `24DEC21030136-S3DS-200011913026_01_P001` | 12 | radar |
+| `24DEC21030_0012` | Test1 | `24DEC21030136-S3DS-200011913026_01_P001` | 16 | radar |
+| `24DEC21030_0014` | Test1 | `24DEC21030136-S3DS-200011913026_01_P001` | 11 | radar |
+| `26MAY09052_0006` | Test1 | `26MAY09052126-S3DS-200013142970_01_P001` | 11 | radar |
+| `26MAY09052_0037` | Test1 | `26MAY09052126-S3DS-200013142970_01_P001` | 22 | radar |
+| `20SEP27061_0006` | Test2 | `20SEP27061806-S3DS-200011619312_01_P001` | 13 | radar |
+| `20SEP27061_0020` | Test2 | `20SEP27061806-S3DS-200011619312_01_P001` | 5 | radar |
+| `21APR18030_0015` | Test2 | `21APR18030819-S3DS-200013545084_01_P001` | 29 | radar |
+| `21APR18030_0071` | Test2 | `21APR18030819-S3DS-200013545084_01_P001` | 33 | radar |
+| `21APR18030_0097` | Test2 | `21APR18030819-S3DS-200013545084_01_P001` | 45 | radar |
+| `22APR14045_0012` | Test2 | `22APR14045506-S3DS-200013368123_01_P001` | 16 | radar |
+| `234045af_D_0004` | Test2 | `234045af_DS_PHR1B_201808290337504_FR1_PX_E108N34_0924_00286` | 1 | radar |
+| `23FEB01050_0046` | Test2 | `23FEB01050006-S3DS-200013142308_01_P001` | 55 | radar |
+| `23MAY19062_0004` | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` | 43 | radar |
+| `23MAY19062_0034` | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` | 41 | radar |
+| `23MAY19062_0044` | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` | 48 | radar |
+| `23MAY19062_0072` | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` | 37 | radar |
+| `24DEC24042_0004` | Test2 | `24DEC24042920-S3DS-200013378864_01_P001` | 13 | radar |
+| `24DEC24042_0006` | Test2 | `24DEC24042920-S3DS-200013378864_01_P001` | 14 | radar |
+| `24DEC24042_0015` | Test2 | `24DEC24042920-S3DS-200013378864_01_P001` | 11 | radar |
+| `24NOV27054_0004` | Test2 | `24NOV27054611-S3DS-200012866946_01_P001` | 11 | radar |
+| `24OCT29045_0001` | Test2 | `24OCT29045607-S3DS-200013168961_01_P001` | 13 | radar |
+| `24OCT29045_0009` | Test2 | `24OCT29045607-S3DS-200013168961_01_P001` | 12 | radar |
+| `25MAR23054_0001` | Test2 | `25MAR23054346-S3DS-200011078330_01_P001` | 0 | radar |
+| `25MAR23054_0002` | Test2 | `25MAR23054346-S3DS-200011078330_01_P001` | 16 | radar |
+| `25MAR23054_0007` | Test2 | `25MAR23054346-S3DS-200011078330_01_P001` | 3 | radar |
+| `25MAR23054_0011` | Test2 | `25MAR23054346-S3DS-200011078330_01_P001` | 18 | radar |
+| `25MAR25043_0005` | Test2 | `25MAR25043103-S3DS-200011078671_01_P001` | 5 | radar |
+| `25NOV18044_0003` | Test2 | `25NOV18044741-S3DS-200011078376_01_P001` | 12 | radar |
+| `26d44cd2_D_0042` | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` | 61 | radar |
+| `852dc76a_D_0010` | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` | 11 | radar |
+| `852dc76a_D_0018` | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` | 12 | radar |
+| `d8bba13b_D_0014` | Test2 | `d8bba13b_DS_PHR1B_202109100317223_FR1_PX_E113N31_0818_00355` | 28 | radar |
+
+### camo: 28
+
+| ID | Split | Scene | GT index (0-based) | Predicted |
+|---|---|---|---:|---|
+| `20SEP09053_0032` | Test1 | `20SEP09053808-S3DS-200012483665_01_P001` | 5 | radar |
+| `21APR30054_0000` | Test1 | `21APR30054629-S3DS-200013142967_01_P001` | 9 | radar |
+| `21APR30054_0024` | Test1 | `21APR30054629-S3DS-200013142967_01_P001` | 8 | radar |
+| `21APR30054_0039` | Test1 | `21APR30054629-S3DS-200013142967_01_P001` | 10 | radar |
+| `21DEC12052_0089` | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` | 8 | radar |
+| `22FEB02032_0001` | Test1 | `22FEB02032525-S3DS-200012866245_01_P001` | 19 | radar |
+| `22FEB02032_0002` | Test1 | `22FEB02032525-S3DS-200012866245_01_P001` | 8 | radar |
+| `22FEB02032_0050` | Test1 | `22FEB02032525-S3DS-200012866245_01_P001` | 5 | radar |
+| `24MAR27045_0000` | Test1 | `24MAR27045953-S3DS-200013168941_01_P001` | 8 | radar |
+| `24MAR27045_0001` | Test1 | `24MAR27045953-S3DS-200013168941_01_P001` | 5 | radar |
+| `24MAR27045_0003` | Test1 | `24MAR27045953-S3DS-200013168941_01_P001` | 3 | radar |
+| `24MAR27045_0012` | Test1 | `24MAR27045953-S3DS-200013168941_01_P001` | 4 | radar |
+| `25NOV29025_0002` | Test1 | `25NOV29025727-S3DS-200012895045_01_P001` | 0 | radar |
+| `25NOV29025_0017` | Test1 | `25NOV29025727-S3DS-200012895045_01_P001` | 2 | radar |
+| `22OCT21045_0012` | Test2 | `22OCT21045409-S3DS-200012483671_01_P001` | 59 | radar |
+| `22OCT21045_0030` | Test2 | `22OCT21045409-S3DS-200012483671_01_P001` | 58 | radar |
+| `22OCT21045_0055` | Test2 | `22OCT21045409-S3DS-200012483671_01_P001` | 55 | radar |
+| `22OCT21045_0148` | Test2 | `22OCT21045409-S3DS-200012483671_01_P001` | 60 | radar |
+| `22OCT21045_0189` | Test2 | `22OCT21045409-S3DS-200012483671_01_P001` | 27 | radar |
+| `22OCT21045_0222` | Test2 | `22OCT21045409-S3DS-200012483671_01_P001` | 10 | radar |
+| `23JAN10050_0003` | Test2 | `23JAN10050425-S3DS-200012483667_01_P001` | 4 | radar |
+| `23JAN10050_0006` | Test2 | `23JAN10050425-S3DS-200012483667_01_P001` | 3 | radar |
+| `23JAN10050_0009` | Test2 | `23JAN10050425-S3DS-200012483667_01_P001` | 2 | radar |
+| `23JAN10050_0021` | Test2 | `23JAN10050425-S3DS-200012483667_01_P001` | 18 | radar |
+| `24DEC24042_0002` | Test2 | `24DEC24042920-S3DS-200013378864_01_P001` | 2 | radar |
+| `24DEC24042_0008` | Test2 | `24DEC24042920-S3DS-200013378864_01_P001` | 0 | radar |
+| `25JAN29042_0002` | Test2 | `25JAN29042609-S3DS-200013367959_01_P001` | 0 | radar |
+| `25JAN29042_0003` | Test2 | `25JAN29042609-S3DS-200013367959_01_P001` | 1 | radar |
+
+### smallvehicle: 11
+
+| ID | Split | Scene | GT index (0-based) | Predicted |
+|---|---|---|---:|---|
+| `21JAN25022_0005` | Test1 | `21JAN25022937-S3DS-200013104366_01_P001` | 20 | radar |
+| `21JAN25022_0019` | Test1 | `21JAN25022937-S3DS-200013104366_01_P001` | 24 | radar |
+| `21JAN25022_0025` | Test1 | `21JAN25022937-S3DS-200013104366_01_P001` | 23 | radar |
+| `21JAN25022_0029` | Test1 | `21JAN25022937-S3DS-200013104366_01_P001` | 27 | radar |
+| `26MAY09052_0038` | Test1 | `26MAY09052126-S3DS-200013142970_01_P001` | 34 | radar |
+| `21APR18030_0068` | Test2 | `21APR18030819-S3DS-200013545084_01_P001` | 30 | radar |
+| `25MAR23054_0012` | Test2 | `25MAR23054346-S3DS-200011078330_01_P001` | 12 | radar |
+| `852dc76a_D_0008` | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` | 42 | radar |
+| `852dc76a_D_0013` | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` | 17 | radar |
+| `852dc76a_D_0016` | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` | 19 | radar |
+| `852dc76a_D_0024` | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` | 49 | radar |
+
+### radome: 9
+
+| ID | Split | Scene | GT index (0-based) | Predicted |
+|---|---|---|---:|---|
+| `22OCT24030_0026` | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` | 57 | radar |
+| `22OCT24030_0089` | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` | 75 | radar |
+| `25DEC14052_0000` | Test2 | `25DEC14052859-S3DS-200011101282_01_P001` | 3 | radar |
+| `25DEC14052_0001` | Test2 | `25DEC14052859-S3DS-200011101282_01_P001` | 4 | radar |
+| `25JAN29042_0000` | Test2 | `25JAN29042609-S3DS-200013367959_01_P001` | 6 | radar |
+| `25JAN29042_0001` | Test2 | `25JAN29042609-S3DS-200013367959_01_P001` | 5 | radar |
+| `25MAR25043_0000` | Test2 | `25MAR25043103-S3DS-200011078671_01_P001` | 4 | radar |
+| `25NOV18044_0008` | Test2 | `25NOV18044741-S3DS-200011078376_01_P001` | 7 | radar |
+| `852dc76a_D_0004` | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` | 2 | radar |
+
+### logistic: 7
+
+| ID | Split | Scene | GT index (0-based) | Predicted |
+|---|---|---|---:|---|
+| `19MAY10032_0001` | Test1 | `19MAY10032935-S3DS-200012352046_01_P001` | 1 | radar |
+| `21NOV24030_0067` | Test1 | `21NOV24030403-S3DS-200012895049_01_P001` | 98 | radar |
+| `22OCT24030_0039` | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` | 27 | radar |
+| `26MAY09052_0035` | Test1 | `26MAY09052126-S3DS-200013142970_01_P001` | 32 | radar |
+| `23MAY19062_0022` | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` | 181 | radar |
+| `23MAY19062_0041` | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` | 180 | radar |
+| `25NOV18044_0010` | Test2 | `25NOV18044741-S3DS-200011078376_01_P001` | 0 | radar |
+
+### tank: 4
+
+| ID | Split | Scene | GT index (0-based) | Predicted |
+|---|---|---|---:|---|
+| `21APR18030_0060` | Test2 | `21APR18030819-S3DS-200013545084_01_P001` | 35 | radar |
+| `21APR18030_0074` | Test2 | `21APR18030819-S3DS-200013545084_01_P001` | 34 | radar |
+| `21APR18030_0105` | Test2 | `21APR18030819-S3DS-200013545084_01_P001` | 39 | radar |
+| `22OCT21045_0028` | Test2 | `22OCT21045409-S3DS-200012483671_01_P001` | 158 | radar |
+
+### arty: 2
+
+| ID | Split | Scene | GT index (0-based) | Predicted |
+|---|---|---|---:|---|
+| `21JAN25022_0028` | Test1 | `21JAN25022937-S3DS-200013104366_01_P001` | 2 | radar |
+| `22DEC02022_0002` | Test1 | `22DEC02022210-S3DS-200013128267_01_P001` | 3 | radar |
+
+### spa: 2
+
+| ID | Split | Scene | GT index (0-based) | Predicted |
+|---|---|---|---:|---|
+| `20SEP09053_0011` | Test1 | `20SEP09053808-S3DS-200012483665_01_P001` | 16 | radar |
+| `20SEP09053_0030` | Test1 | `20SEP09053808-S3DS-200012483665_01_P001` | 21 | radar |
+
+### aerial: 1
+
+| ID | Split | Scene | GT index (0-based) | Predicted |
+|---|---|---|---:|---|
+| `23JAN10050_0004` | Test2 | `23JAN10050425-S3DS-200012483667_01_P001` | 13 | radar |
+
+## View these cases
+
+Open http://localhost:8765/, choose **Other → Radar**, then select the desired original class in **Raw GT**. The gallery includes the original close/context pixels and searches IDs/scene names.

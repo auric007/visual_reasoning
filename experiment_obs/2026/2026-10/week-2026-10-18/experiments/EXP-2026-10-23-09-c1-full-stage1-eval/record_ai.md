@@ -169,3 +169,22 @@ User requests browser access over a forwarded port. Preparing loopback-only HTTP
 ### 2026-10-23T17:32:23.950662+05:30 — RN-20261023-c1-full-stage1-eval: browser localhost connection refused
 
 User screenshot shows client localhost:8765 ERR_CONNECTION_REFUSED. Remote loopback server freshly verified HTTP200 (index266965bytes);tmuxsessionalive. No server restart or configuration change needed. Supported inference:client-side tunnel missing/inactive or browser using the wrong forwarded address;clientlistener cannot be inspected from this session. Advise VSCode RemoteSSH Ports→forward8765→OpeninBrowser/use displayedForwardedAddress,keepingconnectionopen. Remote localhost and laptop localhost are different network endpoints until forwarding is established. No model run.
+
+### 2026-10-23T18:33:33.681044+05:30 — RN-20261023-c1-full-stage1-eval: original GT classes behind other→radar
+
+User requests actual GT classes for all120 other→radar errors. Read frozen raw_gold and crosschecked all120 matchedGTindices/classes against archivedgroundtruth. No model execution,annotationedit,or newexperiment. Counts below are the same120 existingerrors,not additional observations.
+
+| Original GT class | All proposals of this GT class | Called radar | Within-class → radar rate | Share of120 errors | Test1 | Test2 | Scenes with this error |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| vehicle | 1492 | 56 | 3.8% | 46.7% | 28 | 28 | 27 |
+| camo | 339 | 28 | 8.3% | 23.3% | 14 | 14 | 10 |
+| smallvehicle | 495 | 11 | 2.2% | 9.2% | 5 | 6 | 5 |
+| radome | 10 | 9 | 90.0% | 7.5% | 2 | 7 | 6 |
+| logistic | 112 | 7 | 6.2% | 5.8% | 4 | 3 | 6 |
+| tank | 388 | 4 | 1.0% | 3.3% | 0 | 4 | 2 |
+| arty | 58 | 2 | 3.4% | 1.7% | 2 | 0 | 2 |
+| spa | 19 | 2 | 10.5% | 1.7% | 2 | 0 | 1 |
+| aerial | 7 | 1 | 14.3% | 0.8% | 0 | 1 | 1 |
+| **Total** | **2920** | **120** | **4.1%** | **100%** | **57** | **63** | **39 unique scenes** |
+
+Vehicle count56 is46.7% of theseerrors but56/1492=3.8% of vehicle proposals. Radome9/10=90.0% (smalln),camo28/339=8.3%,smallvehicle11/495=2.2%. Currenttaxonomy mapsradome toother;do not silentlychangegold. Groundtruthsuperclass is not the raw XMLParentClass numericattribute or finehardwarelabel. [FullGTbreakdown and groupedIDs](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/error_review/OTHER_TO_RADAR_GT_BREAKDOWN.md),[120IDCSV](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/error_review/OTHER_TO_RADAR_GT_IDS.csv). GalleryRawGTfilter already supports theseclasses. Arithmetic,uniqueIDs,frozenGTlabelchecks passed;sourcepredictionhashunchanged.
