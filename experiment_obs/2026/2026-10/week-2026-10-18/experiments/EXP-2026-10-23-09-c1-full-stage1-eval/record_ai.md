@@ -27,3 +27,11 @@ Outputs:raw eval/predictions.jsonl;progress.json;eval/METRICS.json;reports/FULL_
 ## 2026-10-23T14:34:51.723201+05:30 — observed outcome
 
 Completed4231/4231 fresh C1 predictions on NVIDIA L40S; reports saved at [09_c1_full_stage1_eval](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/FULL_METRICS.md), [per-scene](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/PER_SCENE.md). No training or model selection;12 embargo scenes excluded. Combined:accuracy0.5479,macroF10.4097. Test1:accuracy0.4997,macroF10.4395. Test2:accuracy0.5754,macroF10.3511. 
+
+### 2026-10-23T15:19:48.511072+05:30 — RN-20261023-c1-full-stage1-eval: completed results verified
+
+- User asks update. Confirmed EXIT0,4231/4231 unique savedpredictions,67clean scenes;completion2026-10-23 14:34:51IST. Detachedsession ended normally. No new inference/training. Recomputed TP/FP/FN from allrawoutputs for allsplits/classes and verified end-to-end FN decomposition.
+- Combined proposal-classification P/R/F1:radar.1964/.5684/.2919;missile.2489/.5846/.3492;other.7505/.6223/.6804;background.3092/.3262/.3174. Accuracy.5479,macroF1.4097,non-target acceptance.1358.
+- Combined end-to-end:radar54TP/221FP/98FN,152GT,R.3553,F1.2529;missile114TP/344FP/121FN,235GT,R.4851,F1.3290. Stage1misses57radar/40missile plusverifiermisses41/81.
+- Test1 end-to-end radarP/R.2313/.3579;missile.3298/.5529. Test2 radar.1562/.3509;missile.1156/.3077. CleanTest2 weaker,especiallymissile;benchmark retains annotation/taxonomy limitations. Fullnaturalprevalence only290/4231=6.85%targets,versus50%targets in256diagnostic;differentcohort and GPU prevent attributing score differences to modelchange. No fullR1 samecohort comparison run.
+- [Fullmetrics](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/FULL_METRICS.md),[per-scene](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/PER_SCENE.md),[rawscores](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/eval/METRICS.json). Twelveembargoscenes remainexcluded;131 repairedpairs local only.
