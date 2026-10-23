@@ -158,3 +158,10 @@ Complete missile FP IDs also exported:Other→Missile248,Background→Missile72,
 ### 2026-10-23T17:29:17.420898+05:30 — RN-20261023-c1-full-stage1-eval: local gallery serving requested
 
 User requests browser access over a forwarded port. Preparing loopback-only HTTP on8765,restricted to experiment09 reports/error_review. Added a lightweight index.html with512 original JPEG asset copies for lazy loading instead of transferring55MBbeforefirstdisplay.256cases unchanged;allassetbytes matchoriginalgalleryhashes. No publicbind,modelrun,or sourceimageedit. Client SSH tunnel must be established from the user's computer or VSCodePorts;the agent cannot open the client-side tunnel itself.
+
+### 2026-10-23T17:30:08.153079+05:30 — RN-20261023-c1-full-stage1-eval: gallery HTTP verified
+
+- Detachedtmux vlm_radar_gallery serves only experiment09 reports/error_review at127.0.0.1:8765. Lightweightindex267kB,512lazy-loadedJPEGassets;originalself-containedHTMLstillavailable.
+- HTTPchecks passed:root200,256-caseembeddedmetadata,firstJPEGbytehashmatchesfrozeninput,radarCSV200. /proc/net/tcp confirmsloopback-onlylistening. Browserinteractionsremainnotautomatedtested. No GPU needed.
+- Useraccess:VSCodePorts→ForwardaPort→8765→openhttp://127.0.0.1:8765/. Terminalalternative onlocalcomputer:ssh -N -L8765:127.0.0.1:8765 YOUR_SSH_HOST (samehostaliasasVSCode). Agentstartedserveronly;client-sideportforwardingcannotbeconfirmedfromthissession.
+- Environment:/sfs/envs/qwen_vl/bin/python3 -m http.server;startwrapper:/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/serve_gallery.sh;log:logs/gallery_server.log.
