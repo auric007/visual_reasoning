@@ -8,3 +8,4 @@
 - [ ] improve the grounding to image understanding 
 
 
+For next week I need to read this paper:
