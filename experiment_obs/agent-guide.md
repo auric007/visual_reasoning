@@ -67,3 +67,17 @@ in the global launcher. Check actual success timestamps and messages before
 claiming delivery. Sync must publish only reviewed ordinary files inside
 experiment_obs, retain the existing
 credential/size/conflict/history/deletion guards, and preserve both filename lanes.
+
+## Result-table preservation — user preference, 2026-10-23
+
+For every experiment and small diagnostic/pilot actually performed, preserve the
+small result tables shown in chat as readable Markdown in the actual day's daily
+`_ai.md` and the corresponding experiment `record_ai.md`, not only dense numeric
+prose or external report links. Include experiment/model/data identity, split,
+measured units/denominators, confidence/IoU when relevant, TP/FP/FN and P/R/F1 where
+available, recipe changes, interpretation/limits and source links. Distinguish
+proposal-classification from end-to-end metrics and partial from final results.
+Large per-instance/per-scene outputs may stay linked to source artifacts or an
+AI-suffixed notebook report; keep a compact result table inline. Capture observed
+failures and small experiments too; do not invent missing historical tables or
+count multiple summaries of the same run as new experiments. Preserve human notes.

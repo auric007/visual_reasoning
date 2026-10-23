@@ -60,3 +60,7 @@ EXP-2026-10-22-08 finished training/comparison successfully. Fixed256-proposal c
 ## 2026-10-23T14:34:51.723201+05:30 — full clean Stage1 C1 evaluation outcome
 
 Completed4231/4231 fresh C1 predictions on NVIDIA L40S; reports saved at [09_c1_full_stage1_eval](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/FULL_METRICS.md), [per-scene](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/PER_SCENE.md). No training or model selection;12 embargo scenes excluded. Combined:accuracy0.5479,macroF10.4097. Test1:accuracy0.4997,macroF10.4395. Test2:accuracy0.5754,macroF10.3511. 
+
+## 2026-10-23T17:03:55.001480+05:30 — result tables retained in notebook
+
+Experiment09 full-scene C1 metrics now appear as formatted tables in the [daily AI note](daily/2026-10-23_ai.md) and its experiment record. Source summaries were already saved; this update makes tables directly readable. Persistent agent-guide/CLAUDE rule covers small diagnostics,failures and completed experiments. No model/data/evaluation changes.
