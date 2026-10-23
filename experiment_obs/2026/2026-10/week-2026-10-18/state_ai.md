@@ -64,3 +64,7 @@ Completed4231/4231 fresh C1 predictions on NVIDIA L40S; reports saved at [09_c1_
 ## 2026-10-23T17:03:55.001480+05:30 — result tables retained in notebook
 
 Experiment09 full-scene C1 metrics now appear as formatted tables in the [daily AI note](daily/2026-10-23_ai.md) and its experiment record. Source summaries were already saved; this update makes tables directly readable. Persistent agent-guide/CLAUDE rule covers small diagnostics,failures and completed experiments. No model/data/evaluation changes.
+
+## 2026-10-23T17:24:07.022965+05:30 — C1 error review artifact saved
+
+[Experiment09 radar gallery](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/error_review/radar_errors.html) covers256 cases;radar262/missile425IDledgers saved plus [notebook ID snapshot](/sfs/vlm_qwen/experiment_obs/2026/2026-10/week-2026-10-18/experiments/EXP-2026-10-23-09-c1-full-stage1-eval/error_ids_ai.md). ActualmissilecasesIDs-only,no missile gallery. Exactimage/ID/countchecks passed;no new inference. [Daily note](daily/2026-10-23_ai.md).

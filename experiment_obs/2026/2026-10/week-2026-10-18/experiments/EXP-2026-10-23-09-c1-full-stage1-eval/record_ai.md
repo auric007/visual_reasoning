@@ -127,3 +127,30 @@ Other:2920actual,1817correct;1103wrong=735background+248missile+120radar.604fals
 Interpretation:535/3941 annotatednon-target proposals accepted asradar/missile (368other+167background);3406/3941=86.4%rejected. This remaining non-target acceptance dominates target precision because only290/4231=6.85%proposals are true targets.30additionaltargeterrors swapradar/missile. Other/background confusion is wrongfourwayclassification but stillbinarytargetrejection;do not countallreject-subtypemistakes as targetacceptance.
 Clarification:56.8%/58.5%recall is conditional onStage1-proposed objects. FullsceneGT152radar/235missile yields54/152=35.5% and114/235=48.5%end-to-endrecall,including57radar/40missileStage1misses. Background meansannotation-unmatched,notprovenempty.
 [Exact source metrics](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/eval/METRICS.json). Arithmetic and confusion row/column consistency checked;no model run or code/data changes.
+
+### 2026-10-23T17:24:07.022965+05:30 — RN-20261023-c1-full-stage1-eval: radar error review and target ID exports completed
+
+User requested radar-first visual error inspection and radar/missile misclassification IDs;no missile gallery. Saved existing outputs only,no new model run,no relabeling,no source edits.
+
+| Visual group (actual → predicted) | Cases |
+|---|---:|
+| Other → Radar | 120 |
+| Background → Radar | 95 |
+| Radar → Missile | 24 |
+| Radar → Other | 17 |
+| **Radar-review gallery total** | **256** |
+
+| ID-only missile-gold errors | Cases |
+|---|---:|
+| Missile → Radar | 6 |
+| Missile → Other | 66 |
+| Missile → Background | 9 |
+
+Complete missile FP IDs also exported:Other→Missile248,Background→Missile72,Radar→Missile24. Radar ledger262=221FP+41FN;missileledger425=344FP+81FN;30radar↔missile errors overlap,657uniqueerrors total. The6actualmissile→radar cases stayIDs-only;radar→missile images are actualradars and appear in the radar gallery. Radar→Background has0cases.
+
+- [Offline HTML gallery](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/error_review/radar_errors.html):256cases,originalclose/context images embedded byte-for-byte (55.2MB);filtergroup,split,originalGTclass,searchID/scene,clickfornativepixels,exportfilteredIDs. No reachable server required;download/openHTML in a browser.
+- [256 individual side-by-side JPEGs](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/error_review/radar_panels),organized bygroup forVSCode viewing. Originalcyan/grayoverlays retained;no newboxes.
+- [Radar IDs](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/error_review/RADAR_ERROR_IDS.md),[missile IDs](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/error_review/MISSILE_ERROR_IDS.md),CSV counterparts,per-transitiontextlists,andALL_TARGET_ERRORS.csv. Include fullscene/split/rawGTclass/GTindex/modelanswer;CSV also hasimagepaths/panelpaths.
+- [Notebook ID snapshot](error_ids_ai.md) under the experiment record preservesallIDtables for future Obsidian reference. Snapshot is evidence from the same run,not another independent measurement.
+- Rebuildscript:/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/scripts/build_error_review.py. Environment:/sfs/envs/qwen_vl/bin/python3. Validation:allcounts and657IDs/predictionsmatch;512embeddedimagesbyte-identical;256JPEGsdecode;originalsourcehashesunchanged;noactualmissilevisualizations. Onepanelvisuallyinspected. Browserinteractions notautomatedtested:Node/Chromium/Playwrightunavailable;attemptednodecheckreturnedcommandnotfound,no dependencies installed.
+- The120Other→Radar rawlabels:vehicle56,camo28,smallvehicle11,radome9,logistic7,tank4,spa2,arty2,aerial1. Historicaltaxonomy preserved;annotation completenessandradomeclassificationremainuncertainties,notmanualcorrections.
