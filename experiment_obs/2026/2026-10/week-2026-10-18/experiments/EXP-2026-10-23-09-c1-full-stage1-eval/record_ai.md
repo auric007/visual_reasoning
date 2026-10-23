@@ -101,3 +101,29 @@ End-to-end retains the historical fixed Stage1 one-to-one assignments; duplicate
 [Full report](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/FULL_METRICS.md) · [Per-scene table](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/PER_SCENE.md) · [Exact JSON metrics](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/eval/METRICS.json) · [Experiment record](/sfs/vlm_qwen/experiment_obs/2026/2026-10/week-2026-10-18/experiments/EXP-2026-10-23-09-c1-full-stage1-eval/record_ai.md)
 
 Snapshot source SHA256: `e03b64769694b0d0f026c4a24d7c3d2e71d30e918dd8ef2968779c382ab2c76f`.
+
+### 2026-10-23T17:08:06.506295+05:30 — RN-20261023-c1-full-stage1-eval: precision/recall count explanation
+
+User asks what happened behind the reported percentages. Counts below describe the same completed4231-proposal evaluation,not a new experiment. Precision=TP/(TP+FP),recall=TP/(TP+FN),F1=2TP/(2TP+FP+FN). TP=correct class;FP=another gold class called this class;FN=this gold class called something else. One misclassification can be FP for the predicted class and FN for the gold class.
+
+| Class | Actual in proposals | Predicted as class | TP | FP | FN | Precision | Recall |
+|---|---:|---:|---:|---:|---:|---|---|
+| Radar | 95 | 275 | 54 | 221 | 41 | 54/275 = 19.6% | 54/95 = 56.8% |
+| Missile | 195 | 458 | 114 | 344 | 81 | 114/458 = 24.9% | 114/195 = 58.5% |
+| Other | 2920 | 2421 | 1817 | 604 | 1103 | 1817/2421 = 75.1% | 1817/2920 = 62.2% |
+| Background | 1021 | 1077 | 333 | 744 | 688 | 333/1077 = 30.9% | 333/1021 = 32.6% |
+
+**Confusion matrix:rows=ground truth;columns=model prediction.**
+
+| Actual / predicted | Radar | Missile | Other | Background |
+|---|---:|---:|---:|---:|
+| Radar | 54 | 24 | 17 | 0 |
+| Missile | 6 | 114 | 66 | 9 |
+| Other | 120 | 248 | 1817 | 735 |
+| Background | 95 | 72 | 521 | 333 |
+
+Radar:95actual,54correct,24calledmissile,17other.221false-radar calls=120other+95background+6missile. Missile:195actual,114correct,66calledother,9background,6radar.344false-missile calls=248other+72background+24radar.
+Other:2920actual,1817correct;1103wrong=735background+248missile+120radar.604false-other calls=521background+66missile+17radar. Background:1021actual,333correct;688wrong=521other+95radar+72missile.744false-background calls=735other+9missile.
+Interpretation:535/3941 annotatednon-target proposals accepted asradar/missile (368other+167background);3406/3941=86.4%rejected. This remaining non-target acceptance dominates target precision because only290/4231=6.85%proposals are true targets.30additionaltargeterrors swapradar/missile. Other/background confusion is wrongfourwayclassification but stillbinarytargetrejection;do not countallreject-subtypemistakes as targetacceptance.
+Clarification:56.8%/58.5%recall is conditional onStage1-proposed objects. FullsceneGT152radar/235missile yields54/152=35.5% and114/235=48.5%end-to-endrecall,including57radar/40missileStage1misses. Background meansannotation-unmatched,notprovenempty.
+[Exact source metrics](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/eval/METRICS.json). Arithmetic and confusion row/column consistency checked;no model run or code/data changes.
