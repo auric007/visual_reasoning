@@ -220,3 +220,32 @@ TargetmissclassificationIDs:radar→missile24,radar→other17,radar→background
 - Separatefalse-positiveCSVforradar221/missile344;other-objectFP120/248;per-transitionGT/proposalCSVandplainIDlists. Crosswalk4108linksoriginalGTindex,permanentID,scene,class,registryboxhash. Source/model/script hashes inMANIFEST.json.
 - ReproducibleCPUexportscripts/export_comparison_ids.py inexperiment09;environment/sfs/envs/qwen_vl/bin/python3. Updatedgallerytemplate/live/offlineheaderdownloadlinkonly. Existingmetricsandimagesunchanged.
 - Validation:4108uniquegeometry/registrymatches,387uniqueGTbaselineIDs,4231uniquescene/proposalkeys,allmiss/errorbucketcounts,Stage1missabsencefrommatchedproposals,correct/misclassifiedstatussemantics,sourcehashesunchanged,HTTP200anddownloaded387CSVrows. KeepallsameGTobjects,includingcorrectcases,tomeasurefuturegainsandregressions. Differentdetectoroutputsneedfreshmatching;proposalkeysareonlystableforthefrozenboxes. No claimaboutperformanceofanothermodel.
+
+## Comparison ID files — quick reference (2026-10-23 19:14 IST)
+
+Task: RN-20261023-c1-full-stage1-eval. User explicitly asks to retain these files in the daily experiment logs for future comparisons. This section links the same completed experiment09 exports; it is not a new model run.
+
+**Browser downloads:** http://localhost:8765/comparison_ids/ (requires the running gallery server and SSH forwarding). The file links below remain the saved evidence even if that server is stopped.
+
+| Saved comparison file | Rows | Purpose |
+|---|---:|---|
+| [ALL_TARGET_GT_BASELINE.csv](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/error_review/comparison_ids/ALL_TARGET_GT_BASELINE.csv) | 387 | All radar/missile GT instances, including correct cases and errors |
+| [MISSED_TARGET_GT_IDS.csv](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/error_review/comparison_ids/MISSED_TARGET_GT_IDS.csv) | 219 | All missed targets, distinguishing Stage1 misses from VLM misclassification |
+| [RADAR_FALSE_POSITIVE_PROPOSALS.csv](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/error_review/comparison_ids/RADAR_FALSE_POSITIVE_PROPOSALS.csv) | 221 | All false radar predictions |
+| [MISSILE_FALSE_POSITIVE_PROPOSALS.csv](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/error_review/comparison_ids/MISSILE_FALSE_POSITIVE_PROPOSALS.csv) | 344 | All false missile predictions |
+| [RADAR_OTHER_OBJECT_FALSE_POSITIVES.csv](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/error_review/comparison_ids/RADAR_OTHER_OBJECT_FALSE_POSITIVES.csv) | 120 | Other-class objects predicted as radar |
+| [MISSILE_OTHER_OBJECT_FALSE_POSITIVES.csv](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/error_review/comparison_ids/MISSILE_OTHER_OBJECT_FALSE_POSITIVES.csv) | 248 | Other-class objects predicted as missile |
+| [ALL_PROPOSAL_BASELINE.csv](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/error_review/comparison_ids/ALL_PROPOSAL_BASELINE.csv) | 4,231 | Full frozen-proposal model baseline |
+| [GT_ID_CROSSWALK.csv](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/error_review/comparison_ids/GT_ID_CROSSWALK.csv) | 4,108 | Frozen GT index to permanent annotation ID mapping |
+
+**Readable ID tables:** [COMPARISON_IDS.md](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/error_review/comparison_ids/COMPARISON_IDS.md).
+**Notebook ID snapshot:** [permanent_comparison_ids_ai.md](/sfs/vlm_qwen/experiment_obs/2026/2026-10/week-2026-10-18/experiments/EXP-2026-10-23-09-c1-full-stage1-eval/permanent_comparison_ids_ai.md).
+
+| Outcome | Radar | Missile |
+|---|---:|---:|
+| Correct | 54 | 114 |
+| Stage1 missed | 57 | 40 |
+| VLM misclassified | 41 | 81 |
+| Total end-to-end missed | 98 | 121 |
+
+**Comparison rules:** use existing permanent GT instance IDs across models. Use scene + proposal ID for identical frozen Stage1 boxes. Background has no matched GT ID. New detector boxes require fresh geometric matching. Keep the same67 eligible scenes and GT version;12 training-background scenes remain excluded. All files were rechecked for existence and row counts. No inference, image changes or new evaluation.
