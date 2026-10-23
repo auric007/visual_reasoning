@@ -195,3 +195,28 @@ Vehicle count56 is46.7% of theseerrors but56/1492=3.8% of vehicle proposals. Rad
 - Updatedscripts/build_error_review.py template,index.html,radar_errors.html,andBUILD_SUMMARY;payloadsunchangedbyte-for-byte. No images,IDs,evaluationoutputsor metrics changed. No newmodelrun.
 - Validation:py_compile;actualgalleryJavaScript compiled/executed in V8 withlightweightDOMstub:headingVehicle→Radar,pagination12,categories12,Vehicle56,Radome9,Camo28,Radar→Other17,Test1Camo14 andIDsearchallpass. This is logic testing,not a realbrowserrenderingtest. FreshHTTP200 confirmsupdatedclassselectorserved.
 - Userrefresh:http://localhost:8765/?v=2 (orCtrl+F5);sameactiveSSHforward. ExistingGTbreakdown/IDreports remainvalid.
+
+### 2026-10-23T19:11:50.869643+05:30 — RN-20261023-c1-full-stage1-eval: permanent IDs and cross-model baseline exported
+
+User requests radar/missile misses/misclassifications and other-class false-positive IDs for latermodel comparisons. Preparedfromexistingfrozenresults only;no newinference,training,GTedit,or evaluation. Readthehuman dailyidea aboutcomparisonwithStage2YOLO;no othermodel evaluated.
+
+Discoveredtheexistingappend-onlyIIcNN GTregistry at/sfs/data/up42_platform_data_27_08_with_soc/test_instance_registry.tsv. All4108GTobjects inthe67clean-scenesfrozenbenchmark linkeduniquely toexistingofficialIDsusingnativepolygoncornerdistance≤0.15px,with exactclass/scene/split/registrylinechecks. OriginalshortproposalIDsretained;no newpermanentGTIDs invented. BackgroundfalsepositiveshaveunmatchedGTandonlyscene/proposalkeys.
+
+| Outcome | Radar | Missile |
+|---|---:|---:|
+| All GT instances | 152 | 235 |
+| Correctly classified | 54 | 114 |
+| Stage1 missed; no VLM input | 57 | 40 |
+| Stage1 found; VLM misclassified | 41 | 81 |
+| Total end-to-end missed | 98 | 121 |
+| False-positive proposals | 221 | 344 |
+| Other-class objects predicted as target | 120 | 248 |
+| Background proposals predicted as target | 95 | 72 |
+
+TargetmissclassificationIDs:radar→missile24,radar→other17,radar→background0;missile→radar6,missile→other66,missile→background9. End-to-endmisses219=97Stage1misses+122VLMerrors. Missstatusnever assigns afakeVLMpredictiontoanunseenGTobject.
+
+- [Comparisondownloads](http://localhost:8765/comparison_ids/) linkedfromgalleryheader. SameactiveSSHforward;localURL requiresforwarding.
+- [All387targetGTbaselineCSV](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/error_review/comparison_ids/ALL_TARGET_GT_BASELINE.csv),[all219misses](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/error_review/comparison_ids/MISSED_TARGET_GT_IDS.csv),[all4231proposalbaseline](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/error_review/comparison_ids/ALL_PROPOSAL_BASELINE.csv),[fullreadableIDtables](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/error_review/comparison_ids/COMPARISON_IDS.md).
+- Separatefalse-positiveCSVforradar221/missile344;other-objectFP120/248;per-transitionGT/proposalCSVandplainIDlists. Crosswalk4108linksoriginalGTindex,permanentID,scene,class,registryboxhash. Source/model/script hashes inMANIFEST.json.
+- ReproducibleCPUexportscripts/export_comparison_ids.py inexperiment09;environment/sfs/envs/qwen_vl/bin/python3. Updatedgallerytemplate/live/offlineheaderdownloadlinkonly. Existingmetricsandimagesunchanged.
+- Validation:4108uniquegeometry/registrymatches,387uniqueGTbaselineIDs,4231uniquescene/proposalkeys,allmiss/errorbucketcounts,Stage1missabsencefrommatchedproposals,correct/misclassifiedstatussemantics,sourcehashesunchanged,HTTP200anddownloaded387CSVrows. KeepallsameGTobjects,includingcorrectcases,tomeasurefuturegainsandregressions. Differentdetectoroutputsneedfreshmatching;proposalkeysareonlystableforthefrozenboxes. No claimaboutperformanceofanothermodel.

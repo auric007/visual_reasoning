@@ -1,0 +1,862 @@
+Author: Codex. Human companion: [permanent_comparison_ids.md](permanent_comparison_ids.md).
+
+Snapshot of the same experiment09 ID exports for Obsidian reference;not another experiment.
+
+# Permanent IDs for C1 model comparisons
+
+Same experiment09 frozen benchmark; no new inference, detection, or relabeling. Scope:67 clean scenes,4231 proposals,all387 annotated radar/missile objects. Historical class taxonomy remains unchanged;12training-background scenes are excluded.
+
+Use **gt_instance_id** (the dataset's existing5-character ID, e.g. `01r01`) to compare the same annotated object across models. Every frozen GT object was linked uniquely to its permanent annotation ID by original native-pixel corner geometry (max symmetric corner distance≤0.15px);class,scene,split and registryline were verified. No new permanent GT IDs were invented. The crosswalk has4108GTobjects.
+
+Use **scene + proposal_id** when comparing the exact same frozen Stage1 boxes. ShortproposalIDs alone are not universal objectIDs. Background proposals have no matched annotation and therefore no GT ID;their stable key is the scene/proposal pair,not a fabricatedGTID. Across different detectors,background proposals cannot be joined as the same object by GTID.
+
+**Miss terminology:**`stage1_missed` means no matched Stage1 proposal at the frozen confidence/IoU operating point,so theVLM never saw the instance. `vlm_misclassified` means Stage1 matched it but theVLM answered another class (including other/background). `target_missed` includes both. Correct GTinstances are retained in the baseline to track future regressions too.
+
+## Main comparison files
+
+- `ALL_TARGET_GT_BASELINE.csv`:all387 targetGTobjects and their permanentIDs,outcome,prediction/proposal links.
+- `ALL_PROPOSAL_BASELINE.csv`:all4231 originalmodelpredictions with permanentGTIDs wherevermatched.
+- `MISSED_TARGET_GT_IDS.csv`:all219 end-to-end targetmisses (97Stage1misses +122VLMmisclassifications).
+- `GT_ID_CROSSWALK.csv`:4108frozenGTindices↔permanentIDs↔scene/class/annotationhash.
+- `RADAR_ALL_GT_IDS.csv` / `MISSILE_ALL_GT_IDS.csv`:per-target baselines.
+- `RADAR_FALSE_POSITIVE_PROPOSALS.csv` / `MISSILE_FALSE_POSITIVE_PROPOSALS.csv`:allfalsealarms,includingotherclass/background/cross-targetconfusion.
+- `*_OTHER_OBJECT_FALSE_POSITIVES.csv`:specificallythe120other→radar and248other→missile objectIDs/rawGTclasses.
+- Per-transition`*_GT_IDS.csv` / `*_gt_ids.txt` listmissclassifiedtargetGTIDs;`*_PROPOSAL_IDS.csv` listfalsepositiveproposalIDs.
+
+Compare later outputs by ID,not row order;use exactly the same eligible scenes and GT version for matched comparisons. A new detector must perform new matching,not reuse old proposal associations. These tables do not evaluate any other model.
+
+## Radar — permanent GT IDs
+
+| Outcome | Count |
+|---|---:|
+| All annotated GT | 152 |
+| Correct | 54 |
+| Stage1 missed; VLM never saw it | 57 |
+| Stage1 found; VLM assigned another class | 41 |
+| Total end-to-end misses | 98 |
+| False-positive radar proposals | 221 |
+
+### Stage1 missed
+
+| GT instance ID | Proposal ID | Predicted | Split | Scene |
+|---|---|---|---|---|
+| `18r01` | none | not evaluated | Test2 | `141d9464_DS_PHR1B_202211150352306_FR1_PX_E103N26_0301_00320` |
+| `08r02` | none | not evaluated | Test1 | `19MAR13040701-S3DS-200013268578_01_P001` |
+| `08r03` | none | not evaluated | Test1 | `19MAR13040701-S3DS-200013268578_01_P001` |
+| `09r02` | none | not evaluated | Test1 | `19MAY10032935-S3DS-200012352046_01_P001` |
+| `19r02` | none | not evaluated | Test2 | `19MAY14060259-S3DS-200013142968_01_P001` |
+| `0Ar05` | none | not evaluated | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Ar06` | none | not evaluated | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Ar07` | none | not evaluated | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `1Br01` | none | not evaluated | Test2 | `20SEP27061806-S3DS-200011619312_01_P001` |
+| `1Br05` | none | not evaluated | Test2 | `20SEP27061806-S3DS-200011619312_01_P001` |
+| `0Gr03` | none | not evaluated | Test1 | `21APR14035937-S3DS-200013190861_01_P001` |
+| `0Hr02` | none | not evaluated | Test1 | `21APR22040621-S3DS-200013119950_01_P001` |
+| `0Hr03` | none | not evaluated | Test1 | `21APR22040621-S3DS-200013119950_01_P001` |
+| `0Jr01` | none | not evaluated | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Jr03` | none | not evaluated | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Mr01` | none | not evaluated | Test1 | `21FEB15025428-S3DS-200011883412_01_P001` |
+| `1Er02` | none | not evaluated | Test2 | `22APR14045506-S3DS-200013368123_01_P001` |
+| `1Er04` | none | not evaluated | Test2 | `22APR14045506-S3DS-200013368123_01_P001` |
+| `0Xr04` | none | not evaluated | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xr07` | none | not evaluated | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xr0A` | none | not evaluated | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xr0B` | none | not evaluated | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xr0D` | none | not evaluated | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xr0E` | none | not evaluated | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xr0F` | none | not evaluated | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xr0G` | none | not evaluated | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xr0I` | none | not evaluated | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xr0J` | none | not evaluated | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `1Ir02` | none | not evaluated | Test2 | `234045af_DS_PHR1B_201808290337504_FR1_PX_E108N34_0924_00286` |
+| `1Pr01` | none | not evaluated | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` |
+| `1Pr03` | none | not evaluated | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` |
+| `1Pr04` | none | not evaluated | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` |
+| `1Pr05` | none | not evaluated | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` |
+| `1Pr06` | none | not evaluated | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` |
+| `12r01` | none | not evaluated | Test1 | `24MAR01041407-S3DS-200013190860_01_P001` |
+| `13r01` | none | not evaluated | Test1 | `24MAR27045953-S3DS-200013168941_01_P001` |
+| `13r02` | none | not evaluated | Test1 | `24MAR27045953-S3DS-200013168941_01_P001` |
+| `1Ur03` | none | not evaluated | Test2 | `24SEP08053532-S3DS-200013142971_01_P001` |
+| `1Ur04` | none | not evaluated | Test2 | `24SEP08053532-S3DS-200013142971_01_P001` |
+| `1Vr01` | none | not evaluated | Test2 | `25DEC14052859-S3DS-200011101282_01_P001` |
+| `1Yr03` | none | not evaluated | Test2 | `25JAN29042609-S3DS-200013367959_01_P001` |
+| `20r01` | none | not evaluated | Test2 | `25MAR25043103-S3DS-200011078671_01_P001` |
+| `20r02` | none | not evaluated | Test2 | `25MAR25043103-S3DS-200011078671_01_P001` |
+| `21r02` | none | not evaluated | Test2 | `25MAR31055119-S3DS-200012804523_01_P001` |
+| `21r03` | none | not evaluated | Test2 | `25MAR31055119-S3DS-200012804523_01_P001` |
+| `21r04` | none | not evaluated | Test2 | `25MAR31055119-S3DS-200012804523_01_P001` |
+| `15r01` | none | not evaluated | Test1 | `25NOV29025727-S3DS-200012895045_01_P001` |
+| `15r02` | none | not evaluated | Test1 | `25NOV29025727-S3DS-200012895045_01_P001` |
+| `16r01` | none | not evaluated | Test1 | `26APR20052910-S3DS-200013171094_01_P001` |
+| `16r02` | none | not evaluated | Test1 | `26APR20052910-S3DS-200013171094_01_P001` |
+| `16r03` | none | not evaluated | Test1 | `26APR20052910-S3DS-200013171094_01_P001` |
+| `24r01` | none | not evaluated | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` |
+| `24r02` | none | not evaluated | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` |
+| `26r02` | none | not evaluated | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `26r03` | none | not evaluated | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `28r01` | none | not evaluated | Test2 | `d8bba13b_DS_PHR1B_202109100317223_FR1_PX_E113N31_0818_00355` |
+| `28r02` | none | not evaluated | Test2 | `d8bba13b_DS_PHR1B_202109100317223_FR1_PX_E113N31_0818_00355` |
+
+### VLM misclassified
+
+| GT instance ID | Proposal ID | Predicted | Split | Scene |
+|---|---|---|---|---|
+| `18r02` | `141d9464_D_0003` | missile | Test2 | `141d9464_DS_PHR1B_202211150352306_FR1_PX_E103N26_0301_00320` |
+| `0Ar01` | `19SEP16023_0020` | other | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Ar03` | `19SEP16023_0021` | missile | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `1Br02` | `20SEP27061_0014` | other | Test2 | `20SEP27061806-S3DS-200011619312_01_P001` |
+| `1Br03` | `20SEP27061_0000` | other | Test2 | `20SEP27061806-S3DS-200011619312_01_P001` |
+| `0Gr01` | `21APR14035_0002` | other | Test1 | `21APR14035937-S3DS-200013190861_01_P001` |
+| `0Jr02` | `21DEC12052_0088` | missile | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Lr03` | `21DEC27025_0024` | missile | Test1 | `21DEC27025021-S3DS-200012895048_01_P001` |
+| `0Lr05` | `21DEC27025_0012` | missile | Test1 | `21DEC27025021-S3DS-200012895048_01_P001` |
+| `0Mr02` | `21FEB15025_0000` | missile | Test1 | `21FEB15025428-S3DS-200011883412_01_P001` |
+| `0Mr03` | `21FEB15025_0002` | missile | Test1 | `21FEB15025428-S3DS-200011883412_01_P001` |
+| `0Or01` | `21NOV24030_0010` | other | Test1 | `21NOV24030403-S3DS-200012895049_01_P001` |
+| `0Or02` | `21NOV24030_0044` | missile | Test1 | `21NOV24030403-S3DS-200012895049_01_P001` |
+| `0Or03` | `21NOV24030_0014` | other | Test1 | `21NOV24030403-S3DS-200012895049_01_P001` |
+| `0Or04` | `21NOV24030_0001` | other | Test1 | `21NOV24030403-S3DS-200012895049_01_P001` |
+| `0Or05` | `21NOV24030_0018` | other | Test1 | `21NOV24030403-S3DS-200012895049_01_P001` |
+| `0Or06` | `21NOV24030_0032` | other | Test1 | `21NOV24030403-S3DS-200012895049_01_P001` |
+| `0Or07` | `21NOV24030_0019` | other | Test1 | `21NOV24030403-S3DS-200012895049_01_P001` |
+| `0Or08` | `21NOV24030_0022` | other | Test1 | `21NOV24030403-S3DS-200012895049_01_P001` |
+| `1Gr01` | `22MAR07045_0043` | other | Test2 | `22MAR07045331-S3DS-200013349499_01_P001` |
+| `1Gr02` | `22MAR07045_0119` | other | Test2 | `22MAR07045331-S3DS-200013349499_01_P001` |
+| `0Vr01` | `22MAY03031_0010` | missile | Test1 | `22MAY03031134-S3DS-200012804521_01_P001` |
+| `0Vr02` | `22MAY03031_0021` | missile | Test1 | `22MAY03031134-S3DS-200012804521_01_P001` |
+| `0Vr03` | `22MAY03031_0022` | missile | Test1 | `22MAY03031134-S3DS-200012804521_01_P001` |
+| `0Xr01` | `22OCT24030_0081` | missile | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xr02` | `22OCT24030_0024` | missile | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xr03` | `22OCT24030_0027` | missile | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xr06` | `22OCT24030_0100` | other | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xr08` | `22OCT24030_0003` | other | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xr09` | `22OCT24030_0067` | other | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `1Ir03` | `234045af_D_0021` | missile | Test2 | `234045af_DS_PHR1B_201808290337504_FR1_PX_E108N34_0924_00286` |
+| `1Ir04` | `234045af_D_0019` | missile | Test2 | `234045af_DS_PHR1B_201808290337504_FR1_PX_E108N34_0924_00286` |
+| `1Kr02` | `23JAN10050_0005` | missile | Test2 | `23JAN10050425-S3DS-200012483667_01_P001` |
+| `0Yr01` | `23OCT24030_0023` | missile | Test1 | `23OCT24030928-S3DS-200012400977_01_P001` |
+| `0Yr03` | `23OCT24030_0018` | missile | Test1 | `23OCT24030928-S3DS-200012400977_01_P001` |
+| `0Yr04` | `23OCT24030_0025` | missile | Test1 | `23OCT24030928-S3DS-200012400977_01_P001` |
+| `10r02` | `24DEC21030_0008` | missile | Test1 | `24DEC21030136-S3DS-200011913026_01_P001` |
+| `11r01` | `24JAN04022_0082` | missile | Test1 | `24JAN04022720-S3DS-200013055297_01_P001` |
+| `11r02` | `24JAN04022_0057` | missile | Test1 | `24JAN04022720-S3DS-200013055297_01_P001` |
+| `1Yr02` | `25JAN29042_0011` | missile | Test2 | `25JAN29042609-S3DS-200013367959_01_P001` |
+| `26r01` | `852dc76a_D_0015` | other | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+
+### Non-radar proposals predicted as radar
+
+| GT instance ID (if matched) | Proposal ID | Actual GT class | Split | Scene |
+|---|---|---|---|
+| unmatched | `18JUN15032_0018` | background | Test1 | `18JUN15032547-S3DS-200012895053_01_P001` |
+| `05v04` | `18MAR10025_0016` | vehicle | Test1 | `18MAR10025634-S3DS-200012866237_01_P001` |
+| unmatched | `18MAR10025_0021` | background | Test1 | `18MAR10025634-S3DS-200012866237_01_P001` |
+| unmatched | `18MAR10025_0026` | background | Test1 | `18MAR10025634-S3DS-200012866237_01_P001` |
+| unmatched | `18MAY28024_0004` | background | Test1 | `18MAY28024731-S3DS-200013073805_01_P001` |
+| `07m03` | `19DEC21034_0000` | missile | Test1 | `19DEC21034631-S3DS-200013276864_01_P001` |
+| unmatched | `19DEC21034_0006` | background | Test1 | `19DEC21034631-S3DS-200013276864_01_P001` |
+| `08v03` | `19MAR13040_0000` | vehicle | Test1 | `19MAR13040701-S3DS-200013268578_01_P001` |
+| `08m02` | `19MAR13040_0001` | missile | Test1 | `19MAR13040701-S3DS-200013268578_01_P001` |
+| `08v01` | `19MAR13040_0004` | vehicle | Test1 | `19MAR13040701-S3DS-200013268578_01_P001` |
+| `09l02` | `19MAY10032_0001` | logistic | Test1 | `19MAY10032935-S3DS-200012352046_01_P001` |
+| `09v16` | `19MAY10032_0004` | vehicle | Test1 | `19MAY10032935-S3DS-200012352046_01_P001` |
+| unmatched | `19MAY10032_0017` | background | Test1 | `19MAY10032935-S3DS-200012352046_01_P001` |
+| unmatched | `19MAY10032_0049` | background | Test1 | `19MAY10032935-S3DS-200012352046_01_P001` |
+| `0Av04` | `19SEP16023_0001` | vehicle | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Av19` | `19SEP16023_0026` | vehicle | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Av0A` | `19SEP16023_0050` | vehicle | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Av1M` | `19SEP16023_0052` | vehicle | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| unmatched | `19SEP16023_0114` | background | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| unmatched | `20MAR18030_0082` | background | Test1 | `20MAR18030857-S3DS-200012411145_01_P001` |
+| unmatched | `20NOV12043_0020` | background | Test1 | `20NOV12043850-S3DS-200012372799_01_P001` |
+| unmatched | `20SEP06040_0045` | background | Test1 | `20SEP06040719-S3DS-200013171123_01_P001` |
+| `0Fp04` | `20SEP09053_0011` | spa | Test1 | `20SEP09053808-S3DS-200012483665_01_P001` |
+| unmatched | `20SEP09053_0029` | background | Test1 | `20SEP09053808-S3DS-200012483665_01_P001` |
+| `0Fp09` | `20SEP09053_0030` | spa | Test1 | `20SEP09053808-S3DS-200012483665_01_P001` |
+| unmatched | `20SEP09053_0031` | background | Test1 | `20SEP09053808-S3DS-200012483665_01_P001` |
+| `0Fc06` | `20SEP09053_0032` | camo | Test1 | `20SEP09053808-S3DS-200012483665_01_P001` |
+| unmatched | `21APR14035_0001` | background | Test1 | `21APR14035937-S3DS-200013190861_01_P001` |
+| unmatched | `21APR14035_0003` | background | Test1 | `21APR14035937-S3DS-200013190861_01_P001` |
+| `0Hv02` | `21APR22040_0001` | vehicle | Test1 | `21APR22040621-S3DS-200013119950_01_P001` |
+| `0Ic02` | `21APR30054_0000` | camo | Test1 | `21APR30054629-S3DS-200013142967_01_P001` |
+| `0Ic01` | `21APR30054_0024` | camo | Test1 | `21APR30054629-S3DS-200013142967_01_P001` |
+| `0Iv01` | `21APR30054_0032` | vehicle | Test1 | `21APR30054629-S3DS-200013142967_01_P001` |
+| unmatched | `21APR30054_0037` | background | Test1 | `21APR30054629-S3DS-200013142967_01_P001` |
+| `0Ic03` | `21APR30054_0039` | camo | Test1 | `21APR30054629-S3DS-200013142967_01_P001` |
+| `0Iv02` | `21APR30054_0042` | vehicle | Test1 | `21APR30054629-S3DS-200013142967_01_P001` |
+| unmatched | `21APR30054_0052` | background | Test1 | `21APR30054629-S3DS-200013142967_01_P001` |
+| `0Iv07` | `21APR30054_0055` | vehicle | Test1 | `21APR30054629-S3DS-200013142967_01_P001` |
+| unmatched | `21APR30054_0058` | background | Test1 | `21APR30054629-S3DS-200013142967_01_P001` |
+| `0Iv0T` | `21APR30054_0064` | vehicle | Test1 | `21APR30054629-S3DS-200013142967_01_P001` |
+| unmatched | `21APR30054_0066` | background | Test1 | `21APR30054629-S3DS-200013142967_01_P001` |
+| unmatched | `21DEC12052_0049` | background | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Jc03` | `21DEC12052_0089` | camo | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| unmatched | `21DEC24025_0012` | background | Test1 | `21DEC24025812-S3DS-200013190737_01_P001` |
+| `0Lv01` | `21DEC27025_0005` | vehicle | Test1 | `21DEC27025021-S3DS-200012895048_01_P001` |
+| `0Lv04` | `21DEC27025_0008` | vehicle | Test1 | `21DEC27025021-S3DS-200012895048_01_P001` |
+| `0Lv06` | `21DEC27025_0009` | vehicle | Test1 | `21DEC27025021-S3DS-200012895048_01_P001` |
+| `0Lm09` | `21DEC27025_0022` | missile | Test1 | `21DEC27025021-S3DS-200012895048_01_P001` |
+| `0Lv07` | `21DEC27025_0026` | vehicle | Test1 | `21DEC27025021-S3DS-200012895048_01_P001` |
+| `0Mm02` | `21FEB15025_0004` | missile | Test1 | `21FEB15025428-S3DS-200011883412_01_P001` |
+| unmatched | `21JAN25022_0000` | background | Test1 | `21JAN25022937-S3DS-200013104366_01_P001` |
+| unmatched | `21JAN25022_0001` | background | Test1 | `21JAN25022937-S3DS-200013104366_01_P001` |
+| unmatched | `21JAN25022_0003` | background | Test1 | `21JAN25022937-S3DS-200013104366_01_P001` |
+| unmatched | `21JAN25022_0004` | background | Test1 | `21JAN25022937-S3DS-200013104366_01_P001` |
+| `0Ns0A` | `21JAN25022_0005` | smallvehicle | Test1 | `21JAN25022937-S3DS-200013104366_01_P001` |
+| unmatched | `21JAN25022_0009` | background | Test1 | `21JAN25022937-S3DS-200013104366_01_P001` |
+| unmatched | `21JAN25022_0011` | background | Test1 | `21JAN25022937-S3DS-200013104366_01_P001` |
+| unmatched | `21JAN25022_0012` | background | Test1 | `21JAN25022937-S3DS-200013104366_01_P001` |
+| unmatched | `21JAN25022_0015` | background | Test1 | `21JAN25022937-S3DS-200013104366_01_P001` |
+| `0Ns0E` | `21JAN25022_0019` | smallvehicle | Test1 | `21JAN25022937-S3DS-200013104366_01_P001` |
+| unmatched | `21JAN25022_0021` | background | Test1 | `21JAN25022937-S3DS-200013104366_01_P001` |
+| `0Ns0D` | `21JAN25022_0025` | smallvehicle | Test1 | `21JAN25022937-S3DS-200013104366_01_P001` |
+| unmatched | `21JAN25022_0026` | background | Test1 | `21JAN25022937-S3DS-200013104366_01_P001` |
+| `0Na03` | `21JAN25022_0028` | arty | Test1 | `21JAN25022937-S3DS-200013104366_01_P001` |
+| `0Ns0H` | `21JAN25022_0029` | smallvehicle | Test1 | `21JAN25022937-S3DS-200013104366_01_P001` |
+| unmatched | `21JAN25022_0031` | background | Test1 | `21JAN25022937-S3DS-200013104366_01_P001` |
+| unmatched | `21JAN25022_0034` | background | Test1 | `21JAN25022937-S3DS-200013104366_01_P001` |
+| unmatched | `21JAN25022_0037` | background | Test1 | `21JAN25022937-S3DS-200013104366_01_P001` |
+| unmatched | `21NOV24030_0064` | background | Test1 | `21NOV24030403-S3DS-200012895049_01_P001` |
+| `0Ol08` | `21NOV24030_0067` | logistic | Test1 | `21NOV24030403-S3DS-200012895049_01_P001` |
+| `0Qa04` | `22DEC02022_0002` | arty | Test1 | `22DEC02022210-S3DS-200013128267_01_P001` |
+| unmatched | `22DEC02022_0003` | background | Test1 | `22DEC02022210-S3DS-200013128267_01_P001` |
+| unmatched | `22DEC02022_0004` | background | Test1 | `22DEC02022210-S3DS-200013128267_01_P001` |
+| `0Rc05` | `22FEB02032_0001` | camo | Test1 | `22FEB02032525-S3DS-200012866245_01_P001` |
+| `0Rc04` | `22FEB02032_0002` | camo | Test1 | `22FEB02032525-S3DS-200012866245_01_P001` |
+| `0Rc01` | `22FEB02032_0050` | camo | Test1 | `22FEB02032525-S3DS-200012866245_01_P001` |
+| unmatched | `22FEB02032_0053` | background | Test1 | `22FEB02032525-S3DS-200012866245_01_P001` |
+| `0Xd07` | `22OCT24030_0026` | radome | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xl08` | `22OCT24030_0039` | logistic | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| unmatched | `22OCT24030_0060` | background | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| unmatched | `22OCT24030_0064` | background | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xv18` | `22OCT24030_0065` | vehicle | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xv03` | `22OCT24030_0073` | vehicle | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xd08` | `22OCT24030_0089` | radome | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| unmatched | `22OCT24030_0091` | background | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| unmatched | `22OCT24030_0101` | background | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Yv04` | `23OCT24030_0019` | vehicle | Test1 | `23OCT24030928-S3DS-200012400977_01_P001` |
+| `0Zv0G` | `24APR01051_0036` | vehicle | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `0Zv01` | `24APR01051_0054` | vehicle | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| unmatched | `24APR01051_0066` | background | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| unmatched | `24APR01051_0068` | background | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `10v05` | `24DEC21030_0004` | vehicle | Test1 | `24DEC21030136-S3DS-200011913026_01_P001` |
+| `10v04` | `24DEC21030_0011` | vehicle | Test1 | `24DEC21030136-S3DS-200011913026_01_P001` |
+| `10v06` | `24DEC21030_0012` | vehicle | Test1 | `24DEC21030136-S3DS-200011913026_01_P001` |
+| `10v03` | `24DEC21030_0014` | vehicle | Test1 | `24DEC21030136-S3DS-200011913026_01_P001` |
+| `13c06` | `24MAR27045_0000` | camo | Test1 | `24MAR27045953-S3DS-200013168941_01_P001` |
+| `13c03` | `24MAR27045_0001` | camo | Test1 | `24MAR27045953-S3DS-200013168941_01_P001` |
+| `13c01` | `24MAR27045_0003` | camo | Test1 | `24MAR27045953-S3DS-200013168941_01_P001` |
+| `13c02` | `24MAR27045_0012` | camo | Test1 | `24MAR27045953-S3DS-200013168941_01_P001` |
+| unmatched | `24MAR27045_0024` | background | Test1 | `24MAR27045953-S3DS-200013168941_01_P001` |
+| unmatched | `24MAR27045_0025` | background | Test1 | `24MAR27045953-S3DS-200013168941_01_P001` |
+| unmatched | `24MAR27045_0026` | background | Test1 | `24MAR27045953-S3DS-200013168941_01_P001` |
+| `15c01` | `25NOV29025_0002` | camo | Test1 | `25NOV29025727-S3DS-200012895045_01_P001` |
+| unmatched | `25NOV29025_0004` | background | Test1 | `25NOV29025727-S3DS-200012895045_01_P001` |
+| `15c03` | `25NOV29025_0017` | camo | Test1 | `25NOV29025727-S3DS-200012895045_01_P001` |
+| unmatched | `26APR20052_0004` | background | Test1 | `26APR20052910-S3DS-200013171094_01_P001` |
+| `17v0B` | `26MAY09052_0006` | vehicle | Test1 | `26MAY09052126-S3DS-200013142970_01_P001` |
+| unmatched | `26MAY09052_0016` | background | Test1 | `26MAY09052126-S3DS-200013142970_01_P001` |
+| unmatched | `26MAY09052_0024` | background | Test1 | `26MAY09052126-S3DS-200013142970_01_P001` |
+| unmatched | `26MAY09052_0033` | background | Test1 | `26MAY09052126-S3DS-200013142970_01_P001` |
+| `17l06` | `26MAY09052_0035` | logistic | Test1 | `26MAY09052126-S3DS-200013142970_01_P001` |
+| `17v0G` | `26MAY09052_0037` | vehicle | Test1 | `26MAY09052126-S3DS-200013142970_01_P001` |
+| `17s07` | `26MAY09052_0038` | smallvehicle | Test1 | `26MAY09052126-S3DS-200013142970_01_P001` |
+| unmatched | `141d9464_D_0023` | background | Test2 | `141d9464_DS_PHR1B_202211150352306_FR1_PX_E103N26_0301_00320` |
+| unmatched | `19MAY14060_0006` | background | Test2 | `19MAY14060259-S3DS-200013142968_01_P001` |
+| unmatched | `19MAY14060_0008` | background | Test2 | `19MAY14060259-S3DS-200013142968_01_P001` |
+| unmatched | `19MAY14060_0011` | background | Test2 | `19MAY14060259-S3DS-200013142968_01_P001` |
+| `1Bm02` | `20SEP27061_0005` | missile | Test2 | `20SEP27061806-S3DS-200011619312_01_P001` |
+| `1Bv05` | `20SEP27061_0006` | vehicle | Test2 | `20SEP27061806-S3DS-200011619312_01_P001` |
+| unmatched | `20SEP27061_0016` | background | Test2 | `20SEP27061806-S3DS-200011619312_01_P001` |
+| unmatched | `20SEP27061_0018` | background | Test2 | `20SEP27061806-S3DS-200011619312_01_P001` |
+| `1Bv01` | `20SEP27061_0020` | vehicle | Test2 | `20SEP27061806-S3DS-200011619312_01_P001` |
+| `1Cv05` | `21APR18030_0015` | vehicle | Test2 | `21APR18030819-S3DS-200013545084_01_P001` |
+| `1Ct0H` | `21APR18030_0060` | tank | Test2 | `21APR18030819-S3DS-200013545084_01_P001` |
+| `1Cs03` | `21APR18030_0068` | smallvehicle | Test2 | `21APR18030819-S3DS-200013545084_01_P001` |
+| `1Cv06` | `21APR18030_0071` | vehicle | Test2 | `21APR18030819-S3DS-200013545084_01_P001` |
+| `1Ct0G` | `21APR18030_0074` | tank | Test2 | `21APR18030819-S3DS-200013545084_01_P001` |
+| `1Cv09` | `21APR18030_0097` | vehicle | Test2 | `21APR18030819-S3DS-200013545084_01_P001` |
+| `1Ct0K` | `21APR18030_0105` | tank | Test2 | `21APR18030819-S3DS-200013545084_01_P001` |
+| unmatched | `21APR18030_0108` | background | Test2 | `21APR18030819-S3DS-200013545084_01_P001` |
+| unmatched | `21APR18030_0128` | background | Test2 | `21APR18030819-S3DS-200013545084_01_P001` |
+| unmatched | `22APR14045_0011` | background | Test2 | `22APR14045506-S3DS-200013368123_01_P001` |
+| `1Ev07` | `22APR14045_0012` | vehicle | Test2 | `22APR14045506-S3DS-200013368123_01_P001` |
+| unmatched | `22APR14045_0014` | background | Test2 | `22APR14045506-S3DS-200013368123_01_P001` |
+| unmatched | `22APR14045_0017` | background | Test2 | `22APR14045506-S3DS-200013368123_01_P001` |
+| `1Hc0R` | `22OCT21045_0012` | camo | Test2 | `22OCT21045409-S3DS-200012483671_01_P001` |
+| `1Ht29` | `22OCT21045_0028` | tank | Test2 | `22OCT21045409-S3DS-200012483671_01_P001` |
+| `1Hc0Q` | `22OCT21045_0030` | camo | Test2 | `22OCT21045409-S3DS-200012483671_01_P001` |
+| `1Hc0N` | `22OCT21045_0055` | camo | Test2 | `22OCT21045409-S3DS-200012483671_01_P001` |
+| `1Hc0S` | `22OCT21045_0148` | camo | Test2 | `22OCT21045409-S3DS-200012483671_01_P001` |
+| `1Hc0L` | `22OCT21045_0189` | camo | Test2 | `22OCT21045409-S3DS-200012483671_01_P001` |
+| unmatched | `22OCT21045_0219` | background | Test2 | `22OCT21045409-S3DS-200012483671_01_P001` |
+| `1Hc07` | `22OCT21045_0222` | camo | Test2 | `22OCT21045409-S3DS-200012483671_01_P001` |
+| unmatched | `22OCT21045_0271` | background | Test2 | `22OCT21045409-S3DS-200012483671_01_P001` |
+| `1Iv02` | `234045af_D_0004` | vehicle | Test2 | `234045af_DS_PHR1B_201808290337504_FR1_PX_E108N34_0924_00286` |
+| unmatched | `23FEB01050_0019` | background | Test2 | `23FEB01050006-S3DS-200013142308_01_P001` |
+| `1Jv12` | `23FEB01050_0046` | vehicle | Test2 | `23FEB01050006-S3DS-200013142308_01_P001` |
+| unmatched | `23JAN10050_0002` | background | Test2 | `23JAN10050425-S3DS-200012483667_01_P001` |
+| `1Kc05` | `23JAN10050_0003` | camo | Test2 | `23JAN10050425-S3DS-200012483667_01_P001` |
+| `1Ke04` | `23JAN10050_0004` | aerial | Test2 | `23JAN10050425-S3DS-200012483667_01_P001` |
+| `1Kc04` | `23JAN10050_0006` | camo | Test2 | `23JAN10050425-S3DS-200012483667_01_P001` |
+| `1Kc03` | `23JAN10050_0009` | camo | Test2 | `23JAN10050425-S3DS-200012483667_01_P001` |
+| unmatched | `23JAN10050_0019` | background | Test2 | `23JAN10050425-S3DS-200012483667_01_P001` |
+| unmatched | `23JAN10050_0020` | background | Test2 | `23JAN10050425-S3DS-200012483667_01_P001` |
+| `1Kc0C` | `23JAN10050_0021` | camo | Test2 | `23JAN10050425-S3DS-200012483667_01_P001` |
+| unmatched | `23JAN10050_0022` | background | Test2 | `23JAN10050425-S3DS-200012483667_01_P001` |
+| unmatched | `23JAN15044_0584` | background | Test2 | `23JAN15044817-S3DS-200012483668_01_P001` |
+| unmatched | `23JAN30025_0256` | background | Test2 | `23JAN30025247-S3DS-200012319991_01_P001` |
+| `1Pv0R` | `23MAY19062_0004` | vehicle | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` |
+| `1Pl08` | `23MAY19062_0022` | logistic | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` |
+| `1Pv0P` | `23MAY19062_0034` | vehicle | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` |
+| `1Pm01` | `23MAY19062_0035` | missile | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` |
+| `1Pl07` | `23MAY19062_0041` | logistic | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` |
+| `1Pv0W` | `23MAY19062_0044` | vehicle | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` |
+| unmatched | `23MAY19062_0070` | background | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` |
+| `1Pv0L` | `23MAY19062_0072` | vehicle | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` |
+| `1Rc03` | `24DEC24042_0002` | camo | Test2 | `24DEC24042920-S3DS-200013378864_01_P001` |
+| `1Rv0A` | `24DEC24042_0004` | vehicle | Test2 | `24DEC24042920-S3DS-200013378864_01_P001` |
+| unmatched | `24DEC24042_0005` | background | Test2 | `24DEC24042920-S3DS-200013378864_01_P001` |
+| `1Rv0B` | `24DEC24042_0006` | vehicle | Test2 | `24DEC24042920-S3DS-200013378864_01_P001` |
+| `1Rc01` | `24DEC24042_0008` | camo | Test2 | `24DEC24042920-S3DS-200013378864_01_P001` |
+| `1Rv08` | `24DEC24042_0015` | vehicle | Test2 | `24DEC24042920-S3DS-200013378864_01_P001` |
+| unmatched | `24NOV27054_0003` | background | Test2 | `24NOV27054611-S3DS-200012866946_01_P001` |
+| `1Sv06` | `24NOV27054_0004` | vehicle | Test2 | `24NOV27054611-S3DS-200012866946_01_P001` |
+| `1Tv02` | `24OCT29045_0001` | vehicle | Test2 | `24OCT29045607-S3DS-200013168961_01_P001` |
+| `1Tv01` | `24OCT29045_0009` | vehicle | Test2 | `24OCT29045607-S3DS-200013168961_01_P001` |
+| unmatched | `24SEP08053_0010` | background | Test2 | `24SEP08053532-S3DS-200013142971_01_P001` |
+| `1Vd01` | `25DEC14052_0000` | radome | Test2 | `25DEC14052859-S3DS-200011101282_01_P001` |
+| `1Vd02` | `25DEC14052_0001` | radome | Test2 | `25DEC14052859-S3DS-200011101282_01_P001` |
+| `1Yd02` | `25JAN29042_0000` | radome | Test2 | `25JAN29042609-S3DS-200013367959_01_P001` |
+| `1Yd01` | `25JAN29042_0001` | radome | Test2 | `25JAN29042609-S3DS-200013367959_01_P001` |
+| `1Yc01` | `25JAN29042_0002` | camo | Test2 | `25JAN29042609-S3DS-200013367959_01_P001` |
+| `1Yc02` | `25JAN29042_0003` | camo | Test2 | `25JAN29042609-S3DS-200013367959_01_P001` |
+| unmatched | `25JAN29042_0004` | background | Test2 | `25JAN29042609-S3DS-200013367959_01_P001` |
+| unmatched | `25JAN29042_0010` | background | Test2 | `25JAN29042609-S3DS-200013367959_01_P001` |
+| unmatched | `25MAR23054_0000` | background | Test2 | `25MAR23054346-S3DS-200011078330_01_P001` |
+| `1Zv01` | `25MAR23054_0001` | vehicle | Test2 | `25MAR23054346-S3DS-200011078330_01_P001` |
+| `1Zv04` | `25MAR23054_0002` | vehicle | Test2 | `25MAR23054346-S3DS-200011078330_01_P001` |
+| `1Zv02` | `25MAR23054_0007` | vehicle | Test2 | `25MAR23054346-S3DS-200011078330_01_P001` |
+| `1Zv06` | `25MAR23054_0011` | vehicle | Test2 | `25MAR23054346-S3DS-200011078330_01_P001` |
+| `1Zs02` | `25MAR23054_0012` | smallvehicle | Test2 | `25MAR23054346-S3DS-200011078330_01_P001` |
+| unmatched | `25MAR23054_0014` | background | Test2 | `25MAR23054346-S3DS-200011078330_01_P001` |
+| unmatched | `25MAR23054_0015` | background | Test2 | `25MAR23054346-S3DS-200011078330_01_P001` |
+| unmatched | `25MAR23054_0016` | background | Test2 | `25MAR23054346-S3DS-200011078330_01_P001` |
+| unmatched | `25MAR23054_0017` | background | Test2 | `25MAR23054346-S3DS-200011078330_01_P001` |
+| unmatched | `25MAR23054_0018` | background | Test2 | `25MAR23054346-S3DS-200011078330_01_P001` |
+| unmatched | `25MAR23054_0020` | background | Test2 | `25MAR23054346-S3DS-200011078330_01_P001` |
+| unmatched | `25MAR23054_0024` | background | Test2 | `25MAR23054346-S3DS-200011078330_01_P001` |
+| `20d01` | `25MAR25043_0000` | radome | Test2 | `25MAR25043103-S3DS-200011078671_01_P001` |
+| unmatched | `25MAR25043_0001` | background | Test2 | `25MAR25043103-S3DS-200011078671_01_P001` |
+| `20v02` | `25MAR25043_0005` | vehicle | Test2 | `25MAR25043103-S3DS-200011078671_01_P001` |
+| unmatched | `25MAR25043_0007` | background | Test2 | `25MAR25043103-S3DS-200011078671_01_P001` |
+| unmatched | `25MAR25043_0009` | background | Test2 | `25MAR25043103-S3DS-200011078671_01_P001` |
+| unmatched | `25MAY16062_0042` | background | Test2 | `25MAY16062255-S3DS-200011655555_01_P001` |
+| unmatched | `25MAY16062_0070` | background | Test2 | `25MAY16062255-S3DS-200011655555_01_P001` |
+| unmatched | `25MAY16062_0079` | background | Test2 | `25MAY16062255-S3DS-200011655555_01_P001` |
+| unmatched | `25MAY16062_0081` | background | Test2 | `25MAY16062255-S3DS-200011655555_01_P001` |
+| `23v05` | `25NOV18044_0003` | vehicle | Test2 | `25NOV18044741-S3DS-200011078376_01_P001` |
+| unmatched | `25NOV18044_0005` | background | Test2 | `25NOV18044741-S3DS-200011078376_01_P001` |
+| `23d01` | `25NOV18044_0008` | radome | Test2 | `25NOV18044741-S3DS-200011078376_01_P001` |
+| `23l01` | `25NOV18044_0010` | logistic | Test2 | `25NOV18044741-S3DS-200011078376_01_P001` |
+| `24v1A` | `26d44cd2_D_0042` | vehicle | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` |
+| `26d01` | `852dc76a_D_0004` | radome | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `26s09` | `852dc76a_D_0008` | smallvehicle | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `26v08` | `852dc76a_D_0010` | vehicle | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `26s03` | `852dc76a_D_0013` | smallvehicle | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `26s04` | `852dc76a_D_0016` | smallvehicle | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `26v09` | `852dc76a_D_0018` | vehicle | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `26s0B` | `852dc76a_D_0024` | smallvehicle | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `28v0C` | `d8bba13b_D_0014` | vehicle | Test2 | `d8bba13b_DS_PHR1B_202109100317223_FR1_PX_E113N31_0818_00355` |
+| unmatched | `d8bba13b_D_0029` | background | Test2 | `d8bba13b_DS_PHR1B_202109100317223_FR1_PX_E113N31_0818_00355` |
+
+## Missile — permanent GT IDs
+
+| Outcome | Count |
+|---|---:|
+| All annotated GT | 235 |
+| Correct | 114 |
+| Stage1 missed; VLM never saw it | 40 |
+| Stage1 found; VLM assigned another class | 81 |
+| Total end-to-end misses | 121 |
+| False-positive missile proposals | 344 |
+
+### Stage1 missed
+
+| GT instance ID | Proposal ID | Predicted | Split | Scene |
+|---|---|---|---|---|
+| `07m02` | none | not evaluated | Test1 | `19DEC21034631-S3DS-200013276864_01_P001` |
+| `09m04` | none | not evaluated | Test1 | `19MAY10032935-S3DS-200012352046_01_P001` |
+| `0Am02` | none | not evaluated | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Am0A` | none | not evaluated | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Am0C` | none | not evaluated | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Am0D` | none | not evaluated | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Am0E` | none | not evaluated | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Am0G` | none | not evaluated | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `1Bm04` | none | not evaluated | Test2 | `20SEP27061806-S3DS-200011619312_01_P001` |
+| `0Hm01` | none | not evaluated | Test1 | `21APR22040621-S3DS-200013119950_01_P001` |
+| `0Hm02` | none | not evaluated | Test1 | `21APR22040621-S3DS-200013119950_01_P001` |
+| `0Hm03` | none | not evaluated | Test1 | `21APR22040621-S3DS-200013119950_01_P001` |
+| `0Hm04` | none | not evaluated | Test1 | `21APR22040621-S3DS-200013119950_01_P001` |
+| `0Hm05` | none | not evaluated | Test1 | `21APR22040621-S3DS-200013119950_01_P001` |
+| `0Hm06` | none | not evaluated | Test1 | `21APR22040621-S3DS-200013119950_01_P001` |
+| `0Im01` | none | not evaluated | Test1 | `21APR30054629-S3DS-200013142967_01_P001` |
+| `0Im02` | none | not evaluated | Test1 | `21APR30054629-S3DS-200013142967_01_P001` |
+| `0Im04` | none | not evaluated | Test1 | `21APR30054629-S3DS-200013142967_01_P001` |
+| `0Im05` | none | not evaluated | Test1 | `21APR30054629-S3DS-200013142967_01_P001` |
+| `0Im06` | none | not evaluated | Test1 | `21APR30054629-S3DS-200013142967_01_P001` |
+| `0Jm01` | none | not evaluated | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Jm02` | none | not evaluated | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Jm03` | none | not evaluated | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Jm04` | none | not evaluated | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Mm01` | none | not evaluated | Test1 | `21FEB15025428-S3DS-200011883412_01_P001` |
+| `0Mm03` | none | not evaluated | Test1 | `21FEB15025428-S3DS-200011883412_01_P001` |
+| `0Mm04` | none | not evaluated | Test1 | `21FEB15025428-S3DS-200011883412_01_P001` |
+| `1Im01` | none | not evaluated | Test2 | `234045af_DS_PHR1B_201808290337504_FR1_PX_E108N34_0924_00286` |
+| `1Pm02` | none | not evaluated | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` |
+| `11m03` | none | not evaluated | Test1 | `24JAN04022720-S3DS-200013055297_01_P001` |
+| `16m01` | none | not evaluated | Test1 | `26APR20052910-S3DS-200013171094_01_P001` |
+| `16m02` | none | not evaluated | Test1 | `26APR20052910-S3DS-200013171094_01_P001` |
+| `16m03` | none | not evaluated | Test1 | `26APR20052910-S3DS-200013171094_01_P001` |
+| `24m01` | none | not evaluated | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` |
+| `24m02` | none | not evaluated | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` |
+| `24m05` | none | not evaluated | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` |
+| `24m08` | none | not evaluated | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` |
+| `24m09` | none | not evaluated | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` |
+| `24m0C` | none | not evaluated | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` |
+| `28m01` | none | not evaluated | Test2 | `d8bba13b_DS_PHR1B_202109100317223_FR1_PX_E113N31_0818_00355` |
+
+### VLM misclassified
+
+| GT instance ID | Proposal ID | Predicted | Split | Scene |
+|---|---|---|---|---|
+| `05m07` | `18MAR10025_0005` | other | Test1 | `18MAR10025634-S3DS-200012866237_01_P001` |
+| `07m03` | `19DEC21034_0000` | radar | Test1 | `19DEC21034631-S3DS-200013276864_01_P001` |
+| `08m02` | `19MAR13040_0001` | radar | Test1 | `19MAR13040701-S3DS-200013268578_01_P001` |
+| `0Am03` | `19SEP16023_0022` | other | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Am06` | `19SEP16023_0003` | other | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Am0F` | `19SEP16023_0076` | other | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Dm02` | `20NOV12043_0005` | other | Test1 | `20NOV12043850-S3DS-200012372799_01_P001` |
+| `0Dm04` | `20NOV12043_0004` | other | Test1 | `20NOV12043850-S3DS-200012372799_01_P001` |
+| `0Dm05` | `20NOV12043_0016` | other | Test1 | `20NOV12043850-S3DS-200012372799_01_P001` |
+| `0Dm06` | `20NOV12043_0008` | other | Test1 | `20NOV12043850-S3DS-200012372799_01_P001` |
+| `0Dm07` | `20NOV12043_0014` | other | Test1 | `20NOV12043850-S3DS-200012372799_01_P001` |
+| `1Bm01` | `20SEP27061_0010` | other | Test2 | `20SEP27061806-S3DS-200011619312_01_P001` |
+| `1Bm02` | `20SEP27061_0005` | radar | Test2 | `20SEP27061806-S3DS-200011619312_01_P001` |
+| `1Bm03` | `20SEP27061_0012` | other | Test2 | `20SEP27061806-S3DS-200011619312_01_P001` |
+| `0Im0D` | `21APR30054_0030` | other | Test1 | `21APR30054629-S3DS-200013142967_01_P001` |
+| `0Lm09` | `21DEC27025_0022` | radar | Test1 | `21DEC27025021-S3DS-200012895048_01_P001` |
+| `0Mm02` | `21FEB15025_0004` | radar | Test1 | `21FEB15025428-S3DS-200011883412_01_P001` |
+| `1Fm01` | `22MAR02025_0044` | other | Test2 | `22MAR02025946-S3DS-200012804518_01_P001` |
+| `1Fm02` | `22MAR02025_0033` | other | Test2 | `22MAR02025946-S3DS-200012804518_01_P001` |
+| `1Fm03` | `22MAR02025_0085` | other | Test2 | `22MAR02025946-S3DS-200012804518_01_P001` |
+| `1Fm04` | `22MAR02025_0006` | other | Test2 | `22MAR02025946-S3DS-200012804518_01_P001` |
+| `1Fm05` | `22MAR02025_0019` | other | Test2 | `22MAR02025946-S3DS-200012804518_01_P001` |
+| `1Fm06` | `22MAR02025_0064` | other | Test2 | `22MAR02025946-S3DS-200012804518_01_P001` |
+| `1Fm08` | `22MAR02025_0004` | other | Test2 | `22MAR02025946-S3DS-200012804518_01_P001` |
+| `1Fm09` | `22MAR02025_0040` | other | Test2 | `22MAR02025946-S3DS-200012804518_01_P001` |
+| `1Fm0B` | `22MAR02025_0016` | other | Test2 | `22MAR02025946-S3DS-200012804518_01_P001` |
+| `1Fm0C` | `22MAR02025_0039` | other | Test2 | `22MAR02025946-S3DS-200012804518_01_P001` |
+| `1Gm01` | `22MAR07045_0033` | other | Test2 | `22MAR07045331-S3DS-200013349499_01_P001` |
+| `1Gm02` | `22MAR07045_0003` | other | Test2 | `22MAR07045331-S3DS-200013349499_01_P001` |
+| `1Gm03` | `22MAR07045_0020` | background | Test2 | `22MAR07045331-S3DS-200013349499_01_P001` |
+| `1Gm04` | `22MAR07045_0002` | other | Test2 | `22MAR07045331-S3DS-200013349499_01_P001` |
+| `1Gm05` | `22MAR07045_0039` | background | Test2 | `22MAR07045331-S3DS-200013349499_01_P001` |
+| `1Gm06` | `22MAR07045_0101` | other | Test2 | `22MAR07045331-S3DS-200013349499_01_P001` |
+| `1Gm07` | `22MAR07045_0012` | other | Test2 | `22MAR07045331-S3DS-200013349499_01_P001` |
+| `1Gm08` | `22MAR07045_0008` | background | Test2 | `22MAR07045331-S3DS-200013349499_01_P001` |
+| `1Gm09` | `22MAR07045_0010` | background | Test2 | `22MAR07045331-S3DS-200013349499_01_P001` |
+| `1Gm0A` | `22MAR07045_0045` | other | Test2 | `22MAR07045331-S3DS-200013349499_01_P001` |
+| `1Gm0B` | `22MAR07045_0123` | other | Test2 | `22MAR07045331-S3DS-200013349499_01_P001` |
+| `1Gm0C` | `22MAR07045_0025` | background | Test2 | `22MAR07045331-S3DS-200013349499_01_P001` |
+| `1Gm0D` | `22MAR07045_0071` | background | Test2 | `22MAR07045331-S3DS-200013349499_01_P001` |
+| `1Gm0E` | `22MAR07045_0019` | background | Test2 | `22MAR07045331-S3DS-200013349499_01_P001` |
+| `1Gm0F` | `22MAR07045_0016` | other | Test2 | `22MAR07045331-S3DS-200013349499_01_P001` |
+| `1Gm0G` | `22MAR07045_0028` | background | Test2 | `22MAR07045331-S3DS-200013349499_01_P001` |
+| `1Gm0H` | `22MAR07045_0086` | background | Test2 | `22MAR07045331-S3DS-200013349499_01_P001` |
+| `1Pm01` | `23MAY19062_0035` | radar | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` |
+| `1Pm03` | `23MAY19062_0020` | other | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` |
+| `1Pm04` | `23MAY19062_0089` | other | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` |
+| `1Pm05` | `23MAY19062_0038` | other | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` |
+| `0Zm01` | `24APR01051_0006` | other | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `0Zm03` | `24APR01051_0014` | other | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `0Zm04` | `24APR01051_0001` | other | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `0Zm05` | `24APR01051_0012` | other | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `0Zm06` | `24APR01051_0011` | other | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `0Zm07` | `24APR01051_0002` | other | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `0Zm08` | `24APR01051_0013` | other | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `0Zm09` | `24APR01051_0042` | other | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `0Zm0A` | `24APR01051_0043` | other | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `0Zm0B` | `24APR01051_0015` | other | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `0Zm0C` | `24APR01051_0032` | other | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `0Zm0D` | `24APR01051_0021` | other | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `0Zm0E` | `24APR01051_0010` | other | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `0Zm0F` | `24APR01051_0018` | other | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `0Zm0G` | `24APR01051_0020` | other | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `0Zm0H` | `24APR01051_0005` | other | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `0Zm0I` | `24APR01051_0008` | other | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `0Zm0J` | `24APR01051_0003` | other | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `0Zm0K` | `24APR01051_0017` | other | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `0Zm0L` | `24APR01051_0029` | other | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `0Zm0M` | `24APR01051_0038` | other | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `0Zm0N` | `24APR01051_0035` | other | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `11m01` | `24JAN04022_0051` | other | Test1 | `24JAN04022720-S3DS-200013055297_01_P001` |
+| `11m04` | `24JAN04022_0044` | other | Test1 | `24JAN04022720-S3DS-200013055297_01_P001` |
+| `11m05` | `24JAN04022_0040` | other | Test1 | `24JAN04022720-S3DS-200013055297_01_P001` |
+| `11m06` | `24JAN04022_0050` | other | Test1 | `24JAN04022720-S3DS-200013055297_01_P001` |
+| `11m07` | `24JAN04022_0022` | other | Test1 | `24JAN04022720-S3DS-200013055297_01_P001` |
+| `11m08` | `24JAN04022_0077` | other | Test1 | `24JAN04022720-S3DS-200013055297_01_P001` |
+| `11m09` | `24JAN04022_0075` | other | Test1 | `24JAN04022720-S3DS-200013055297_01_P001` |
+| `11m0A` | `24JAN04022_0016` | other | Test1 | `24JAN04022720-S3DS-200013055297_01_P001` |
+| `13m01` | `24MAR27045_0009` | other | Test1 | `24MAR27045953-S3DS-200013168941_01_P001` |
+| `13m02` | `24MAR27045_0002` | other | Test1 | `24MAR27045953-S3DS-200013168941_01_P001` |
+| `24m0B` | `26d44cd2_D_0018` | other | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` |
+
+### Non-missile proposals predicted as missile
+
+| GT instance ID (if matched) | Proposal ID | Actual GT class | Split | Scene |
+|---|---|---|---|
+| `03v03` | `18FEB10031_0005` | vehicle | Test1 | `18FEB10031943-S3DS-200013190621_01_P001` |
+| `03v01` | `18FEB10031_0006` | vehicle | Test1 | `18FEB10031943-S3DS-200013190621_01_P001` |
+| `03v04` | `18FEB10031_0008` | vehicle | Test1 | `18FEB10031943-S3DS-200013190621_01_P001` |
+| `03v02` | `18FEB10031_0017` | vehicle | Test1 | `18FEB10031943-S3DS-200013190621_01_P001` |
+| `03v0R` | `18FEB10031_0036` | vehicle | Test1 | `18FEB10031943-S3DS-200013190621_01_P001` |
+| unmatched | `18FEB10031_0040` | background | Test1 | `18FEB10031943-S3DS-200013190621_01_P001` |
+| `04v03` | `18JUN15032_0006` | vehicle | Test1 | `18JUN15032547-S3DS-200012895053_01_P001` |
+| `04v01` | `18JUN15032_0008` | vehicle | Test1 | `18JUN15032547-S3DS-200012895053_01_P001` |
+| `04v02` | `18JUN15032_0013` | vehicle | Test1 | `18JUN15032547-S3DS-200012895053_01_P001` |
+| `05v02` | `18MAR10025_0003` | vehicle | Test1 | `18MAR10025634-S3DS-200012866237_01_P001` |
+| unmatched | `18MAR10025_0007` | background | Test1 | `18MAR10025634-S3DS-200012866237_01_P001` |
+| `05v01` | `18MAR10025_0008` | vehicle | Test1 | `18MAR10025634-S3DS-200012866237_01_P001` |
+| `07v01` | `19DEC21034_0004` | vehicle | Test1 | `19DEC21034631-S3DS-200013276864_01_P001` |
+| `08v04` | `19MAR13040_0006` | vehicle | Test1 | `19MAR13040701-S3DS-200013268578_01_P001` |
+| unmatched | `19MAR13040_0030` | background | Test1 | `19MAR13040701-S3DS-200013268578_01_P001` |
+| unmatched | `19MAY10032_0018` | background | Test1 | `19MAY10032935-S3DS-200012352046_01_P001` |
+| unmatched | `19MAY10032_0026` | background | Test1 | `19MAY10032935-S3DS-200012352046_01_P001` |
+| `09v01` | `19MAY10032_0032` | vehicle | Test1 | `19MAY10032935-S3DS-200012352046_01_P001` |
+| `09v19` | `19MAY10032_0034` | vehicle | Test1 | `19MAY10032935-S3DS-200012352046_01_P001` |
+| unmatched | `19MAY10032_0038` | background | Test1 | `19MAY10032935-S3DS-200012352046_01_P001` |
+| unmatched | `19MAY10032_0040` | background | Test1 | `19MAY10032935-S3DS-200012352046_01_P001` |
+| `0Av11` | `19SEP16023_0000` | vehicle | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Al05` | `19SEP16023_0010` | logistic | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Al06` | `19SEP16023_0011` | logistic | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0As08` | `19SEP16023_0013` | smallvehicle | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Ar03` | `19SEP16023_0021` | radar | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Av01` | `19SEP16023_0024` | vehicle | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Av0S` | `19SEP16023_0033` | vehicle | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Av08` | `19SEP16023_0037` | vehicle | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Av0D` | `19SEP16023_0049` | vehicle | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Av0T` | `19SEP16023_0057` | vehicle | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Av1H` | `19SEP16023_0058` | vehicle | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Av02` | `19SEP16023_0080` | vehicle | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| unmatched | `19SEP16023_0081` | background | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Av07` | `19SEP16023_0087` | vehicle | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| unmatched | `19SEP16023_0090` | background | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Av17` | `19SEP16023_0096` | vehicle | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Av0U` | `19SEP16023_0106` | vehicle | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Av03` | `19SEP16023_0124` | vehicle | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Av0Q` | `19SEP16023_0130` | vehicle | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| unmatched | `19SEP16023_0137` | background | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| unmatched | `19SEP16023_0147` | background | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| unmatched | `19SEP16023_0149` | background | Test1 | `19SEP16023725-S3DS-200011883557_01_P001` |
+| `0Dv07` | `20NOV12043_0000` | vehicle | Test1 | `20NOV12043850-S3DS-200012372799_01_P001` |
+| `0Dv05` | `20NOV12043_0001` | vehicle | Test1 | `20NOV12043850-S3DS-200012372799_01_P001` |
+| `0Ev04` | `20SEP06040_0003` | vehicle | Test1 | `20SEP06040719-S3DS-200013171123_01_P001` |
+| `0Ev02` | `20SEP06040_0004` | vehicle | Test1 | `20SEP06040719-S3DS-200013171123_01_P001` |
+| `0Ev03` | `20SEP06040_0005` | vehicle | Test1 | `20SEP06040719-S3DS-200013171123_01_P001` |
+| `0Ev01` | `20SEP06040_0009` | vehicle | Test1 | `20SEP06040719-S3DS-200013171123_01_P001` |
+| `0Ev06` | `20SEP06040_0013` | vehicle | Test1 | `20SEP06040719-S3DS-200013171123_01_P001` |
+| `0Ev0D` | `20SEP06040_0014` | vehicle | Test1 | `20SEP06040719-S3DS-200013171123_01_P001` |
+| `0Ev0H` | `20SEP06040_0015` | vehicle | Test1 | `20SEP06040719-S3DS-200013171123_01_P001` |
+| `0Ev0F` | `20SEP06040_0016` | vehicle | Test1 | `20SEP06040719-S3DS-200013171123_01_P001` |
+| `0Ev07` | `20SEP06040_0017` | vehicle | Test1 | `20SEP06040719-S3DS-200013171123_01_P001` |
+| `0Ev05` | `20SEP06040_0020` | vehicle | Test1 | `20SEP06040719-S3DS-200013171123_01_P001` |
+| `0Ev0E` | `20SEP06040_0021` | vehicle | Test1 | `20SEP06040719-S3DS-200013171123_01_P001` |
+| `0Ev0G` | `20SEP06040_0030` | vehicle | Test1 | `20SEP06040719-S3DS-200013171123_01_P001` |
+| `0Ev08` | `20SEP06040_0041` | vehicle | Test1 | `20SEP06040719-S3DS-200013171123_01_P001` |
+| `0Fv02` | `20SEP09053_0014` | vehicle | Test1 | `20SEP09053808-S3DS-200012483665_01_P001` |
+| `0Fl02` | `20SEP09053_0022` | logistic | Test1 | `20SEP09053808-S3DS-200012483665_01_P001` |
+| unmatched | `21APR22040_0004` | background | Test1 | `21APR22040621-S3DS-200013119950_01_P001` |
+| `0Iv08` | `21APR30054_0005` | vehicle | Test1 | `21APR30054629-S3DS-200013142967_01_P001` |
+| `0Iv04` | `21APR30054_0012` | vehicle | Test1 | `21APR30054629-S3DS-200013142967_01_P001` |
+| `0Iv14` | `21APR30054_0047` | vehicle | Test1 | `21APR30054629-S3DS-200013142967_01_P001` |
+| `0Iv15` | `21APR30054_0053` | vehicle | Test1 | `21APR30054629-S3DS-200013142967_01_P001` |
+| unmatched | `21APR30054_0069` | background | Test1 | `21APR30054629-S3DS-200013142967_01_P001` |
+| `0Jv0G` | `21DEC12052_0002` | vehicle | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Jv0J` | `21DEC12052_0003` | vehicle | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Jv0I` | `21DEC12052_0005` | vehicle | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Jv0O` | `21DEC12052_0007` | vehicle | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Jv0M` | `21DEC12052_0010` | vehicle | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Jv0N` | `21DEC12052_0011` | vehicle | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Jv0R` | `21DEC12052_0012` | vehicle | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Jv0P` | `21DEC12052_0016` | vehicle | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Jv0T` | `21DEC12052_0017` | vehicle | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Jv0Y` | `21DEC12052_0021` | vehicle | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Jv05` | `21DEC12052_0022` | vehicle | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Jv0W` | `21DEC12052_0024` | vehicle | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Jv0B` | `21DEC12052_0028` | vehicle | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Jv0Q` | `21DEC12052_0029` | vehicle | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Jv0L` | `21DEC12052_0034` | vehicle | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Jv0V` | `21DEC12052_0035` | vehicle | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Jv04` | `21DEC12052_0042` | vehicle | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| unmatched | `21DEC12052_0056` | background | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Js0G` | `21DEC12052_0068` | smallvehicle | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| unmatched | `21DEC12052_0075` | background | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Jr02` | `21DEC12052_0088` | radar | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| unmatched | `21DEC12052_0091` | background | Test1 | `21DEC12052014-S3DS-200013142966_01_P001` |
+| `0Kv03` | `21DEC24025_0000` | vehicle | Test1 | `21DEC24025812-S3DS-200013190737_01_P001` |
+| `0Kv09` | `21DEC24025_0001` | vehicle | Test1 | `21DEC24025812-S3DS-200013190737_01_P001` |
+| `0Kv06` | `21DEC24025_0002` | vehicle | Test1 | `21DEC24025812-S3DS-200013190737_01_P001` |
+| `0Kv08` | `21DEC24025_0004` | vehicle | Test1 | `21DEC24025812-S3DS-200013190737_01_P001` |
+| `0Kv02` | `21DEC24025_0007` | vehicle | Test1 | `21DEC24025812-S3DS-200013190737_01_P001` |
+| `0Lv02` | `21DEC27025_0011` | vehicle | Test1 | `21DEC27025021-S3DS-200012895048_01_P001` |
+| `0Lr05` | `21DEC27025_0012` | radar | Test1 | `21DEC27025021-S3DS-200012895048_01_P001` |
+| `0Lv05` | `21DEC27025_0013` | vehicle | Test1 | `21DEC27025021-S3DS-200012895048_01_P001` |
+| `0Lv03` | `21DEC27025_0015` | vehicle | Test1 | `21DEC27025021-S3DS-200012895048_01_P001` |
+| unmatched | `21DEC27025_0017` | background | Test1 | `21DEC27025021-S3DS-200012895048_01_P001` |
+| `0Lv08` | `21DEC27025_0021` | vehicle | Test1 | `21DEC27025021-S3DS-200012895048_01_P001` |
+| `0Ls01` | `21DEC27025_0023` | smallvehicle | Test1 | `21DEC27025021-S3DS-200012895048_01_P001` |
+| `0Lr03` | `21DEC27025_0024` | radar | Test1 | `21DEC27025021-S3DS-200012895048_01_P001` |
+| `0Lv09` | `21DEC27025_0025` | vehicle | Test1 | `21DEC27025021-S3DS-200012895048_01_P001` |
+| unmatched | `21DEC27025_0028` | background | Test1 | `21DEC27025021-S3DS-200012895048_01_P001` |
+| `0Mr02` | `21FEB15025_0000` | radar | Test1 | `21FEB15025428-S3DS-200011883412_01_P001` |
+| unmatched | `21FEB15025_0001` | background | Test1 | `21FEB15025428-S3DS-200011883412_01_P001` |
+| `0Mr03` | `21FEB15025_0002` | radar | Test1 | `21FEB15025428-S3DS-200011883412_01_P001` |
+| unmatched | `21FEB15025_0006` | background | Test1 | `21FEB15025428-S3DS-200011883412_01_P001` |
+| unmatched | `21JAN25022_0032` | background | Test1 | `21JAN25022937-S3DS-200013104366_01_P001` |
+| unmatched | `21JAN25022_0033` | background | Test1 | `21JAN25022937-S3DS-200013104366_01_P001` |
+| `0Ov07` | `21NOV24030_0003` | vehicle | Test1 | `21NOV24030403-S3DS-200012895049_01_P001` |
+| `0Ov08` | `21NOV24030_0008` | vehicle | Test1 | `21NOV24030403-S3DS-200012895049_01_P001` |
+| `0Ov0A` | `21NOV24030_0016` | vehicle | Test1 | `21NOV24030403-S3DS-200012895049_01_P001` |
+| `0Ov0B` | `21NOV24030_0028` | vehicle | Test1 | `21NOV24030403-S3DS-200012895049_01_P001` |
+| `0Or02` | `21NOV24030_0044` | radar | Test1 | `21NOV24030403-S3DS-200012895049_01_P001` |
+| `0Ov01` | `21NOV24030_0055` | vehicle | Test1 | `21NOV24030403-S3DS-200012895049_01_P001` |
+| `0Ov02` | `21NOV24030_0063` | vehicle | Test1 | `21NOV24030403-S3DS-200012895049_01_P001` |
+| `0Ol01` | `21NOV24030_0076` | logistic | Test1 | `21NOV24030403-S3DS-200012895049_01_P001` |
+| `0Oc01` | `21NOV24030_0079` | camo | Test1 | `21NOV24030403-S3DS-200012895049_01_P001` |
+| `0Oc02` | `21NOV24030_0081` | camo | Test1 | `21NOV24030403-S3DS-200012895049_01_P001` |
+| `0Oc0A` | `21NOV24030_0083` | camo | Test1 | `21NOV24030403-S3DS-200012895049_01_P001` |
+| `0Rv07` | `22FEB02032_0005` | vehicle | Test1 | `22FEB02032525-S3DS-200012866245_01_P001` |
+| `0Vv01` | `22MAY03031_0003` | vehicle | Test1 | `22MAY03031134-S3DS-200012804521_01_P001` |
+| `0Vr01` | `22MAY03031_0010` | radar | Test1 | `22MAY03031134-S3DS-200012804521_01_P001` |
+| `0Vv0F` | `22MAY03031_0011` | vehicle | Test1 | `22MAY03031134-S3DS-200012804521_01_P001` |
+| `0Vv0J` | `22MAY03031_0015` | vehicle | Test1 | `22MAY03031134-S3DS-200012804521_01_P001` |
+| `0Vv0H` | `22MAY03031_0018` | vehicle | Test1 | `22MAY03031134-S3DS-200012804521_01_P001` |
+| `0Vv0C` | `22MAY03031_0020` | vehicle | Test1 | `22MAY03031134-S3DS-200012804521_01_P001` |
+| `0Vr02` | `22MAY03031_0021` | radar | Test1 | `22MAY03031134-S3DS-200012804521_01_P001` |
+| `0Vr03` | `22MAY03031_0022` | radar | Test1 | `22MAY03031134-S3DS-200012804521_01_P001` |
+| `0Vv06` | `22MAY03031_0041` | vehicle | Test1 | `22MAY03031134-S3DS-200012804521_01_P001` |
+| `0Vv0I` | `22MAY03031_0042` | vehicle | Test1 | `22MAY03031134-S3DS-200012804521_01_P001` |
+| `0Xv07` | `22OCT24030_0001` | vehicle | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xv10` | `22OCT24030_0002` | vehicle | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xv06` | `22OCT24030_0004` | vehicle | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xv05` | `22OCT24030_0007` | vehicle | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xv11` | `22OCT24030_0017` | vehicle | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xr02` | `22OCT24030_0024` | radar | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xr03` | `22OCT24030_0027` | radar | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xl01` | `22OCT24030_0033` | logistic | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xv04` | `22OCT24030_0038` | vehicle | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| unmatched | `22OCT24030_0044` | background | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| unmatched | `22OCT24030_0078` | background | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Xr01` | `22OCT24030_0081` | radar | Test1 | `22OCT24030421-S3DS-200011896352_01_P001` |
+| `0Yv02` | `23OCT24030_0001` | vehicle | Test1 | `23OCT24030928-S3DS-200012400977_01_P001` |
+| `0Yv06` | `23OCT24030_0003` | vehicle | Test1 | `23OCT24030928-S3DS-200012400977_01_P001` |
+| `0Yv05` | `23OCT24030_0005` | vehicle | Test1 | `23OCT24030928-S3DS-200012400977_01_P001` |
+| `0Yv03` | `23OCT24030_0008` | vehicle | Test1 | `23OCT24030928-S3DS-200012400977_01_P001` |
+| `0Yv07` | `23OCT24030_0012` | vehicle | Test1 | `23OCT24030928-S3DS-200012400977_01_P001` |
+| `0Yv08` | `23OCT24030_0014` | vehicle | Test1 | `23OCT24030928-S3DS-200012400977_01_P001` |
+| `0Yv01` | `23OCT24030_0015` | vehicle | Test1 | `23OCT24030928-S3DS-200012400977_01_P001` |
+| `0Yr03` | `23OCT24030_0018` | radar | Test1 | `23OCT24030928-S3DS-200012400977_01_P001` |
+| unmatched | `23OCT24030_0020` | background | Test1 | `23OCT24030928-S3DS-200012400977_01_P001` |
+| `0Yr01` | `23OCT24030_0023` | radar | Test1 | `23OCT24030928-S3DS-200012400977_01_P001` |
+| `0Yr04` | `23OCT24030_0025` | radar | Test1 | `23OCT24030928-S3DS-200012400977_01_P001` |
+| unmatched | `23OCT24030_0026` | background | Test1 | `23OCT24030928-S3DS-200012400977_01_P001` |
+| unmatched | `24APR01051_0031` | background | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `0Zv0K` | `24APR01051_0037` | vehicle | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| unmatched | `24APR01051_0045` | background | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| unmatched | `24APR01051_0048` | background | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| unmatched | `24APR01051_0052` | background | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| unmatched | `24APR01051_0057` | background | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| unmatched | `24APR01051_0061` | background | Test1 | `24APR01051503-S3DS-200012320748_01_P001` |
+| `10v02` | `24DEC21030_0001` | vehicle | Test1 | `24DEC21030136-S3DS-200011913026_01_P001` |
+| `10v07` | `24DEC21030_0002` | vehicle | Test1 | `24DEC21030136-S3DS-200011913026_01_P001` |
+| unmatched | `24DEC21030_0006` | background | Test1 | `24DEC21030136-S3DS-200011913026_01_P001` |
+| `10r02` | `24DEC21030_0008` | radar | Test1 | `24DEC21030136-S3DS-200011913026_01_P001` |
+| `10s01` | `24DEC21030_0013` | smallvehicle | Test1 | `24DEC21030136-S3DS-200011913026_01_P001` |
+| `10l01` | `24DEC21030_0015` | logistic | Test1 | `24DEC21030136-S3DS-200011913026_01_P001` |
+| `10s02` | `24DEC21030_0016` | smallvehicle | Test1 | `24DEC21030136-S3DS-200011913026_01_P001` |
+| `10s03` | `24DEC21030_0018` | smallvehicle | Test1 | `24DEC21030136-S3DS-200011913026_01_P001` |
+| unmatched | `24DEC21030_0020` | background | Test1 | `24DEC21030136-S3DS-200011913026_01_P001` |
+| unmatched | `24DEC21030_0021` | background | Test1 | `24DEC21030136-S3DS-200011913026_01_P001` |
+| unmatched | `24DEC21030_0022` | background | Test1 | `24DEC21030136-S3DS-200011913026_01_P001` |
+| unmatched | `24DEC21030_0023` | background | Test1 | `24DEC21030136-S3DS-200011913026_01_P001` |
+| unmatched | `24DEC21030_0024` | background | Test1 | `24DEC21030136-S3DS-200011913026_01_P001` |
+| unmatched | `24DEC21030_0025` | background | Test1 | `24DEC21030136-S3DS-200011913026_01_P001` |
+| `11v05` | `24JAN04022_0001` | vehicle | Test1 | `24JAN04022720-S3DS-200013055297_01_P001` |
+| `11v04` | `24JAN04022_0005` | vehicle | Test1 | `24JAN04022720-S3DS-200013055297_01_P001` |
+| `11v06` | `24JAN04022_0008` | vehicle | Test1 | `24JAN04022720-S3DS-200013055297_01_P001` |
+| `11v07` | `24JAN04022_0018` | vehicle | Test1 | `24JAN04022720-S3DS-200013055297_01_P001` |
+| `11r02` | `24JAN04022_0057` | radar | Test1 | `24JAN04022720-S3DS-200013055297_01_P001` |
+| `11l07` | `24JAN04022_0060` | logistic | Test1 | `24JAN04022720-S3DS-200013055297_01_P001` |
+| unmatched | `24JAN04022_0068` | background | Test1 | `24JAN04022720-S3DS-200013055297_01_P001` |
+| `11l06` | `24JAN04022_0069` | logistic | Test1 | `24JAN04022720-S3DS-200013055297_01_P001` |
+| unmatched | `24JAN04022_0073` | background | Test1 | `24JAN04022720-S3DS-200013055297_01_P001` |
+| `11r01` | `24JAN04022_0082` | radar | Test1 | `24JAN04022720-S3DS-200013055297_01_P001` |
+| `13v04` | `24MAR27045_0018` | vehicle | Test1 | `24MAR27045953-S3DS-200013168941_01_P001` |
+| `13c05` | `24MAR27045_0022` | camo | Test1 | `24MAR27045953-S3DS-200013168941_01_P001` |
+| unmatched | `24MAR27045_0023` | background | Test1 | `24MAR27045953-S3DS-200013168941_01_P001` |
+| `16v05` | `26APR20052_0000` | vehicle | Test1 | `26APR20052910-S3DS-200013171094_01_P001` |
+| unmatched | `26MAY09052_0030` | background | Test1 | `26MAY09052126-S3DS-200013142970_01_P001` |
+| `18r02` | `141d9464_D_0003` | radar | Test2 | `141d9464_DS_PHR1B_202211150352306_FR1_PX_E103N26_0301_00320` |
+| `19v01` | `19MAY14060_0002` | vehicle | Test2 | `19MAY14060259-S3DS-200013142968_01_P001` |
+| `19v02` | `19MAY14060_0003` | vehicle | Test2 | `19MAY14060259-S3DS-200013142968_01_P001` |
+| unmatched | `20SEP27061_0009` | background | Test2 | `20SEP27061806-S3DS-200011619312_01_P001` |
+| `1Cv02` | `21APR18030_0025` | vehicle | Test2 | `21APR18030819-S3DS-200013545084_01_P001` |
+| `1Cp02` | `21APR18030_0039` | spa | Test2 | `21APR18030819-S3DS-200013545084_01_P001` |
+| `1Cv01` | `21APR18030_0043` | vehicle | Test2 | `21APR18030819-S3DS-200013545084_01_P001` |
+| `1Cp01` | `21APR18030_0058` | spa | Test2 | `21APR18030819-S3DS-200013545084_01_P001` |
+| `1Ct0O` | `21APR18030_0059` | tank | Test2 | `21APR18030819-S3DS-200013545084_01_P001` |
+| `1Ct05` | `21APR18030_0064` | tank | Test2 | `21APR18030819-S3DS-200013545084_01_P001` |
+| `1Ct02` | `21APR18030_0067` | tank | Test2 | `21APR18030819-S3DS-200013545084_01_P001` |
+| `1Cp03` | `21APR18030_0080` | spa | Test2 | `21APR18030819-S3DS-200013545084_01_P001` |
+| `1Ct0M` | `21APR18030_0085` | tank | Test2 | `21APR18030819-S3DS-200013545084_01_P001` |
+| unmatched | `21APR18030_0086` | background | Test2 | `21APR18030819-S3DS-200013545084_01_P001` |
+| `1Ct08` | `21APR18030_0089` | tank | Test2 | `21APR18030819-S3DS-200013545084_01_P001` |
+| unmatched | `21APR18030_0096` | background | Test2 | `21APR18030819-S3DS-200013545084_01_P001` |
+| `1Ct01` | `21APR18030_0098` | tank | Test2 | `21APR18030819-S3DS-200013545084_01_P001` |
+| `1Ct12` | `21APR18030_0109` | tank | Test2 | `21APR18030819-S3DS-200013545084_01_P001` |
+| `1Ev02` | `22APR14045_0001` | vehicle | Test2 | `22APR14045506-S3DS-200013368123_01_P001` |
+| unmatched | `22APR14045_0003` | background | Test2 | `22APR14045506-S3DS-200013368123_01_P001` |
+| `1Ev03` | `22APR14045_0006` | vehicle | Test2 | `22APR14045506-S3DS-200013368123_01_P001` |
+| `1Ev01` | `22APR14045_0013` | vehicle | Test2 | `22APR14045506-S3DS-200013368123_01_P001` |
+| unmatched | `22APR14045_0021` | background | Test2 | `22APR14045506-S3DS-200013368123_01_P001` |
+| `1Ec01` | `22APR14045_0023` | camo | Test2 | `22APR14045506-S3DS-200013368123_01_P001` |
+| unmatched | `22APR14045_0024` | background | Test2 | `22APR14045506-S3DS-200013368123_01_P001` |
+| unmatched | `22APR14045_0029` | background | Test2 | `22APR14045506-S3DS-200013368123_01_P001` |
+| `1Fv06` | `22MAR02025_0005` | vehicle | Test2 | `22MAR02025946-S3DS-200012804518_01_P001` |
+| `1Fv0F` | `22MAR02025_0009` | vehicle | Test2 | `22MAR02025946-S3DS-200012804518_01_P001` |
+| `1Fv1J` | `22MAR02025_0021` | vehicle | Test2 | `22MAR02025946-S3DS-200012804518_01_P001` |
+| `1Fv1E` | `22MAR02025_0050` | vehicle | Test2 | `22MAR02025946-S3DS-200012804518_01_P001` |
+| `1Fv0A` | `22MAR02025_0072` | vehicle | Test2 | `22MAR02025946-S3DS-200012804518_01_P001` |
+| `1Fs04` | `22MAR02025_0095` | smallvehicle | Test2 | `22MAR02025946-S3DS-200012804518_01_P001` |
+| unmatched | `22MAR07045_0151` | background | Test2 | `22MAR07045331-S3DS-200013349499_01_P001` |
+| `1Ht12` | `22OCT21045_0046` | tank | Test2 | `22OCT21045409-S3DS-200012483671_01_P001` |
+| `1Ht0M` | `22OCT21045_0084` | tank | Test2 | `22OCT21045409-S3DS-200012483671_01_P001` |
+| `1Ht0L` | `22OCT21045_0090` | tank | Test2 | `22OCT21045409-S3DS-200012483671_01_P001` |
+| `1Ht0Z` | `22OCT21045_0092` | tank | Test2 | `22OCT21045409-S3DS-200012483671_01_P001` |
+| `1Ht16` | `22OCT21045_0156` | tank | Test2 | `22OCT21045409-S3DS-200012483671_01_P001` |
+| `1Hc0P` | `22OCT21045_0159` | camo | Test2 | `22OCT21045409-S3DS-200012483671_01_P001` |
+| `1Ht0W` | `22OCT21045_0163` | tank | Test2 | `22OCT21045409-S3DS-200012483671_01_P001` |
+| `1Hc0O` | `22OCT21045_0191` | camo | Test2 | `22OCT21045409-S3DS-200012483671_01_P001` |
+| `1Ht17` | `22OCT21045_0226` | tank | Test2 | `22OCT21045409-S3DS-200012483671_01_P001` |
+| `1Iv04` | `234045af_D_0003` | vehicle | Test2 | `234045af_DS_PHR1B_201808290337504_FR1_PX_E108N34_0924_00286` |
+| `1Iv05` | `234045af_D_0006` | vehicle | Test2 | `234045af_DS_PHR1B_201808290337504_FR1_PX_E108N34_0924_00286` |
+| `1Iv06` | `234045af_D_0007` | vehicle | Test2 | `234045af_DS_PHR1B_201808290337504_FR1_PX_E108N34_0924_00286` |
+| unmatched | `234045af_D_0008` | background | Test2 | `234045af_DS_PHR1B_201808290337504_FR1_PX_E108N34_0924_00286` |
+| `1Iv01` | `234045af_D_0010` | vehicle | Test2 | `234045af_DS_PHR1B_201808290337504_FR1_PX_E108N34_0924_00286` |
+| `1Iv09` | `234045af_D_0011` | vehicle | Test2 | `234045af_DS_PHR1B_201808290337504_FR1_PX_E108N34_0924_00286` |
+| `1Iv08` | `234045af_D_0013` | vehicle | Test2 | `234045af_DS_PHR1B_201808290337504_FR1_PX_E108N34_0924_00286` |
+| `1Iv0I` | `234045af_D_0015` | vehicle | Test2 | `234045af_DS_PHR1B_201808290337504_FR1_PX_E108N34_0924_00286` |
+| `1Iv03` | `234045af_D_0016` | vehicle | Test2 | `234045af_DS_PHR1B_201808290337504_FR1_PX_E108N34_0924_00286` |
+| unmatched | `234045af_D_0018` | background | Test2 | `234045af_DS_PHR1B_201808290337504_FR1_PX_E108N34_0924_00286` |
+| `1Ir04` | `234045af_D_0019` | radar | Test2 | `234045af_DS_PHR1B_201808290337504_FR1_PX_E108N34_0924_00286` |
+| `1Iv07` | `234045af_D_0020` | vehicle | Test2 | `234045af_DS_PHR1B_201808290337504_FR1_PX_E108N34_0924_00286` |
+| `1Ir03` | `234045af_D_0021` | radar | Test2 | `234045af_DS_PHR1B_201808290337504_FR1_PX_E108N34_0924_00286` |
+| unmatched | `234045af_D_0022` | background | Test2 | `234045af_DS_PHR1B_201808290337504_FR1_PX_E108N34_0924_00286` |
+| unmatched | `234045af_D_0024` | background | Test2 | `234045af_DS_PHR1B_201808290337504_FR1_PX_E108N34_0924_00286` |
+| unmatched | `234045af_D_0027` | background | Test2 | `234045af_DS_PHR1B_201808290337504_FR1_PX_E108N34_0924_00286` |
+| unmatched | `234045af_D_0029` | background | Test2 | `234045af_DS_PHR1B_201808290337504_FR1_PX_E108N34_0924_00286` |
+| `1Iv0B` | `234045af_D_0030` | vehicle | Test2 | `234045af_DS_PHR1B_201808290337504_FR1_PX_E108N34_0924_00286` |
+| `1Jv10` | `23FEB01050_0010` | vehicle | Test2 | `23FEB01050006-S3DS-200013142308_01_P001` |
+| `1Jv11` | `23FEB01050_0014` | vehicle | Test2 | `23FEB01050006-S3DS-200013142308_01_P001` |
+| `1Jv0Z` | `23FEB01050_0015` | vehicle | Test2 | `23FEB01050006-S3DS-200013142308_01_P001` |
+| `1Jv0Y` | `23FEB01050_0021` | vehicle | Test2 | `23FEB01050006-S3DS-200013142308_01_P001` |
+| `1Kr02` | `23JAN10050_0005` | radar | Test2 | `23JAN10050425-S3DS-200012483667_01_P001` |
+| `1Kv01` | `23JAN10050_0008` | vehicle | Test2 | `23JAN10050425-S3DS-200012483667_01_P001` |
+| unmatched | `23JAN10050_0013` | background | Test2 | `23JAN10050425-S3DS-200012483667_01_P001` |
+| unmatched | `23JAN15044_0539` | background | Test2 | `23JAN15044817-S3DS-200012483668_01_P001` |
+| unmatched | `23JAN15044_0553` | background | Test2 | `23JAN15044817-S3DS-200012483668_01_P001` |
+| unmatched | `23JAN15044_0563` | background | Test2 | `23JAN15044817-S3DS-200012483668_01_P001` |
+| unmatched | `23JAN15044_0565` | background | Test2 | `23JAN15044817-S3DS-200012483668_01_P001` |
+| unmatched | `23JAN15044_0575` | background | Test2 | `23JAN15044817-S3DS-200012483668_01_P001` |
+| unmatched | `23JAN15044_0590` | background | Test2 | `23JAN15044817-S3DS-200012483668_01_P001` |
+| unmatched | `23JAN15044_0601` | background | Test2 | `23JAN15044817-S3DS-200012483668_01_P001` |
+| unmatched | `23JAN15044_0620` | background | Test2 | `23JAN15044817-S3DS-200012483668_01_P001` |
+| `1Pv13` | `23MAY19062_0002` | vehicle | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` |
+| `1Pv05` | `23MAY19062_0006` | vehicle | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` |
+| `1Pl09` | `23MAY19062_0042` | logistic | Test2 | `23MAY19062258-S3DS-200011619589_01_P001` |
+| `1Qc1T` | `24APR06053_0007` | camo | Test2 | `24APR06053032-S3DS-200013392575_01_P001` |
+| `1Qc0H` | `24APR06053_0010` | camo | Test2 | `24APR06053032-S3DS-200013392575_01_P001` |
+| `1Qc1R` | `24APR06053_0014` | camo | Test2 | `24APR06053032-S3DS-200013392575_01_P001` |
+| `1Rv03` | `24DEC24042_0000` | vehicle | Test2 | `24DEC24042920-S3DS-200013378864_01_P001` |
+| `1Rv02` | `24DEC24042_0001` | vehicle | Test2 | `24DEC24042920-S3DS-200013378864_01_P001` |
+| `1Rv04` | `24DEC24042_0003` | vehicle | Test2 | `24DEC24042920-S3DS-200013378864_01_P001` |
+| unmatched | `24DEC24042_0011` | background | Test2 | `24DEC24042920-S3DS-200013378864_01_P001` |
+| `1Rv06` | `24DEC24042_0012` | vehicle | Test2 | `24DEC24042920-S3DS-200013378864_01_P001` |
+| unmatched | `24DEC24042_0013` | background | Test2 | `24DEC24042920-S3DS-200013378864_01_P001` |
+| `1Rv09` | `24DEC24042_0014` | vehicle | Test2 | `24DEC24042920-S3DS-200013378864_01_P001` |
+| `1Sv01` | `24NOV27054_0000` | vehicle | Test2 | `24NOV27054611-S3DS-200012866946_01_P001` |
+| `1Sv03` | `24NOV27054_0001` | vehicle | Test2 | `24NOV27054611-S3DS-200012866946_01_P001` |
+| `1Sv02` | `24NOV27054_0002` | vehicle | Test2 | `24NOV27054611-S3DS-200012866946_01_P001` |
+| `1Sv04` | `24NOV27054_0005` | vehicle | Test2 | `24NOV27054611-S3DS-200012866946_01_P001` |
+| `1Sv0D` | `24NOV27054_0007` | vehicle | Test2 | `24NOV27054611-S3DS-200012866946_01_P001` |
+| `1Sv05` | `24NOV27054_0008` | vehicle | Test2 | `24NOV27054611-S3DS-200012866946_01_P001` |
+| `1Te03` | `24OCT29045_0000` | aerial | Test2 | `24OCT29045607-S3DS-200013168961_01_P001` |
+| `1Tv03` | `24OCT29045_0003` | vehicle | Test2 | `24OCT29045607-S3DS-200013168961_01_P001` |
+| `1Uv04` | `24SEP08053_0000` | vehicle | Test2 | `24SEP08053532-S3DS-200013142971_01_P001` |
+| `1Uv01` | `24SEP08053_0004` | vehicle | Test2 | `24SEP08053532-S3DS-200013142971_01_P001` |
+| `1Yv02` | `25JAN29042_0005` | vehicle | Test2 | `25JAN29042609-S3DS-200013367959_01_P001` |
+| `1Yc03` | `25JAN29042_0008` | camo | Test2 | `25JAN29042609-S3DS-200013367959_01_P001` |
+| `1Yr02` | `25JAN29042_0011` | radar | Test2 | `25JAN29042609-S3DS-200013367959_01_P001` |
+| `1Zs01` | `25MAR23054_0013` | smallvehicle | Test2 | `25MAR23054346-S3DS-200011078330_01_P001` |
+| unmatched | `25MAR23054_0022` | background | Test2 | `25MAR23054346-S3DS-200011078330_01_P001` |
+| `21v01` | `25MAR31055_0002` | vehicle | Test2 | `25MAR31055119-S3DS-200012804523_01_P001` |
+| `21s03` | `25MAR31055_0003` | smallvehicle | Test2 | `25MAR31055119-S3DS-200012804523_01_P001` |
+| `22v0B` | `25MAY16062_0034` | vehicle | Test2 | `25MAY16062255-S3DS-200011655555_01_P001` |
+| `22v05` | `25MAY16062_0065` | vehicle | Test2 | `25MAY16062255-S3DS-200011655555_01_P001` |
+| `22v0P` | `25MAY16062_0075` | vehicle | Test2 | `25MAY16062255-S3DS-200011655555_01_P001` |
+| `24v07` | `26d44cd2_D_0015` | vehicle | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` |
+| `24v0B` | `26d44cd2_D_0020` | vehicle | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` |
+| `24v06` | `26d44cd2_D_0024` | vehicle | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` |
+| `24v03` | `26d44cd2_D_0026` | vehicle | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` |
+| `24v0H` | `26d44cd2_D_0028` | vehicle | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` |
+| `24v05` | `26d44cd2_D_0031` | vehicle | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` |
+| `24v08` | `26d44cd2_D_0034` | vehicle | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` |
+| `24v04` | `26d44cd2_D_0036` | vehicle | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` |
+| `24v0C` | `26d44cd2_D_0044` | vehicle | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` |
+| `24v0F` | `26d44cd2_D_0045` | vehicle | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` |
+| unmatched | `26d44cd2_D_0047` | background | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` |
+| `24v19` | `26d44cd2_D_0049` | vehicle | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` |
+| `24v0I` | `26d44cd2_D_0050` | vehicle | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` |
+| `24v0K` | `26d44cd2_D_0052` | vehicle | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` |
+| `24v18` | `26d44cd2_D_0053` | vehicle | Test2 | `26d44cd2_DS_PHR1A_202012190354245_FR1_PX_E104N31_0306_00349` |
+| `26v0B` | `852dc76a_D_0000` | vehicle | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `26v0E` | `852dc76a_D_0001` | vehicle | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `26v0K` | `852dc76a_D_0002` | vehicle | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `26v0G` | `852dc76a_D_0003` | vehicle | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `26v0F` | `852dc76a_D_0005` | vehicle | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `26v04` | `852dc76a_D_0006` | vehicle | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `26l07` | `852dc76a_D_0009` | logistic | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `26v0H` | `852dc76a_D_0011` | vehicle | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `26v0J` | `852dc76a_D_0012` | vehicle | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `26l08` | `852dc76a_D_0014` | logistic | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `26v0Q` | `852dc76a_D_0019` | vehicle | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `26v05` | `852dc76a_D_0021` | vehicle | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `26v0N` | `852dc76a_D_0022` | vehicle | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `26v0P` | `852dc76a_D_0023` | vehicle | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `26v0C` | `852dc76a_D_0025` | vehicle | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| unmatched | `852dc76a_D_0026` | background | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `26v03` | `852dc76a_D_0027` | vehicle | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `26v0I` | `852dc76a_D_0028` | vehicle | Test2 | `852dc76a_DS_PHR1B_202003280350581_FR1_PX_E102N27_0724_00333` |
+| `28v0E` | `d8bba13b_D_0000` | vehicle | Test2 | `d8bba13b_DS_PHR1B_202109100317223_FR1_PX_E113N31_0818_00355` |
+| `28v0D` | `d8bba13b_D_0003` | vehicle | Test2 | `d8bba13b_DS_PHR1B_202109100317223_FR1_PX_E113N31_0818_00355` |
+| `28v01` | `d8bba13b_D_0005` | vehicle | Test2 | `d8bba13b_DS_PHR1B_202109100317223_FR1_PX_E113N31_0818_00355` |
+| `28v06` | `d8bba13b_D_0006` | vehicle | Test2 | `d8bba13b_DS_PHR1B_202109100317223_FR1_PX_E113N31_0818_00355` |
+| `28v04` | `d8bba13b_D_0007` | vehicle | Test2 | `d8bba13b_DS_PHR1B_202109100317223_FR1_PX_E113N31_0818_00355` |
+| `28v03` | `d8bba13b_D_0008` | vehicle | Test2 | `d8bba13b_DS_PHR1B_202109100317223_FR1_PX_E113N31_0818_00355` |
+| `28v0H` | `d8bba13b_D_0009` | vehicle | Test2 | `d8bba13b_DS_PHR1B_202109100317223_FR1_PX_E113N31_0818_00355` |
+| `28v02` | `d8bba13b_D_0010` | vehicle | Test2 | `d8bba13b_DS_PHR1B_202109100317223_FR1_PX_E113N31_0818_00355` |
+| `28v08` | `d8bba13b_D_0011` | vehicle | Test2 | `d8bba13b_DS_PHR1B_202109100317223_FR1_PX_E113N31_0818_00355` |
+| `28v0F` | `d8bba13b_D_0013` | vehicle | Test2 | `d8bba13b_DS_PHR1B_202109100317223_FR1_PX_E113N31_0818_00355` |
+| `28c01` | `d8bba13b_D_0015` | camo | Test2 | `d8bba13b_DS_PHR1B_202109100317223_FR1_PX_E113N31_0818_00355` |
+| `28v07` | `d8bba13b_D_0020` | vehicle | Test2 | `d8bba13b_DS_PHR1B_202109100317223_FR1_PX_E113N31_0818_00355` |

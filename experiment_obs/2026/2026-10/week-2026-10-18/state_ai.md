@@ -68,3 +68,7 @@ Experiment09 full-scene C1 metrics now appear as formatted tables in the [daily 
 ## 2026-10-23T17:24:07.022965+05:30 — C1 error review artifact saved
 
 [Experiment09 radar gallery](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/error_review/radar_errors.html) covers256 cases;radar262/missile425IDledgers saved plus [notebook ID snapshot](/sfs/vlm_qwen/experiment_obs/2026/2026-10/week-2026-10-18/experiments/EXP-2026-10-23-09-c1-full-stage1-eval/error_ids_ai.md). ActualmissilecasesIDs-only,no missile gallery. Exactimage/ID/countchecks passed;no new inference. [Daily note](daily/2026-10-23_ai.md).
+
+## 2026-10-23T19:11:50.869643+05:30 — permanent ID baseline saved
+
+Experiment09 exports now link4108frozenGTobjects to existingofficialIDs. [387radar/missileGTbaseline](/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/reports/error_review/comparison_ids/ALL_TARGET_GT_BASELINE.csv),219misses,and4231proposalbaseline ready forlatermatching. Counts/maps/statuschecks passed;no othermodel evaluated. [Daily](daily/2026-10-23_ai.md).
