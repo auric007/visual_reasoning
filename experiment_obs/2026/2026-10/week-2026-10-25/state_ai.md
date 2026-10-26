@@ -29,3 +29,8 @@ No new training or inference has started. The next training recipe and paper-bas
 ## 26 October 2026, 16:11 IST — Previous-week conclusions reviewed
 
 The human report is unchanged. A sourced claim review and suggested wording are saved in the [previous weekly AI report](../../week-2026-10-18/weekly_report_ai.md#review-of-your-conclusions). The confusion matrix is correct; causal claims and cohort/recall wording need qualification. This review produced no new model results.
+
+
+## 26 October 2026, 19:50 IST — Aggregate comparison preflight completed
+
+Verified checkpoint and scene-manifest identities; saved the [report-comparability audit](/sfs/vlm_qwen/experiment_obs/knowledge/evaluation_comparability_ai.md). Existing VLM and Stage2 headline scores have incompatible taxonomies, matching rules and denominators. No new model result or instance-overlap experiment was produced. This dated update supersedes the earlier statement that the Stage2 prediction-file locations were still unknown.

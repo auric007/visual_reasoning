@@ -1,0 +1,66 @@
+{
+  "author": "Codex",
+  "human_companion": "evaluation_comparability_checks.json",
+  "task_id": "RN-20261026-vlm-stage2-report-audit",
+  "as_of_ist": "26 October 2026, 19:50 IST",
+  "scope": "saved metadata and aggregate-report audit only",
+  "not_performed": [
+    "model inference",
+    "training",
+    "instance-level overlap",
+    "rescoring",
+    "threshold optimization"
+  ],
+  "checks_passed": [
+    "Both original test manifests contain exactly the same 80 scene stems",
+    "The clean VLM cohort is a 67-scene subset of that 80-scene manifest",
+    "The VLM scene metadata identifies 12 training-exposed scenes",
+    "The VLM scene metadata identifies 79 geometry-valid scenes",
+    "C1 final training completed at update 492",
+    "C1 training and its original diagnostic exited successfully",
+    "Both full VLM reports reference C1_class_only",
+    "Final adapter configuration and weights match their saved clean-evaluation hashes",
+    "Clean67 aggregate confusion totals equal the reported proposal count",
+    "All80 aggregate confusion totals equal the reported proposal count",
+    "The later audit preserves the earlier clean classification and end-to-end aggregates",
+    "m0001 deploy contains a text file for every test scene",
+    "best-per-class contains a text file for every test scene",
+    "draft GT export contains a text file for every test scene",
+    "best_per_class saved aggregate P/R/F1 are arithmetically consistent",
+    "m0001_deploy saved aggregate P/R/F1 are arithmetically consistent",
+    "All source reports, checkpoint files and manifests remain byte-identical",
+    "All previously existing human notes remain byte-identical",
+    "The report uses the required authorship marker and ordinary readable prose"
+  ],
+  "source_sha256": {
+    "/sfs/stage2/experiment_obs/knowledge/test_predictions_guide_ai.md": "a13507003dee3b38c6ba36270b2a1cf05d045a27291d32fcbe7ff93d70e359ae",
+    "/sfs/stage2/experiment_obs/2026/2026-10/week-2026-10-25/experiments/EXP-2026-10-26-02-best-pred-files-guide/best_per_class_check_ai.json": "bf9f3a2f25b10bf41fa3bcbe34d81694f529ebb4ef5728dae8d848a654ceda34",
+    "/sfs/stage2/artifacts/EXP-2026-09-01-01-final-ensemble-train/state/test_scenes.txt": "33a8ff8d17317c7dddbe994b2147739b5349d807f1cd67fedf300e842242b82f",
+    "/sfs/stage2/models/BEST/MODEL_CARD.md": "b72b571d59a24ae32bb7e557304db5da01ebad335066450078e4e6c4dcc5a43a",
+    "/sfs/stage2/artifacts/EXP-2026-09-01-01-final-ensemble-train/predictions_deploy/STATS.md": "454fca062ec0f7f329bb0c689846b1663db6faea520256c40f269efece07ed15",
+    "/sfs/vlm_qwen/experiments/2026-10-19/08_class_only_fourway_sft/config.json": "a415b066417c126b6813d296d743a74daee150d3403b4493627f7dd9dc9a3f6f",
+    "/sfs/vlm_qwen/experiments/2026-10-19/08_class_only_fourway_sft/TRAINING_COMPLETE.json": "2594f462e9a499bb99f0ee47213e7374f1263917d009f15fa6955a86bd4a310a",
+    "/sfs/vlm_qwen/experiments/2026-10-19/08_class_only_fourway_sft/EXIT.json": "bf9c7133dffdbe0e17a66ce8d48be45ee076d144d6695c3714e007ab7d3ec965",
+    "/sfs/vlm_qwen/experiments/2026-10-19/09_c1_full_stage1_eval/eval/METRICS.json": "267710791cf0ac3ef08c35e7076db8c6d42c3211faf253827cb86245e83d66fc",
+    "/sfs/vlm_qwen/experiments/2026-10-19/10_all80_inclusive_eval/eval/METRICS.json": "8d66d3b3e03791c71bdb84206e24e5d328d51e65dfffb80edf1f8e356f376e73",
+    "/sfs/vlm_qwen/experiments/2026-10-19/10_all80_inclusive_eval/data/scenes.json": "d0cecf3a9a0b66743d3e9d05a8866431de937901a9c5c2cf65fd709ce46bf29e",
+    "/sfs/vlm_qwen/experiments/2026-10-19/10_all80_inclusive_eval/reports/COHORT.json": "19e06dff3e9abf7495aadbcc094307da6c0317a995a07f9ab789ace419bfe647",
+    "/sfs/vlm_qwen/experiments/2026-10-19/08_class_only_fourway_sft/runs/C1_class_only/adapter_config.json": "31f547765afc477709335335d87f8437246b8bdffbbb1c275cf3b95d67625554",
+    "/sfs/vlm_qwen/experiments/2026-10-19/08_class_only_fourway_sft/runs/C1_class_only/adapter_model.safetensors": "6949fc01f9b7f6489bb4152ed54e8049fd93ea1c68873813b51663d793187752"
+  },
+  "counts": {
+    "scene_manifest_intersection": 80,
+    "clean_scenes": 67,
+    "geometry_valid_scenes": 79,
+    "training_exposed_scenes": 12
+  },
+  "revision": {
+    "vlm_research_code": "unversioned",
+    "stage2_research_code": "e5af44c4bcc6763cb5031887bc9c56b071ad4508",
+    "stage2_preexisting_dirty": true,
+    "notebook_head_at_audit": {
+      "vlm_qwen": "c7177948abc86271112596f1d62a60af8de78585",
+      "stage2": "6cb758332f29e97ce3686046d8ba626aad07b7bb"
+    }
+  }
+}
