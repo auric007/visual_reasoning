@@ -17,4 +17,4 @@ We need to focus this week
 |Background|95|72|521|**333**|
 
 ## About p_camo
-	 One 
+	 Merging p_camo==yes instances of radar and missile into camo is not helping at all, training them under their parent class giving a way better results
