@@ -6,9 +6,9 @@ Updated: 26 October 2026, 15:56 IST. Task: `RN-20261026-week-start`.
 
 ## Current priorities
 
-1. Compare VLM and Stage2 YOLO instance-level errors.
-2. Define and run the next VLM training experiment.
-3. Read the grounding/data-selection papers and design an experiment.
+1. Define and run the next VLM training experiment.
+2. Read the grounding/data-selection papers and design an experiment.
+3. Optionally extend the completed VLM–YOLO comparison to false-positive overlap and a prospective fusion rule.
 
 You confirmed all three tasks on 26 October, with the comparison first. The earlier “selection pending” status is no longer current.
 
@@ -19,6 +19,12 @@ The previous all-80 audit finished successfully. All 6,983 predictions and the c
 ## Work in progress
 
 The Stage2 baseline has been identified as `m0001_sep_w1_ensemble`. Prediction files and evaluation settings still need to be aligned before computing the VLM–YOLO comparison. No cross-model results have been produced yet.
+
+## 26 October 2026, 20:19 IST — VLM–YOLO target overlap completed
+
+[EXP-2026-10-26-01](experiments/EXP-2026-10-26-01-vlm-stage2-overlap/record_ai.md) aligned permanent target IDs and rematched m0001 using the VLM's IoU 0.50 convention. On the clean 67-scene cohort, 138 targets are correct for both systems, 30 only for the VLM, 66 only for YOLO and 153 for neither. YOLO gets 204/387 targets, the VLM 168/387 and the oracle union 234/387. No fusion rule or false-positive overlap has been tested.
+
+This supersedes the earlier work-in-progress paragraph above; it remains as dated history.
 
 ## Training status
 

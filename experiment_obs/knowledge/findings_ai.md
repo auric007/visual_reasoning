@@ -26,3 +26,7 @@ Among772 INCLUDED reviewed-teacher records,128 have188 substantively changed sel
 ## 2026-10-23T00:48:10+05:30 — class-only corpus/recipe comparison
 
 On identical256 clean-Test1 proposals,C1 macro-F1.553 versus R1.202;non-target false acceptance33/128 versus128/128. This supports improved classification/rejection in this diagnostic,not a causal effect of rationale removal (data also changed). Missile precision improves with reduced recall;both models produce short outputs when asked,so no meaningful inference-speed gain measured. [Report](/sfs/vlm_qwen/experiments/2026-10-19/08_class_only_fourway_sft/reports/COMPARISON.md).
+
+## 26 October 2026 — C1 and m0001 correct-instance overlap
+
+Under a shared raw-label, class-agnostic one-to-one IoU 0.50 rematch on the clean 67-scene cohort, C1 and m0001 are both correct for 138/387 radar-or-missile GT targets. C1 alone is correct for 30, m0001 alone for 66 and neither for 153. Of the 168 C1-correct targets, 82.1% are also correct for m0001. The VLM-only subset is non-zero and concentrated more in missile (22) than radar (8), but no real fusion gain is established because an oracle union ignores false-positive interactions and routing errors. [Experiment record](../2026/2026-10/week-2026-10-25/experiments/EXP-2026-10-26-01-vlm-stage2-overlap/record_ai.md).

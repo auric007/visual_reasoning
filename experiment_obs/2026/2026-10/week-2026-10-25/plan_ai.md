@@ -8,7 +8,8 @@ We plan to work on all three items this week. Start with the VLM versus Stage2 Y
 
 ## This week's TODO
 
-- [ ] **Compare VLM and Stage2 YOLO errors — first priority.** Use the permanent GT instance IDs to find objects both models miss, objects only one model gets right, and their misclassifications and false positives. First align the test scenes, class definitions, coordinates and IoU threshold.
+- [x] **Compare VLM and Stage2 YOLO target outcomes — completed.** Permanent GT IDs were aligned and correct-instance overlap was measured under a shared raw-label, IoU 0.50 rule. See [EXP-2026-10-26-01](experiments/EXP-2026-10-26-01-vlm-stage2-overlap/record_ai.md).
+- [ ] **Optional continuation:** compare false-positive overlap and test a prospective fusion rule. The completed oracle-union analysis is not itself a deployable fusion result.
 - [ ] **Define and run the next VLM training experiment.** Decide what to change in the data or training recipe, choose the baseline, and check the final images and prompts for label leakage before training.
 - [ ] **Read the grounding and data-selection papers, then design an experiment.** Select a specific hypothesis and a way to test it before implementing the idea.
 
