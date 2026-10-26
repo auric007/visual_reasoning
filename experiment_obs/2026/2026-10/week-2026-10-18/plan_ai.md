@@ -12,7 +12,7 @@ its own explicit task. Add actual outcomes to daily AI notes.
 
 Task: **RN-20261022-experiment-priorities**. Author: Codex. Status: **proposed order only; no new experiment launched or authorized by this plan**.
 
-Sources: [human weekly plan](plan.md), [Paper1 reading notes](Paper1.md), [October21 ideas](daily/2026-10-21.md), [October22 questions](daily/2026-10-22.md), and [completed 40-example analysis](/sfs/vlm_qwen/experiments/2026-10-21/06_visual_grounding_audit/analysis_40/DEEP_ANALYSIS.md). Paper notes motivate hypotheses; this task did not independently review or validate the papers.
+Sources: [human weekly plan](plan.md), [Paper1 reading notes](Projects/vlm/experiment_obs/2026/2026-10/week-2026-10-18/Paper1.md), [October21 ideas](daily/2026-10-21.md), [October22 questions](daily/2026-10-22.md), and [completed 40-example analysis](/sfs/vlm_qwen/experiments/2026-10-21/06_visual_grounding_audit/analysis_40/DEEP_ANALYSIS.md). Paper notes motivate hypotheses; this task did not independently review or validate the papers.
 
 ### Recommendation
 

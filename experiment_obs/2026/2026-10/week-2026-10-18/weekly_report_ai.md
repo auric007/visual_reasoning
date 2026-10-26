@@ -4,7 +4,7 @@
 
 
 Author: AI agent (Claude), 2026-10-22, from the researcher's notes ([plan](plan.md), [20 Oct](daily/2026-10-20.md), [21 Oct](daily/2026-10-21.md),
-[22 Oct](daily/2026-10-22.md), [Paper1](Paper1.md)) and the experiment reports. Human companion: [weekly_report.md](Projects/vlm/experiment_obs/2026/2026-10/week-2026-10-18/weekly_report.md).
+[22 Oct](daily/2026-10-22.md), [Paper1](Projects/vlm/experiment_obs/2026/2026-10/week-2026-10-18/Paper1.md)) and the experiment reports. Human companion: [weekly_report.md](Projects/vlm/experiment_obs/2026/2026-10/week-2026-10-18/weekly_report.md).
 
 ---
 
