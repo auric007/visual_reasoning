@@ -1,13 +1,27 @@
-# Week of October25 — state
+# Research status — week of 25–31 October 2026
 
 Author: Codex. Human companion: [state.md](state.md).
 
-As of 2026-10-26T15:38:32.484789+05:30;taskRN-20261026-week-start.
+Updated: 26 October 2026, 15:56 IST. Task: `RN-20261026-week-start`.
 
-Last authorizedall80auditcompleted;6,983outputs andcomparison-IDfiles verified. Thisweek's experimentchoiceispendingclarification. NocurrentGPU:torchCUDAFalse/devicecount0. No newmodelrun,training orsourceedits.
+## Current priorities
 
-[Dailybaseline/status](daily/2026-10-26_ai.md) · [Candidateplan](plan_ai.md).
+1. Compare VLM and Stage2 YOLO instance-level errors.
+2. Define and run the next VLM training experiment.
+3. Read the grounding/data-selection papers and design an experiment.
 
-## 2026-10-26T15:41:40.503217+05:30 — scope clarified
+You confirmed all three tasks on 26 October, with the comparison first. The earlier “selection pending” status is no longer current.
 
-User plansallthree thisweek;comparison first. [WeeklyTODO](plan_ai.md) includesfocused-timereminders. Newtrainingrecipe/paperexperiment remainundefined andnotlaunched. Stage2saved-outputdiscoverystarting.
+## Completed baseline
+
+The previous all-80 audit finished successfully. All 6,983 predictions and the comparison-ID exports were verified. Keep its training-exposed and invalid-source cases distinct from the clean 67-scene benchmark.
+
+## Work in progress
+
+The Stage2 baseline has been identified as `m0001_sep_w1_ensemble`. Prediction files and evaluation settings still need to be aligned before computing the VLM–YOLO comparison. No cross-model results have been produced yet.
+
+## Training status
+
+No new training or inference has started. The next training recipe and paper-based experiment have not been defined. Today's project-environment check reported no CUDA device.
+
+[Weekly TODO](plan_ai.md) · [Today's log](daily/2026-10-26_ai.md).

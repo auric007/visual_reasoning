@@ -1,31 +1,47 @@
-# Week of October25–31 — experiment checklist
+# Experiments for 25–31 October 2026
 
 Author: Codex. Human companion: [plan.md](plan.md).
 
-Updated 2026-10-26T15:41:40.503217+05:30; task RN-20261026-week-start. **User clarified: do all three this week; start the VLM-versus-Stage2 comparison first.** The earlier selection-pending entry below is superseded by this clarification.
+Updated: 26 October 2026, 15:56 IST. Task: `RN-20261026-week-start`.
+
+We plan to work on all three items this week. Start with the VLM versus Stage2 YOLO comparison.
 
 ## This week's TODO
 
-- [ ] **1. Compare VLM vs Stage2 YOLO errors — first priority.** Align permanent GT IDs and compatible scenes/taxonomy/IoU; list shared misses, unique successes, misclassifications and false positives. Saved-output discovery is starting; no new model inference is required if the outputs are complete.
-- [ ] **2. Define and run a new VLM training experiment.** First settle the data/recipe change and baseline; inspect final inputs for label leakage. Training is not launched by this checklist; CUDA currently reports no available device.
-- [ ] **3. Read the grounding/data-selection papers and define the paper-based experiment.** Previous reading list: arXiv2307.13702 and2510.01454. Choose a testable hypothesis before implementing or running it; these papers have not been newly read in this session.
+- [ ] **Compare VLM and Stage2 YOLO errors — first priority.** Use the permanent GT instance IDs to find objects both models miss, objects only one model gets right, and their misclassifications and false positives. First align the test scenes, class definitions, coordinates and IoU threshold.
+- [ ] **Define and run the next VLM training experiment.** Decide what to change in the data or training recipe, choose the baseline, and check the final images and prompts for label leakage before training.
+- [ ] **Read the grounding and data-selection papers, then design an experiment.** Select a specific hypothesis and a way to test it before implementing the idea.
 
 ## Time to set aside
 
-- [ ] Reserve focused time this week to review the VLM–YOLO comparison and inspect the disagreement instances.
-- [ ] Reserve time to prepare/review the next training data and agree the experiment question.
-- [ ] Reserve time for the two papers, notes, and translating one idea into an experiment.
+- [ ] Make time to review the VLM–YOLO comparison and inspect examples where they disagree.
+- [ ] Make time to prepare and review the next training dataset and recipe.
+- [ ] Make time to read the two papers and write down an experiment idea.
 
-These are checklist reminders, not calendar events or automatic scheduled jobs. No durations or times have been invented.
+These are reminders. No calendar appointments have been scheduled.
 
-## Earlier kickoff notes — historical
+## Reading list
 
-As of 2026-10-26T15:38:32.484789+05:30;taskRN-20261026-week-start. User says to startthisweek's experiment;nohumanweeklybriefexistsyet. Awaitthependingclarificationratherthanchoosingtrainingoraresearchdirectionfromoldnotes.
+- [Measuring Faithfulness in Chain-of-Thought Reasoning](https://arxiv.org/abs/2307.13702).
+- [Data Selection for Fine-Tuning Vision Language Models via Cross Modal Alignment Trajectories](https://arxiv.org/abs/2510.01454).
 
-## Candidate starting points (not selected)
+## Where we are now
 
-1. **Offline VLM versus Stage2 errorcomparison**, motivatedby [the humanOctober23note](/sfs/vlm_qwen/experiment_obs/2026/2026-10/week-2026-10-18/daily/2026-10-23.md). IdentifytheexactStage2baseline,alignpermanentGTIDs,thenmeasure sharedmisses,complementarycorrectcases,andfalsepositives. Keepidenticalinput/candidatecomparisonsseparatefromdifferentdetectorend-to-endcomparisons. NoGPUneededifsavedoutputsarecomplete.
-2. **NewVLMtraining**:requiresastateddatachange/recipequestion;do notretrainwithoutknowingtheexperimentobjective. CUDAcurrentlyunavailable.
-3. **Grounding/data-selectionpaperstudy**:theprevioushumanplanlinks2307.13702 and2510.01454. Reading/implementationchoicepending;no paperclaimedreadthissession.
+The previous all-80 evaluation has finished. Its metrics and permanent instance-ID exports are available in [today's log](daily/2026-10-26_ai.md).
 
-Currentcheckpointbaseline and verifiedscores are in [today'snote](daily/2026-10-26_ai.md). All80diagnosticincludestraining-exposedscenes andonesource-invalidcase;clean67held-outscores stayseparate. No newexperimentallocatedor modelrunstarted.
+The Stage2 baseline has been identified as `m0001_sep_w1_ensemble`, which combines YOLOv8m-OBB and YOLO11l-OBB. We have not yet computed the instance-level comparison. The next step is to locate its saved predictions and align them with the VLM results.
+
+The first comparison can use saved results if they are complete. The project environment reported no available GPU during today's check. No new training or inference has started.
+
+## Evaluation rules to retain
+
+Keep the clean 67-scene results separate from the all-80 diagnostic. The all-80 result includes 12 scenes used for background training and one scene with an image/label mismatch.
+
+Do not directly compare Stage2's P04 headline scores with the VLM scores. They use different class rules. Match the evaluation settings first.
+
+## Decision history
+
+- **26 October, 15:38 IST:** the new week's experiment had not yet been selected.
+- **26 October, 15:41 IST:** you clarified that all three items belong on this week's TODO list, with the VLM–YOLO comparison first.
+
+This plan responds to your [23 October comparison note](../week-2026-10-18/daily/2026-10-23.md).

@@ -81,3 +81,19 @@ Large per-instance/per-scene outputs may stay linked to source artifacts or an
 AI-suffixed notebook report; keep a compact result table inline. Capture observed
 failures and small experiments too; do not invent missing historical tables or
 count multiple summaries of the same run as new experiments. Preserve human notes.
+
+## Readable research notes — user correction, 26 October 2026
+
+Write every note for the researcher to read in Obsidian. Use ordinary English,
+normal spaces between words, short paragraphs, clear headings and valid Markdown
+checklists. Never remove spaces to shorten a note or concatenate prose into long
+strings. Prefer a readable date and time; keep exact timestamps and task IDs in a
+small metadata line when needed.
+
+Keep current plans and status clear. Preserve earlier decisions as a brief dated
+history, and explicitly say when a later decision supersedes them. Do not leave
+obsolete selection-pending text looking like the current plan.
+
+Before saving, reread the rendered-facing prose. Check spacing, checklist items,
+links and tables. Preserve metric values, IDs and source paths during readability
+edits. Do not alter unsuffixed researcher notes.
