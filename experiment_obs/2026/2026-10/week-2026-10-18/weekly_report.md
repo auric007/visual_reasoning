@@ -17,4 +17,5 @@ We need to focus this week
 |Background|95|72|521|**333**|
 
 ## About p_camo
-	 Merging p_camo==yes instances of radar and missile into camo is not helping at all, training them under their parent class giving a way better results. The reason is not very known as of now, might be for radar and missile. for those which are predicted under radar and missile 
+	 Merging p_camo==yes instances of radar and missile into camo is not helping at all, training them under their parent class giving a way better results. The reason is not very known as of now, might be for radar and missile. for those p_camoed which are predicted under radar and missile, is because there feature/geomerty is obvious to model so just because they are placed here and model is overfitted on those platforms
+	 - For evaluating these set of problems, there are several technique in deep learning community 
