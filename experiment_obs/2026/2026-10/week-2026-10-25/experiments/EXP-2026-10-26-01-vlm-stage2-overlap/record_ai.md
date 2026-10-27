@@ -79,3 +79,30 @@ The script compiles. All overlap partitions sum to their support, correct-set id
 
 YOLO is stronger overall and particularly on radar. The VLM's correct instances are mostly a subset of YOLO's, but 30 clean-cohort targets are uniquely correct for the VLM, including 22 missiles. This is real complementarity in saved outcomes, but no deployable fusion benefit is established. False-positive overlap and a prospective fusion rule remain untested.
 
+## 28 October 2026, 00:30 IST — permanent unique-success ledger
+
+The researcher requested every instance behind the VLM-only and YOLO-only counts, including whether a YOLO-only target never reached the VLM or reached it and was misclassified. The analysis script now writes:
+
+- `/sfs/vlm_qwen/artifacts/EXP-2026-10-26-01-vlm-stage2-overlap/reports/INSTANCE_LEDGER.md`: readable tables containing every unique-success ID.
+- `INSTANCE_LEDGER_CLEAN67.csv`: 96 held-out unique-success rows.
+- `INSTANCE_LEDGER_ALL80.csv`: 119 rows, retaining training-exposure and source-validity flags.
+
+### Clean 67-scene categories
+
+| Category | Radar | Missile | Total |
+|---|---:|---:|---:|
+| VLM correct; YOLO has no matched box | 4 | 11 | 15 |
+| VLM correct; YOLO assigns wrong class | 4 | 11 | 15 |
+| YOLO correct; no Stage1 box reached VLM | 20 | 7 | 27 |
+| YOLO correct; box reached VLM but VLM misclassified | 15 | 24 | 39 |
+| **Total** | **43** | **53** | **96** |
+
+For the 39 cases that reached the VLM but were wrong: 20 missiles became `other`, 4 missiles became `radar`, 7 radars became `other`, and 8 radars became `missile`. For the 15 VLM-only cases where YOLO assigned a wrong class, YOLO predicted vehicle 7 times, radar 3, missile 2, and arty/camo/logistic once each.
+
+The ledger records GT ID, scene, split, class, category, clean eligibility, training exposure, geometry validity, VLM reachability/status/prediction/proposal ID and YOLO status/prediction/score/IoU. Validation passed for syntax, row counts, unique IDs, clean flags, category semantics, VLM reachability and JSON metadata. Output hashes:
+
+- `INSTANCE_LEDGER.md`: `074fec96a8a4cc425124eac52a3e8eeae8b0a8b5eecc3dd7e435b264128776d7`
+- `INSTANCE_LEDGER_CLEAN67.csv`: `1c4fbb574826e69ccb3029581df355b3e35dd08894cb375f8d198026e52eba49`
+- `INSTANCE_LEDGER_ALL80.csv`: `4d8d8581001019e9e020d00a6bd8152b30a8317f4ffcbb999e90d950bdf4e582`
+
+
