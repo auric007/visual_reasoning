@@ -105,4 +105,16 @@ The ledger records GT ID, scene, split, class, category, clean eligibility, trai
 - `INSTANCE_LEDGER_CLEAN67.csv`: `1c4fbb574826e69ccb3029581df355b3e35dd08894cb375f8d198026e52eba49`
 - `INSTANCE_LEDGER_ALL80.csv`: `4d8d8581001019e9e020d00a6bd8152b30a8317f4ffcbb999e90d950bdf4e582`
 
+### All-80 unique-success categories
+
+| Category | Radar | Missile | Total |
+|---|---:|---:|---:|
+| VLM correct; YOLO has no matched box | 6 | 12 | 18 |
+| VLM correct; YOLO assigns wrong class | 5 | 15 | 20 |
+| YOLO correct; no Stage1 box reached VLM | 24 | 11 | 35 |
+| YOLO correct; box reached VLM but VLM misclassified | 20 | 26 | 46 |
+| **Total** | **55** | **64** | **119** |
+
+Thus the inclusive 80-scene diagnostic contains 38 VLM-only successes and 81 YOLO-only successes. Of the 81 YOLO-only targets, 46 reached the VLM and were misclassified, while 35 never reached it because Stage1 supplied no matching proposal. Twenty-three of these 119 disagreement rows come from VLM-training-exposed scenes, so this table is diagnostic rather than a clean held-out estimate. No source-invalid target appears among the 119 disagreement rows.
+
 
