@@ -101,7 +101,7 @@ For the 39 cases that reached the VLM but were wrong: 20 missiles became `other`
 
 The ledger records GT ID, scene, split, class, category, clean eligibility, training exposure, geometry validity, VLM reachability/status/prediction/proposal ID and YOLO status/prediction/score/IoU. Validation passed for syntax, row counts, unique IDs, clean flags, category semantics, VLM reachability and JSON metadata. Output hashes:
 
-- `INSTANCE_LEDGER.md`: `074fec96a8a4cc425124eac52a3e8eeae8b0a8b5eecc3dd7e435b264128776d7`
+- `INSTANCE_LEDGER.md`: `8105f04b3879ffcc4db89e13fcb578a4c55cc9ec682c70174c1f5706bba606c9`
 - `INSTANCE_LEDGER_CLEAN67.csv`: `1c4fbb574826e69ccb3029581df355b3e35dd08894cb375f8d198026e52eba49`
 - `INSTANCE_LEDGER_ALL80.csv`: `4d8d8581001019e9e020d00a6bd8152b30a8317f4ffcbb999e90d950bdf4e582`
 
