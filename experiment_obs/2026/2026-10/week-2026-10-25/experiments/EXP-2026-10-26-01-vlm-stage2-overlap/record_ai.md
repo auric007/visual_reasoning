@@ -121,4 +121,8 @@ Thus the inclusive 80-scene diagnostic contains 38 VLM-only successes and 81 YOL
 
 A raw-tail audit showed that the status means no qualifying Stage1 box at the Level-2 operating threshold (confidence >= 0.50), not necessarily no raw detection at any confidence. Among three queried radar IDs, `18r01` had a confidence-0.1765 box at IoU 0.5460 and `1Br01` had a confidence-0.2472 box at IoU 0.6838; both were filtered before VLM inference. `08r02` had no overlapping prediction even in the saved confidence >= 0.001 tail; its nearest candidate had zero IoU and a 7.61-pixel edge separation. The permanent outcome remains `stage1_missed` under the evaluated pipeline, but the causal subtype is threshold-filtered for `18r01`/`1Br01` and true raw proposal miss for `08r02`.
 
+### Recovered-box VLM audit queued
+
+The fixed C1 four-class checkpoint will classify the exact recovered `18r01` and `1Br01` candidates using the evaluated close/context format. Reproducible code, manifest, metadata and verified views are under `artifacts/EXP-2026-10-26-01-vlm-stage2-overlap/low_conf_vlm_audit/`. The detached session `vlm_lowconf_two_box_audit` is waiting for the currently occupied GPU; no result is claimed until `RESULTS.md` exists.
+
 
