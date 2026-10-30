@@ -125,4 +125,8 @@ A raw-tail audit showed that the status means no qualifying Stage1 box at the Le
 
 The fixed C1 four-class checkpoint will classify the exact recovered `18r01` and `1Br01` candidates using the evaluated close/context format. Reproducible code, manifest, metadata and verified views are under `artifacts/EXP-2026-10-26-01-vlm-stage2-overlap/low_conf_vlm_audit/`. The detached session `vlm_lowconf_two_box_audit` is waiting for the currently occupied GPU; no result is claimed until `RESULTS.md` exists.
 
+### Recovered-box C1 result
+
+At the researcher's request, the waiting GPU queue was cancelled and the two-row diagnostic completed on CPU only (`CUDA_VISIBLE_DEVICES=-1`, BF16, greedy, 32 threads). C1 returned `<answer>radar</answer>` for both radar GTs: `18r01` (Stage1 confidence 0.1765, IoU 0.5460, 52.7 seconds) and `1Br01` (confidence 0.2472, IoU 0.6838, 9.9 seconds). Thus both were recoverable classifier true positives if their low-confidence boxes were forwarded. This selected-case result does not measure global false-positive inflation from lowering the Stage1 threshold.
+
 
