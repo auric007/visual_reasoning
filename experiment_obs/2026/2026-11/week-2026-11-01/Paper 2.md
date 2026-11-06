@@ -19,3 +19,4 @@ Imagine a dog on grass, with the question “What animal is grazing?” A model 
 
 Source: paper introduction, Section 2, and Figure 2. Explanation added by Codex at the researcher's request.
 
+
