@@ -22,3 +22,7 @@ Source: paper introduction, Section 2, and Figure 2. Explanation added by Codex 
 
 
 Question: They test whether learning this location task also helps the model avoid claiming to see objects when visual evidence is absent
+
+
+NOTE: LOOK does not train a better visual feature extractor. The paper freezes the vision encoder and projector, and trains adapters in the language model
+
