@@ -18,3 +18,4 @@ There are four questions worth discussing as we read:
 4. Experimental reliability: Are the gains attributable to better data, larger intermediate candidate pools, or additional compute? Does improving benchmark averages necessarily improve fine-grained visual reasoning?
 
 
+Incomplete yet, will read later
