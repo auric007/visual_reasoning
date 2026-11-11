@@ -33,6 +33,15 @@ outputs, and the paper-derived experiment lacks a defined hypothesis. Nothing wa
 launched by the audit. Estimated elapsed time is 13–22 hours for experiments 1–4,
 or 21–36 hours if a reviewed experiment 5 is later authorized.
 
+## Update — 11 November 2026, 20:32 IST
+
+The researcher authorized and launched the staged queue. Experiment 1 is complete:
+C1 recovered 21 B1 errors, regressed on 15 and improved paired radar correctness
+from 58/119 to 64/119. Experiments 2–4 now have isolated resumable scripts; experiment
+5 is constrained to a nontrainable review manifest and a hard stop before retraining.
+Experiment 6 remains unqueued. Runtime status is authoritative in
+`/sfs/vlm_qwen/experiments/2026-11-11/QUEUE_11_15/state/status.json`.
+
 ## Secondary work
 
 - Finish the two recent paper notes and define one controlled paper-derived study.
