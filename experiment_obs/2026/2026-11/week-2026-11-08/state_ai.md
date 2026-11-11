@@ -42,6 +42,14 @@ from 58/119 to 64/119. Experiments 2–4 now have isolated resumable scripts; ex
 Experiment 6 remains unqueued. Runtime status is authoritative in
 `/sfs/vlm_qwen/experiments/2026-11-11/QUEUE_11_15/state/status.json`.
 
+## Update — 12 November 2026, 02:43 IST
+
+Experiment-2 preparation is complete: 45,501 candidates and 91,002 images passed
+integrity checks. A post-write JSON summary error stopped the first queue; it was
+fixed without rebuilding data. The detached queue resumed fixed-C1 inference on
+the L40S. First checkpoint rate was 1.973 rows/s, giving 6.39 hours for that
+inference stage and approximately 13–17 hours for the remaining full queue.
+
 ## Secondary work
 
 - Finish the two recent paper notes and define one controlled paper-derived study.
