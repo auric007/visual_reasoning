@@ -22,3 +22,12 @@ Detached queue session `vlm_qwen_study_queue` entered candidate preparation at
 15:04:28Z. At the first process check, two historical scenes and 1,014 candidates
 had rendered; the preparation process was active. Final counts and metrics remain
 pending and must be read from the run artifacts after completion.
+
+## Recovery — 12 November, 02:40 IST
+
+Preparation rendered all 45,501 candidates but stopped while writing `PREPARE.json`
+because tuple-valued Counter keys were not JSON serializable. This was a reporting
+bug after the manifest/image writes, not a model or data failure. The serializer
+and resume path were fixed. Integrity checks verified 45,501 unique rows and all
+91,002 images. The queue resumed fixed-C1 inference without rerendering. At 100
+rows, measured throughput was 1.973 rows/s with 6.39 hours remaining for inference.
