@@ -32,3 +32,19 @@ On identical256 clean-Test1 proposals,C1 macro-F1.553 versus R1.202;non-target f
 ## 26 October 2026 — C1 and m0001 correct-instance overlap
 
 Under a shared raw-label, class-agnostic one-to-one IoU 0.50 rematch on the clean 67-scene cohort, C1 and m0001 are both correct for 138/387 radar-or-missile GT targets. C1 alone is correct for 30, m0001 alone for 66 and neither for 153. Of the 168 C1-correct targets, 82.1% are also correct for m0001. The VLM-only subset is non-zero and concentrated more in missile (22) than radar (8), but no real fusion gain is established because an oracle union ignores false-positive interactions and routing errors. [Experiment record](../2026/2026-10/week-2026-10-25/experiments/EXP-2026-10-26-01-vlm-stage2-overlap/record_ai.md).
+
+## 11 November 2026 — CoT versus class-only evidence boundary
+
+The current evidence does not isolate a pure CoT-format effect. R1 full-CoT and C1
+class-only used different training data as well as different targets. On the matched
+256-proposal diagnostic, C1 improved macro-F1 0.202 -> 0.553 and reduced non-target
+acceptance 100.0% -> 25.8%, while R1 produced zero correct `other` or `background`
+answers. R1's rejection corpus had one explanation template per rejection class,
+non-representative negatives and visible class-bearing IDs. Blank-image and
+early-prefix interventions demonstrate template completion and text anchoring, while
+image swaps and radar-context ablation show that pixels still affect outputs.
+
+Therefore the supported diagnosis is a combined data-quality, negative-coverage,
+shortcut-supervision and long-target anchoring failure. A same-data, same-recipe
+class-only-versus-CoT ablation is still required before claiming CoT itself causes
+the metric gap. [Daily synthesis](../2026/2026-11/week-2026-11-08/daily/2026-11-11_ai.md).
