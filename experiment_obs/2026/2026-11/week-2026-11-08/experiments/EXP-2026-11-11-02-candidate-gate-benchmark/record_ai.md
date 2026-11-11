@@ -15,3 +15,10 @@ cross-class deduplication and delete-region filtering are required.
 Environment: image preparation/scoring uses `/sfs/envs/yolo_models/bin/python3`;
 Qwen inference uses `/sfs/envs/qwen_vl/bin/python3`. Code root is unversioned.
 Evidence: `/sfs/vlm_qwen/experiments/2026-11-11/12_candidate_gate_benchmark/`.
+
+## Launch observation — 20:34 IST
+
+Detached queue session `vlm_qwen_study_queue` entered candidate preparation at
+15:04:28Z. At the first process check, two historical scenes and 1,014 candidates
+had rendered; the preparation process was active. Final counts and metrics remain
+pending and must be read from the run artifacts after completion.
