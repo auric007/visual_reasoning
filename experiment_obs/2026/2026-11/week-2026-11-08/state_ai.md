@@ -15,10 +15,16 @@ Updated: 10 November 2026. Task: `RN-20261110-vlm-recap`.
 
 ## Next priority
 
-Run a fair fixed-C1 evaluation on the current Stage2/Test116 candidates and/or a
-pre-registered lower Stage1 gate, including the false-positive cost. Then evaluate a
-deployable fusion/re-checker rule. New hard-negative training should follow only if
-that benchmark shows classification/rejection remains the bottleneck.
+First run an offline paired radar transition audit between B1/A7 and C1 on the same
+119 Stage1 radar boxes. Identify recovered, persistent and regressed instances and
+join analyst radar attributes. This resolves whether C1 changed the historical
+radar shortcut and requires no GPU.
+
+Then run a fair fixed-C1 evaluation on the current Stage2/Test116 candidates and/or
+a pre-registered lower Stage1 gate, including the false-positive and candidate-cost
+impact. After that, evaluate a deployable fusion/re-checker rule. New hard-negative
+training should follow only if that benchmark shows classification/rejection remains
+the bottleneck.
 
 ## Secondary work
 
