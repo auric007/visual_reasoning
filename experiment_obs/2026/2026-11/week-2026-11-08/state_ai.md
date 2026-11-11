@@ -26,6 +26,13 @@ impact. After that, evaluate a deployable fusion/re-checker rule. New hard-negat
 training should follow only if that benchmark shows classification/rejection remains
 the bottleneck.
 
+Readiness audit on 11 November found the L40S idle and all inputs for experiments
+1–4 available, although experiments 2–3 require new manifests/scripts before their
+runs. Experiments 5–6 remain intentionally gated: hard negatives depend on earlier
+outputs, and the paper-derived experiment lacks a defined hypothesis. Nothing was
+launched by the audit. Estimated elapsed time is 13–22 hours for experiments 1–4,
+or 21–36 hours if a reviewed experiment 5 is later authorized.
+
 ## Secondary work
 
 - Finish the two recent paper notes and define one controlled paper-derived study.
