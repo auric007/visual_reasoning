@@ -15,3 +15,15 @@ Both arms will be evaluated on the same fixed 256-row clean Test1 diagnostic.
 
 Status at launch: data build complete; two-arm GPU training/evaluation pending.
 Evidence: `/sfs/vlm_qwen/experiments/2026-11-11/13_target_format_ablation/`.
+
+## Final outcome — 12 November 2026
+
+| Arm | Accuracy | Macro-F1 | Radar F1 | Missile F1 | Other F1 | Background F1 | Non-target acceptance |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Full CoT | .266 | .133 | .060 | .410 | .029 | .031 | .961 |
+| Class-only | .590 | .517 | .682 | .710 | .617 | .061 | .273 |
+
+Class-only won decisively with all non-target factors controlled. Full CoT predicted
+missile for most rows: missile recall 1.000, precision .258. Background remained
+weak in both arms, so target length/structure is causal here but negative-data
+quality is an additional limitation. Both adapters were saved successfully.

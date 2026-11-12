@@ -31,3 +31,17 @@ bug after the manifest/image writes, not a model or data failure. The serializer
 and resume path were fixed. Integrity checks verified 45,501 unique rows and all
 91,002 images. The queue resumed fixed-C1 inference without rerendering. At 100
 rows, measured throughput was 1.973 rows/s with 6.39 hours remaining for inference.
+
+## Final outcome — 12 November 2026
+
+All 45,501 fixed-C1 predictions completed. On current clean Test1 at gate 0.30:
+
+| Policy | Radar P/R/F1 | Missile P/R/F1 | Macro-F1 |
+|---|---|---|---:|
+| Detector only | .932/.432/.590 | .402/.780/.531 | .560 |
+| C1 confirm same | .966/.295/.452 | .460/.632/.532 | .492 |
+| C1 reclassify all | .262/.347/.299 | .339/.703/.457 | .378 |
+
+Fixed C1 was not an effective low-gate rescue mechanism. At historical gate 0.05,
+radar precision was .022 and missile precision .062 despite recalls near .51.
+Full results: `/sfs/vlm_qwen/experiments/2026-11-11/12_candidate_gate_benchmark/reports/CANDIDATE_GATE_RESULTS.md`.

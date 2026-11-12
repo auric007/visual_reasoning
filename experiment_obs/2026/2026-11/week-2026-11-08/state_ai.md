@@ -50,6 +50,15 @@ fixed without rebuilding data. The detached queue resumed fixed-C1 inference on
 the L40S. First checkpoint rate was 1.973 rows/s, giving 6.39 hours for that
 inference stage and approximately 13–17 hours for the remaining full queue.
 
+## Update — 12 November 2026, queue complete
+
+Experiments 1–4 completed and experiment 5 produced only its nontrainable review
+ledger, then stopped as required. The controlled ablation established a strong
+class-only advantage on identical data (macro-F1 .517 versus .133 for full CoT).
+For the current natural detector stream, detector-only at gate .30 beat every C1
+fusion policy on Test1. Frozen Test2 radar F1 was .575 and missile F1 .324. No GPU
+job remains and no hard-negative training was started.
+
 ## Secondary work
 
 - Finish the two recent paper notes and define one controlled paper-derived study.

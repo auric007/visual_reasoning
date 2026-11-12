@@ -48,3 +48,19 @@ Therefore the supported diagnosis is a combined data-quality, negative-coverage,
 shortcut-supervision and long-target anchoring failure. A same-data, same-recipe
 class-only-versus-CoT ablation is still required before claiming CoT itself causes
 the metric gap. [Daily synthesis](../2026/2026-11/week-2026-11-08/daily/2026-11-11_ai.md).
+
+## 2026-11-12 — controlled target format and real-stream fusion
+
+On an identical 1,960-row neutralized R1 corpus, changing only the supervised
+assistant target from full CoT to class-only raised macro-F1 from .133 to .517 and
+reduced non-target acceptance from .961 to .273. This is causal evidence that the
+long templated CoT target harmed this setup. Background recall remained .031 for
+class-only, so poor rejection data remains a separate limitation.
+
+On current clean Test1 Stage2 candidates, detector-only at confidence .30 achieved
+macro-F1 .560 and beat C1 confirmation (.492), unrestricted C1 reclassification
+(.378) and detector-or-C1 union (.407). The sealed Test2 detector-only result was
+radar F1 .575 and missile F1 .324. Therefore the present C1 should not be inserted
+as a deployable verifier/fusion stage; Train-only hard-negative and calibration work
+must precede another fusion attempt. Evidence is under
+`/sfs/vlm_qwen/experiments/2026-11-11/{12_candidate_gate_benchmark,13_target_format_ablation,14_fp_aware_fusion}/`.
